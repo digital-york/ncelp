@@ -72,3 +72,6 @@ end
 gem 'riiif', '~> 1.1'
 
 gem 'figaro'
+
+gem 'hydra-role-management'
+gem 'blacklight-access_controls'
