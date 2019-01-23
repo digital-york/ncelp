@@ -3,3 +3,7 @@ en:
   ncelp:
     version: 0.1
     banner_image: NCELP-logo-orange-long-plus-strap.png
+    footer:
+      ncelp_logo: ncelp-logo.png
+      uoy_logo:   uoy.gif
+      education_dept_logo: education.png
