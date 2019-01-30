@@ -1,0 +1,12 @@
+---
+en:
+  ncelp:
+    version: 0.1
+    banner_image: resource-portal.png
+    footer:
+      ncelp_logo: ncelp-logo.png
+      uoy_logo:   uoy.gif
+      education_dept_logo: education.png
+    menubar:
+      upload: "Upload resource"
+      associated_resource: "Associated resouces"

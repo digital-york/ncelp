@@ -1,0 +1,23 @@
+<!-- top boxes -->
+<div class="container row">
+  <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
+    <h3>Search the Resource Portal</h3>
+    <%= render partial: 'homepage_search_form' %>
+    Enter <b>any text</b> you wish into the search box (e.g. speaking, French, grammar) OR<br/>
+    Browse by: All resources; Topic; Language; Age; Type of material</br>
+    Click on "All Resources" to view all content on the Resource Portal and then use the filters to refine your search<br/>
+  </div>
+</div>
+
+<!-- bottom boxes -->
+<div class="container row">
+  <div class="col-xs-12 col-sm-8 ncelp-homepage-bottom-box-left">
+    <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
+    <%= render 'featured_works' %>
+  </div>
+  <div class="col-xs-12 col-sm-4 ncelp-homepage-bottom-box-right">
+    <h4><%= t('hyrax.homepage.recently_uploaded.tab_label') %></h4>
+    <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+  </div>
+</div>
+
