@@ -7,3 +7,6 @@ en:
       ncelp_logo: ncelp-logo.png
       uoy_logo:   uoy.gif
       education_dept_logo: education.png
+    menubar:
+      upload: "Upload resource"
+      associated_resource: "Associated resouces"
