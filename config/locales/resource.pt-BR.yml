@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      resource:     'fa fa-file-text-o'
+    select_type:
+      resource:
+        description:        "Resource trabalhos"
+        name:               "Resource"
