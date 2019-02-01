@@ -6,12 +6,16 @@ module Hyrax
     self.model_class = ::Resource
     self.terms = [:title,
                   :creator,
-                  :affiliation
+                  :affiliation,
+                  :one_line_description,
+                  :full_description
                  ]
 
     self.required_fields = [
                   :title,
-                  :creator
+                  :creator,
+                  :one_line_description,
+                  :full_description
                  ]
   end
 end
