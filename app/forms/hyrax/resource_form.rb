@@ -4,6 +4,9 @@ module Hyrax
   # Generated form for Resource
   class ResourceForm < Hyrax::Forms::WorkForm
     self.model_class = ::Resource
-    self.terms += [:resource_type]
+    self.terms = [:title,
+                  :creator,
+                  :affiliation
+                 ]
   end
 end
