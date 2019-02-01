@@ -23,7 +23,8 @@ module Hyrax
                   :link_to_iris,
                   :link_to_video,
                   :reference,
-                  :terms_and_conditions
+                  :terms_and_conditions,
+                  :license               # license from default Hyrax
                  ]
 
     self.required_fields = [
@@ -40,7 +41,8 @@ module Hyrax
                   :exposure,
                   :file_type,
                   :cty,
-                  :terms_and_conditions
+                  :terms_and_conditions,
+                  :license
                  ]
   end
 end
