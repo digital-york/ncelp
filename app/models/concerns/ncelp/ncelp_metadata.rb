@@ -50,6 +50,31 @@ module Ncelp
             property :file_type, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#file_type'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
             end
+
+            # country
+            property :cty, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#country'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # country_other
+            property :ctyother, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#country_other'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # Link to OASIS
+            property :link_to_oasis, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#link_to_oasis'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # Link to IRIS
+            property :link_to_iris, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#link_to_iris'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # Link to video on VEO repository
+            property :link_to_video, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#link_to_video'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
         end
     end
 end

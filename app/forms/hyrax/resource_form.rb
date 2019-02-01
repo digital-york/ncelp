@@ -16,7 +16,12 @@ module Hyrax
                   :modality,
                   :age,
                   :exposure,
-                  :file_type
+                  :file_type,
+                  :cty,
+                  :ctyother,
+                  :link_to_oasis,
+                  :link_to_iris,
+                  :link_to_video
                  ]
 
     self.required_fields = [
@@ -31,7 +36,8 @@ module Hyrax
                   :modality,
                   :age,
                   :exposure,
-                  :file_type
+                  :file_type,
+                  :cty
                  ]
   end
 end
