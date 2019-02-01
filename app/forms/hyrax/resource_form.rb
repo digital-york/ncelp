@@ -8,5 +8,10 @@ module Hyrax
                   :creator,
                   :affiliation
                  ]
+
+    self.required_fields = [
+                  :title,
+                  :creator
+                 ]
   end
 end
