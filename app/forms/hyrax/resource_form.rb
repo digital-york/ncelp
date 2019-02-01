@@ -21,7 +21,9 @@ module Hyrax
                   :ctyother,
                   :link_to_oasis,
                   :link_to_iris,
-                  :link_to_video
+                  :link_to_video,
+                  :reference,
+                  :terms_and_conditions
                  ]
 
     self.required_fields = [
@@ -37,7 +39,8 @@ module Hyrax
                   :age,
                   :exposure,
                   :file_type,
-                  :cty
+                  :cty,
+                  :terms_and_conditions
                  ]
   end
 end

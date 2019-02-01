@@ -75,6 +75,16 @@ module Ncelp
             property :link_to_video, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#link_to_video'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
             end
+
+            # References to other material
+            property :reference, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#reference'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # terms and conditions
+            property :terms_and_conditions, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#terms_and_conditions'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
         end
     end
 end
