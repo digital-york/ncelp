@@ -1,0 +1,27 @@
+en:
+  simple_form:
+    labels:
+      resource:
+        title: "Title of resource"
+        creator: "Name of creator"
+        affiliation: "Affiliation / institution"
+        one_line_description: "One line description"
+        full_description: "Complete description"
+        language: "Language"
+        type_of_material: "Type of material"
+        topic: "Topic"
+        area_of_research: "Area of research"
+        modality: "Modality / mode"
+        age: "Age"
+        exposure: "Exposure"
+        file_type: "File type"
+        cty: "Country"
+        ctyother: "Country cont'd"
+        link_to_oasis: "Link(s) to OASIS"
+        link_to_iris: "Link(s) to IRIS"
+        link_to_video: "Link to video on VEO repository"
+        reference: "Reference to other material / original material"
+        terms_and_conditions: "Terms and conditions"
+        license: "License information"
+        email: "Email"
+        notes: "Notes"
