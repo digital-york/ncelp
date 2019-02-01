@@ -6,7 +6,8 @@ class Resource < ActiveFedora::Base
   self.indexer = ResourceIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
-  #validates :title, presence: { message: 'Your work must have a title.' }
+  validates :title,   presence: { message: 'Your resource must have a title.' }
+  validates :creator, presence: { message: 'Your resource must have a creator.' }
 
   include ::Ncelp::NcelpMetadata
 
