@@ -9,7 +9,14 @@ module Hyrax
                   :affiliation,
                   :one_line_description,
                   :full_description,
-                  :language              # language from default Hyrax
+                  :language,             # language from default Hyrax
+                  :type_of_material,
+                  :topic,
+                  :area_of_research,
+                  :modality,
+                  :age,
+                  :exposure,
+                  :file_type
                  ]
 
     self.required_fields = [
@@ -17,7 +24,14 @@ module Hyrax
                   :creator,
                   :one_line_description,
                   :full_description,
-                  :language
+                  :language,
+                  :type_of_material,
+                  :topic,
+                  :area_of_research,
+                  :modality,
+                  :age,
+                  :exposure,
+                  :file_type
                  ]
   end
 end
