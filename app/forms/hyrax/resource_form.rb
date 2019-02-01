@@ -24,7 +24,9 @@ module Hyrax
                   :link_to_video,
                   :reference,
                   :terms_and_conditions,
-                  :license               # license from default Hyrax
+                  :license,               # license from default Hyrax
+                  :email,
+                  :notes
                  ]
 
     self.required_fields = [
@@ -42,7 +44,8 @@ module Hyrax
                   :file_type,
                   :cty,
                   :terms_and_conditions,
-                  :license
+                  :license,
+                  :email
                  ]
   end
 end
