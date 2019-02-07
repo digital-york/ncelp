@@ -51,16 +51,6 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
-            # country
-            property :cty, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#country'), multiple: false do |index|
-                index.as :stored_searchable, :sortable, :facetable
-            end
-
-            # country_other
-            property :ctyother, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#country_other'), multiple: false do |index|
-                index.as :stored_searchable, :sortable, :facetable
-            end
-
             # Link to OASIS
             property :link_to_oasis, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#link_to_oasis'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable

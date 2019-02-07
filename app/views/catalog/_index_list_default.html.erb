@@ -19,9 +19,11 @@
     </div>
   </div>
   <div class="col-md-8">
-    <span class="ncelp-search-result-resource-field-value">
-      <%= document.language %>
-    </span>
+    <% document.language.each do |l| %>
+      <span class="ncelp-search-result-resource-field-value">
+        <%=l %>
+      </span>
+    <% end %>
   </div>
 </div>
 
