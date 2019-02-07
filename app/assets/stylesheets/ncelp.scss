@@ -6,6 +6,36 @@
   filter: none;
 }
 
+/* menubar customization */
+.image-masthead {
+  .navbar {
+    background-color: white;
+    color: #534f4a;
+    margin-bottom: 0;
+
+    .navbar-nav {
+      a {
+        text-transform: uppercase;
+        color: #534f4a;
+
+        &:hover,
+        &:focus {
+          color: #e8803d;
+        }
+      }
+    }
+
+    .active > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: white;
+        color: #e8803d;
+      }
+    }
+  }
+}
+
 /* footer customizations */
 .ncelp-footer-border{
   border-top: 5px solid #ed7d31;
