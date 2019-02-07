@@ -6,9 +6,11 @@
 
 <div class="row ncelp-search-result-resource-field-div">
   <div class="col-md-12">
-    <div>
-      <%= image_tag("listening.png", class: "ncelp-search-result-resource-filetype-icon")%>
-    </div>
+    <% document.file_type.each do |ft| %>
+      <span>
+        <%= image_tag(FileTypeIcon.get_icon(ft), class: "ncelp-search-result-resource-filetype-icon")%>
+      </span>
+    <% end %>
   </div>
 </div>
 
