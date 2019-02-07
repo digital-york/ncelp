@@ -56,3 +56,32 @@ footer.navbar-inverse {
   color: white;
   border: 10px solid white;
 }
+
+/*search result page customization*/
+.ncelp-search-result-resource-div {
+  border: 2px solid #eef0f2;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 10px;
+}
+.ncelp-search-result-resource-field-div {
+  padding-left:   12px;
+  padding-right:  10px;
+  padding-top:    5px;
+  padding-bottom: 5px;
+}
+.ncelp-search-result-resource-filetype-icon{
+  height: 30px;
+  width: 30px;
+}
+.ncelp-search-result-resource-field-value{
+  background-color: #eef0f2;
+  border: 2px solid #eef0f2;
+  border: 2px solid #eef0f2;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+// facet header
+div.facets h3 {
+  font-size: 1.2em;
+}

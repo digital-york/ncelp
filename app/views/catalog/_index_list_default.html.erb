@@ -1,0 +1,43 @@
+<div class="row ncelp-search-result-resource-field-div">
+  <div class="col-md-12">
+    <%= document.one_line_description %>
+  </div>
+</div>
+
+<div class="row ncelp-search-result-resource-field-div">
+  <div class="col-md-12">
+    <% document.file_type.each do |ft| %>
+      <span>
+        <%= image_tag(FileTypeIcon.get_icon(ft), class: "ncelp-search-result-resource-filetype-icon")%>
+      </span>
+    <% end %>
+  </div>
+</div>
+
+<div class="row ncelp-search-result-resource-field-div">
+  <div class="col-md-4">
+    <div>
+      Language
+    </div>
+  </div>
+  <div class="col-md-8">
+    <% document.language.each do |l| %>
+      <span class="ncelp-search-result-resource-field-value">
+        <%=l %>
+      </span>
+    <% end %>
+  </div>
+</div>
+
+<div class="row ncelp-search-result-resource-field-div">
+  <div class="col-md-4">
+    <div>
+      Type of material
+    </div>
+  </div>
+  <div class="col-md-8">
+    <span class="ncelp-search-result-resource-field-value">
+      <%= document.type_of_material %>
+    </span>
+  </div>
+</div>

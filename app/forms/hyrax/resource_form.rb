@@ -17,8 +17,6 @@ module Hyrax
                   :age,
                   :exposure,
                   :file_type,
-                  :cty,
-                  :ctyother,
                   :link_to_oasis,
                   :link_to_iris,
                   :link_to_video,
