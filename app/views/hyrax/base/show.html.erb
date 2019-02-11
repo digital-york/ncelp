@@ -4,40 +4,50 @@
 
 <%= render 'shared/citations' %>
 
-<div class="row work-type">
-  <div class="col-xs-12">&nbsp;</div>
-  <div itemscope itemtype="http://schema.org/CreativeWork" class="col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= render 'resource_show_title', presenter: @presenter %>
-      </div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= render 'resource_show_title', presenter: @presenter %>
+    </div>
+  </div>
+</div>
 
-      <div class="panel-body">
-        <div class="row">
-          <%= render 'workflow_actions_widget', presenter: @presenter %>
-          <% if @presenter.iiif_viewer? %>
-            <div class="col-sm-12">
-              <%= render 'representative_media', presenter: @presenter, viewer: true %>
-            </div>
-          <% end %>
-          <div class="col-sm-3 text-center">
-            <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer? %>
-            <%= render 'citations', presenter: @presenter %>
-            <%= render 'social_media' %>
-          </div>
-          <div class="col-sm-9">
-            <%= render 'work_description', presenter: @presenter %>
-            <%= render 'metadata', presenter: @presenter %>
-          </div>
-          <div class="col-sm-12">
-            <%= render 'relationships', presenter: @presenter %>
-            <%= render 'items', presenter: @presenter %>
-            <%# TODO: we may consider adding these partials in the future %>
-            <%# = render 'sharing_with', presenter: @presenter %>
-            <%# = render 'user_activity', presenter: @presenter %>
-          </div>
-        </div>
-      </div>
+<% document=@presenter.solr_document %>
+<!-- top box -->
+<div class="row ncelp-resource-details-box">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      Title
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <%document.title.each do |t| %>
+        <%=t %><br/>
+      <%end %>
+
+    </div>
+  </div>
+</div>
+<br/>
+<!-- middle box -->
+<div class="row ncelp-resource-details-box">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      middle left
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      right
+    </div>
+  </div>
+</div>
+<br/>
+<!-- bottom box -->
+<div class="row ncelp-resource-details-box">
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      bottom left
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      right
     </div>
   </div>
 </div>
