@@ -4,9 +4,13 @@
           <b><%=I18n.t('simple_form.labels.resource.'+field_name)%></b>
         </div>
         <div class="col-sm-9">
-          <%field_value.each do |w|%>
-              <%=w%>
-          <%end%>
+          <% if field_value.kind_of?(Array) %>
+            <%field_value.each do |w|%>
+                <%=w%>
+            <%end%>
+          <% else %>
+            <%= field_value %>
+          <% end %>
         </div>
     </div>
 <%end%>
