@@ -15,16 +15,8 @@
 <% document=@presenter.solr_document %>
 <!-- top box -->
 <div class="row ncelp-resource-details-box">
-  <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      Title
-    </div>
-    <div class="col-xs-12 col-sm-9">
-      <%document.title.each do |t| %>
-        <%=t %><br/>
-      <%end %>
-    </div>
-  </div>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'title', :field_value => document.title} %>
+
   <br/>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
