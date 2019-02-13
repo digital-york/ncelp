@@ -52,3 +52,9 @@
 <div class="row ncelp-resource-details-box">
   <%= render :partial => 'oasis_link_field', :locals => {:field_name => 'link_to_oasis', :field_value => document.link_to_oasis} %><br/>
 </div>
+<br/>
+<div class="row ncelp-resource-details-box">
+  <div class="col-sm-12">
+    <%= render 'items', presenter: @presenter %>
+  </div>
+</div>
