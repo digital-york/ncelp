@@ -15,9 +15,7 @@
 <% document=@presenter.solr_document %>
 <!-- top box -->
 <div class="row ncelp-resource-details-box">
-  <%= render :partial => 'generic_field', :locals => {:field_name => 'title', :field_value => document.title} %>
-
-  <br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'title', :field_value => document.title} %><br/>
   <div class="row">
     <div class="col-xs-12 col-sm-3">
       File
@@ -29,7 +27,9 @@
         </span>
       <% end %>
     </div>
-  </div>
+  </div><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'language', :field_value => document.language} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'type_of_material', :field_value => document.type_of_material} %><br/>
 </div>
 <br/>
 <!-- middle box -->
