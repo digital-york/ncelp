@@ -46,12 +46,5 @@
 <br/>
 <!-- bottom box -->
 <div class="row ncelp-resource-details-box">
-  <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      bottom left
-    </div>
-    <div class="col-xs-12 col-sm-9">
-      right
-    </div>
-  </div>
+  <%= render :partial => 'oasis_link_field', :locals => {:field_name => 'link_to_oasis', :field_value => document.link_to_oasis} %><br/>
 </div>
