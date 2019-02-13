@@ -23,7 +23,19 @@
       <%document.title.each do |t| %>
         <%=t %><br/>
       <%end %>
-
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      File
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <% document.file_type.each do |ft| %>
+        <span>
+          <%= image_tag(FileTypeIcon.get_icon(ft.downcase), class: "ncelp-resource-icon")%>
+        </span>
+      <% end %>
     </div>
   </div>
 </div>
