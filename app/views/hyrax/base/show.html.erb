@@ -40,7 +40,8 @@
 
 <!-- middle box -->
 <div class="row ncelp-resource-details-box">
-
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
+  <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
 </div>
 <br/>
 <!-- bottom box -->
