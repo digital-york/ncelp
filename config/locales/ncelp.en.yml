@@ -10,3 +10,6 @@ en:
     menubar:
       upload: "Upload resource"
       associated_resource: "Associated resouces"
+    icons:
+      iris: iris_logo_small.jpg
+      oasis: iris_logo_small.jpg

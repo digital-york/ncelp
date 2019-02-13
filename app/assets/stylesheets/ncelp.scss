@@ -101,17 +101,36 @@ footer.navbar-inverse {
   padding-bottom: 5px;
 }
 .ncelp-search-result-resource-filetype-icon{
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
 }
 .ncelp-search-result-resource-field-value{
   background-color: #eef0f2;
-  border: 2px solid #eef0f2;
-  border: 2px solid #eef0f2;
+  border: 5px solid white;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
 // facet header
 div.facets h3 {
   font-size: 1.2em;
+}
+
+/*resource details page*/
+.ncelp-resource-details-box {
+  border: 2px solid #eef0f2;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  font-weight: bold;
+}
+.ncelp-resource-details-social {
+  text-align: right;
+}
+.ncelp-resource-icon {
+  height: 30px;
+  width: 30px;
+}
+.ncelp-resource-link-icon {
+  height: 30px;
+  width: 30px;
 }

@@ -1,0 +1,22 @@
+<%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h5>OASIS summaries</h5>
+          These one-page summaries provide information about some of the research that informed the creation of this resource:
+        </div>
+    </div><br/>
+    <div class="row">
+      <div class="col-xs-12 col-sm-1">
+        <%= image_tag(I18n.t('ncelp.icons.oasis'), :alt => 'OASIS', :class =>"ncelp-resource-link-icon")%>
+      </div>
+      <div class="col-xs-12 col-sm-11">
+        <% if field_value.kind_of?(Array) %>
+          <%field_value.each do |w|%>
+              <%= link_to w, w, target: :_blank %>
+          <%end%>
+        <% else %>
+          <%= link_to field_value, field_value, target: :_blank  %>
+        <% end %>
+      </div>
+    </div>
+<%end%>

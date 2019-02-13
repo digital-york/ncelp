@@ -4,42 +4,57 @@
 
 <%= render 'shared/citations' %>
 
-<div class="row work-type">
-  <div class="col-xs-12">
-    <%= render 'work_type', presenter: @presenter %>
-  </div>
-  <div class="col-xs-12">&nbsp;</div>
-  <div itemscope itemtype="http://schema.org/CreativeWork" class="col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= render 'work_title', presenter: @presenter %>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <%= render 'workflow_actions_widget', presenter: @presenter %>
-          <% if @presenter.iiif_viewer? %>
-            <div class="col-sm-12">
-              <%= render 'representative_media', presenter: @presenter, viewer: true %>
-            </div>
-          <% end %>
-          <div class="col-sm-3 text-center">
-            <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.iiif_viewer? %>
-            <%= render 'citations', presenter: @presenter %>
-            <%= render 'social_media' %>
-          </div>
-          <div class="col-sm-9">
-            <%= render 'work_description', presenter: @presenter %>
-            <%= render 'metadata', presenter: @presenter %>
-          </div>
-          <div class="col-sm-12">
-            <%= render 'relationships', presenter: @presenter %>
-            <%= render 'items', presenter: @presenter %>
-            <%# TODO: we may consider adding these partials in the future %>
-            <%# = render 'sharing_with', presenter: @presenter %>
-            <%# = render 'user_activity', presenter: @presenter %>
-          </div>
-        </div>
-      </div>
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= render 'resource_show_title', presenter: @presenter %>
     </div>
+  </div>
+</div>
+
+<div class="row ncelp-resource-details-social">
+  <%= render 'social_media' %>
+</div>
+
+<% document=@presenter.solr_document %>
+<!-- top box -->
+<div class="row ncelp-resource-details-box">
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'title', :field_value => document.title} %><br/>
+  <div class="row">
+    <div class="col-xs-12 col-sm-3">
+      File
+    </div>
+    <div class="col-xs-12 col-sm-9">
+      <% document.file_type.each do |ft| %>
+        <span>
+          <%= image_tag(FileTypeIcon.get_icon(ft.downcase), class: "ncelp-resource-icon")%>
+        </span>
+      <% end %>
+    </div>
+  </div><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'language', :field_value => document.language} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'type_of_material', :field_value => document.type_of_material} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'area_of_research', :field_value => document.area_of_research} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'modality', :field_value => document.modality} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'age', :field_value => document.age} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'exposure', :field_value => document.exposure} %><br/>
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'topic', :field_value => document.topic} %>
+</div>
+<br/>
+
+<!-- middle box -->
+<div class="row ncelp-resource-details-box">
+  <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
+  <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
+</div>
+<br/>
+<!-- bottom box -->
+<div class="row ncelp-resource-details-box">
+  <%= render :partial => 'oasis_link_field', :locals => {:field_name => 'link_to_oasis', :field_value => document.link_to_oasis} %><br/>
+</div>
+<br/>
+<div class="row ncelp-resource-details-box">
+  <div class="col-sm-12">
+    <%= render 'items', presenter: @presenter %>
   </div>
 </div>
