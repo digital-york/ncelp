@@ -14,7 +14,9 @@
     <%= content_for(:precontainer_content) %>
     <div id="content-wrapper" class="container" role="main">
       <%= render '/flash_msg' %>
-      <%= render_breadcrumbs builder: Hyrax::BootstrapBreadcrumbsBuilder %>
+      <div class="row">
+        <%= render_breadcrumbs builder: Hyrax::BootstrapBreadcrumbsBuilder %>
+      </div>
       <% if content_for?(:page_header) %>
         <div class="row">
           <div class="col-xs-12 main-header">
