@@ -41,15 +41,16 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
-    config.add_facet_field solr_name("language", :facetable), label: "Language being learnt", limit: 5
+    config.add_facet_field solr_name("title", :facetable), label: "Title", limit: 5
     config.add_facet_field solr_name("type_of_material", :facetable), label: "Type / purpose of resource", limit: 5
-    config.add_facet_field solr_name("modality", :facetable), label: "Modality / mode", limit: 5
     config.add_facet_field solr_name("area_of_research", :facetable), label: "Pedagogical focus", limit: 5
+    config.add_facet_field solr_name("modality", :facetable), label: "Modality / mode", limit: 5
     config.add_facet_field solr_name("age", :facetable), label: "Target age range", limit: 5
     config.add_facet_field solr_name("exposure", :facetable), label: "Hours of prior instruction", limit: 5
-    config.add_facet_field solr_name("file_type", :facetable), label: "File", limit: 5
-    config.add_facet_field solr_name("creator", :facetable), limit: 5
-    config.add_facet_field solr_name("reference", :facetable), label: "Acknowledgements", limit: 5
+    config.add_facet_field solr_name("thematic", :facetable), label: "Thematic / semantic field", limit: 5
+    config.add_facet_field solr_name("topic", :facetable), label: "The theme of resource", limit: 5
+    config.add_facet_field solr_name("file_type", :facetable), label: "File type", limit: 5
+    config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile

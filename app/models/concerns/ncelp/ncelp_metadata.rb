@@ -21,6 +21,11 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
+            # Thematic
+            property :thematic, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#thematic'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
             # Topic
             property :topic, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#topic'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable

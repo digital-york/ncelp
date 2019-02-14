@@ -12,6 +12,7 @@ module Hyrax
                   :language,             # language from default Hyrax
                   :type_of_material,
                   :topic,
+                  :thematic,
                   :area_of_research,
                   :modality,
                   :age,
@@ -35,6 +36,7 @@ module Hyrax
                   :language,
                   :type_of_material,
                   :topic,
+                  :thematic,
                   :area_of_research,
                   :modality,
                   :age,
