@@ -1,0 +1,35 @@
+terms:
+- id: NOTES
+  term: "!!!THIS IS THE NON FINAL VRESION OF TERMS!!!"
+- id: Grammar_Noun_inflections
+  term: "Grammar - Noun inflections (e.g., case, gender, number)"
+- id: Grammar_Verb_inflections
+  term: "Grammar - Verb inflections (e.g., aspect, mood, tense)"
+- id: Grammar_Syntax
+  term: "Grammar - Syntax (e.g., word order for questions, negations, pronouns, post-adverb)"
+- id: Grammar_Other
+  term: "Grammar - Other"
+- id: Vocabulary_Adjectives
+  term: "Vocabulary - Adjectives"
+- id: Vocabulary_Adverbs
+  term: "Vocabulary - Adverbs"
+- id: Vocabulary_Modals
+  term: "Vocabulary - Modals"
+- id: Vocabulary_Nouns
+  term: "Vocabulary - Nouns"
+- id: Vocabulary_Prepositions
+  term: "Vocabulary - Prepositions"
+- id: Vocabulary_Pronouns
+  term: "Vocabulary - Pronouns"
+- id: Vocabulary_Verbs
+  term: "Vocabulary - Verbs"
+- id: Vocabulary_Other
+  term: "Vocabulary - Other"
+- id: Phonics_isolated_sound-symbols
+  term: "Phonics - isolated sound-symbols"
+- id: Phonics_sound-symbols_in_words
+  term: "Phonics - sound-symbols in words"
+- id: Phonics_sound-symbols_in_sentences
+  term: "Phonics - sound-symbols in sentences"
+- id: Phonics_other
+  term: "Phonics - other"

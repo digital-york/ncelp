@@ -1,0 +1,103 @@
+terms:
+- id: Adjectives
+  term: Adjectives
+- id: Adverbs
+  term: Adverbs
+- id: Agreeing_disagreeing
+  term: "Agreeing and disagreeing"
+- id: Alphabet
+  term: Alphabet
+- id: Animals
+  term: Animals
+- id: Basic_personal_information
+  term: "Basic personal information"
+- id: Clothing_fashion
+  term: "Clothing & fashion"
+- id: Colours
+  term: Colours
+- id: Common_abreviations
+  term: "Common abreviations"
+- id: Comparisons
+  term: Comparisons
+- id: Connectives_conjunctions
+  term: "Connectives & conjunctions"
+- id: Countries_nationalities
+  term: "Countries & nationalities"
+- id: Customs_festivals
+  term: "Customs & festivals"
+- id: Daily_routine
+  term: "Daily routine"
+- id: Days_times
+  term: "Days & times"
+- id: Environment
+  term: Environment
+- id: Family_friends_relationships
+  term: "Family, friends & relationships"
+- id: Festivals_celebrations
+  term: "Festivals & celebrations"
+- id: Food_drink
+  term: Food & drink
+- id: Future_tense_equivalent_expressions
+  term: "Future tense & equivalent expressions"
+- id: Geographical_features
+  term: "Geographical features"
+- id: Global_social_issues
+  term: "Global & social issues"
+- id: Health_lifestyle
+  term: "Health & lifestyle"
+- id: Holidays
+  term: Holidays
+- id: Home_town_neighbourhood
+  term: "Home, town, & neighbourhood"
+- id: House_rooms
+  term: "House & rooms"
+- id: Jobs_career_choices
+  term: "Jobs & career choices"
+- id: Journeys & transport
+  term: "Journeys & transport"
+- id: Local_area
+  term: "Local area"
+- id: Location_distance
+  term: "Location & distance"
+- id: Money_transactions
+  term: "Money & transactions"
+- id: Months_dates
+  term: "Months & dates"
+- id: My_family_and_friends
+  term: "My family and friends"
+- id: Negative_expressions
+  term: "Negative expressions"
+- id: Numbers_ordinals
+  term: "Numbers & ordinals"
+- id: Objects_materials
+  term: "Objects & materials"
+- id: Opinions
+  term: Opinions
+- id: Past_tense
+  term: "Past tense"
+- id: Prepositions
+  term: Prepositions
+- id: Present_tense
+  term: "Present tense"
+- id: Question_words
+  term: "Question words"
+- id: Rubrics_instructions
+  term: "Rubrics & instructions"
+- id: School_higher_education
+  term: "School & higher education"
+- id: Social_conventions
+  term: "Social conventions"
+- id: Sport_leisure
+  term: "Sport & leisure"
+- id: Subjunctive
+  term: Subjunctive
+- id: Technology_social media
+  term: "Technology & social media"
+- id: Time_expressions
+  term: "Time expressions"
+- id: Verbs
+  term: Verbs
+- id: Weather
+  term: Weather
+- id: Weights_measures
+  term: "Weights & measures"

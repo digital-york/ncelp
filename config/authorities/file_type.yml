@@ -1,0 +1,13 @@
+terms:
+- id: Video
+  term: Video
+- id: Audio
+  term: Audio
+- id: Text
+  term: Text
+- id: Spreadsheet
+  term: Spreadsheet
+- id: Image
+  term: Image
+- id: Presentation
+  term: "Presentation (ppt)"
