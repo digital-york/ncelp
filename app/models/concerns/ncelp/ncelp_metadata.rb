@@ -16,6 +16,11 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
+            # Language-other
+            property :language_other, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#language_other'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
             # Type of material
             property :type_of_material, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#type_of_material'), multiple: false do |index|
                 index.as :stored_searchable, :sortable, :facetable

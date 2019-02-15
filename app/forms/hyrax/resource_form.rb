@@ -10,6 +10,7 @@ module Hyrax
                   :one_line_description,
                   :full_description,
                   :language,             # language from default Hyrax
+                  :language_other,
                   :type_of_material,
                   :topic,
                   :thematic,
