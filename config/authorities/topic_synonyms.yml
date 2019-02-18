@@ -1,0 +1,8 @@
+terms:
+- id: Colours
+  synonyms:
+    synonym1: Colors
+- id: Holidays
+  synonyms:
+    synonym1: break
+    synonym2: vacation
