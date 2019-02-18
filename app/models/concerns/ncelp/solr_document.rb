@@ -36,6 +36,7 @@ module Ncelp
       attribute :one_line_description,     Solr::String, solr_name('one_line_description')
       attribute :full_description,         Solr::String, solr_name('full_description')
       attribute :language,                 Solr::Array,  solr_name('language')
+      attribute :language_other,           Solr::String, solr_name('language_other')
       attribute :type_of_material,         Solr::String, solr_name('type_of_material')
       attribute :topic,                    Solr::Array,  solr_name('topic')
       attribute :thematic,                 Solr::Array,  solr_name('thematic')

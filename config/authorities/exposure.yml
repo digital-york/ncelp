@@ -1,0 +1,23 @@
+terms:
+- id: 0-50
+  term: "0-50 hours"
+- id: 50-100
+  term: "50-100 hours"
+- id: 100-150
+  term: "100-150 hours"
+- id: 150-200
+  term: "150-200 hours"
+- id: 200-250
+  term: "200-250 hours"
+- id: 250-300
+  term: "250-300 hours"
+- id: 300-350
+  term: "300-350 hours"
+- id: 400-450
+  term: "400-450 hours"
+- id: 450-500
+  term: "450-500 hours"
+- id: 500-550
+  term: "500-550 hours"
+- id: 550-600
+  term: "550-600 hours"
