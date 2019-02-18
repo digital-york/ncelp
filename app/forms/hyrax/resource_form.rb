@@ -13,6 +13,7 @@ module Hyrax
                   :language_other,
                   :type_of_material,
                   :material_for_teachers,
+                  :material_for_teachers_other,
                   :topic,
                   :thematic,
                   :area_of_research,
