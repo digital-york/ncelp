@@ -12,6 +12,7 @@ module Hyrax
                   :language,             # language from default Hyrax
                   :language_other,
                   :type_of_material,
+                  :material_for_teachers,
                   :topic,
                   :thematic,
                   :area_of_research,

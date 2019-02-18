@@ -38,6 +38,7 @@ module Ncelp
       attribute :language,                 Solr::Array,  solr_name('language')
       attribute :language_other,           Solr::String, solr_name('language_other')
       attribute :type_of_material,         Solr::String, solr_name('type_of_material')
+      attribute :material_for_teachers,    Solr::Array,  solr_name('material_for_teachers')
       attribute :topic,                    Solr::Array,  solr_name('topic')
       attribute :thematic,                 Solr::Array,  solr_name('thematic')
       attribute :area_of_research,         Solr::Array,  solr_name('area_of_research')

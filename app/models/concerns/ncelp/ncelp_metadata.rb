@@ -32,6 +32,11 @@ module Ncelp
             end
 
             # Topic
+            property :material_for_teachers, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#material_for_teachers'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # Topic
             property :topic, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#topic'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
             end
