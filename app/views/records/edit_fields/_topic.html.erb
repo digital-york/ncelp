@@ -1,0 +1,3 @@
+<%= f.input :topic, as: :select,
+            collection: GenericLocalAuthorityService.select_all_options('topic'),
+            input_html: { class: 'form-control', multiple: true  } %>
