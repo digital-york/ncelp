@@ -51,6 +51,11 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
+            # Area of research other
+            property :area_of_research_other, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#area_of_research_other'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
             # Modality
             property :modality, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#modality'), multiple: false do |index|
                 index.as :stored_searchable, :sortable, :facetable

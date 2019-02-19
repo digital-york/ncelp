@@ -17,6 +17,7 @@ module Hyrax
                   :topic,
                   :thematic,
                   :area_of_research,
+                  :area_of_research_other,
                   :modality,
                   :age,
                   :exposure,
