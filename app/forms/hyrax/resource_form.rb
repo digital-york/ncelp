@@ -48,7 +48,6 @@ module Hyrax
                   :file_type,
                   :cty,
                   :terms_and_conditions,
-                  :license,
                   :email
                  ]
   end
