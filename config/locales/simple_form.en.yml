@@ -46,7 +46,7 @@ en:
         link_to_iris: "If this resource uses any material(s) held on IRIS, please enter the link(s) to them here."
         link_to_video: "If your resource contains video material, please provide the link to the hosting platform. For instructions on the VEO platform see here. #insert clickable link"
         reference: "This resource uses material created by"
-        terms_and_conditions: "All NCELP resources are licensed under a CC BY-NC-SA license. This means your material can be stored, shared, and adapted as long as it is 1) properly attributed, 2) only used for non-commercial purposes, and 3) any derivative products are distributed under the same licensing terms. By accepting this license, you do not give up the copyright to your work or the right to submit the work to publishers or other repositories. For more information see www.creativecommons.org #add links"
+        terms_and_conditions: "All NCELP resources are licensed under a CC BY-NC-SA license. This means your material can be stored, shared, and adapted as long as it is 1) properly attributed, 2) only used for non-commercial purposes, and 3) any derivative products are distributed under the same licensing terms. By accepting this license, you do not give up the copyright to your work or the right to submit the work to publishers or other repositories. For more information see <a href=https://creativecommons.org/>https://creativecommons.org/</a>"
         license: ""
         email: "This information will only be used in relation to your resource being held on hte Resurce Portal, such as if there is a problem with the upload or the information stored. Your email address will not be shared with anyone beyond the NCELP team."
         notes: "Any other comments:"
