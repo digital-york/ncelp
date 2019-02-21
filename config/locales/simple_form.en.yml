@@ -43,7 +43,7 @@ en:
         age: "These categories are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools."
         exposure: "Please estimate the number of hours of classroom-instruction a learner needs to have had to use this resource. [# pop up with more information when clicking /hovering on estimate]."
         file_type: "Please indicate what types of file are included (e.g. audio):"
-        link_to_oasis: "Select one or more OASIS summaries which explain the research principles behind this resource."
+        link_to_oasis: "Enter the title of one or more OASIS summaries which explain the research principles behind this resource. "
         link_to_iris: "If this resource uses any material(s) held on IRIS, please enter the link(s) to them here."
         link_to_video: "If your resource contains video material, please provide the link to the hosting platform. For instructions on the VEO platform see here. #insert clickable link"
         reference: "This resource uses material created by"
