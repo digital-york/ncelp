@@ -12,9 +12,12 @@ module Hyrax
                   :language,             # language from default Hyrax
                   :language_other,
                   :type_of_material,
+                  :material_for_teachers,
+                  :material_for_teachers_other,
                   :topic,
                   :thematic,
                   :area_of_research,
+                  :area_of_research_other,
                   :modality,
                   :age,
                   :exposure,
@@ -45,7 +48,6 @@ module Hyrax
                   :file_type,
                   :cty,
                   :terms_and_conditions,
-                  :license,
                   :email
                  ]
   end

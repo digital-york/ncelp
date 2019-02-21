@@ -1,0 +1,10 @@
+<%= f.input :area_of_research, as: :select,
+            collection: GenericLocalAuthorityService.select_all_options('area_of_research'),
+            input_html: { class: 'form-control', multiple: true  } %>
+
+
+<div id="area_of_research_other_div" style="display: none; position: relative; top: -20px;">
+  <%= f.input :area_of_research_other,
+              input_html: { class: 'form-control' }
+  %>
+</div>

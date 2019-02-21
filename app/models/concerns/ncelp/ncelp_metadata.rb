@@ -31,6 +31,16 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
+            # material_for_teachers
+            property :material_for_teachers, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#material_for_teachers'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # material_for_teachers_other
+            property :material_for_teachers_other, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#material_for_teachers_other'), multiple: false do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
             # Topic
             property :topic, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#topic'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
@@ -38,6 +48,11 @@ module Ncelp
 
             # Area of research
             property :area_of_research, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#area_of_research'), multiple: true do |index|
+                index.as :stored_searchable, :sortable, :facetable
+            end
+
+            # Area of research other
+            property :area_of_research_other, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#area_of_research_other'), multiple: false do |index|
                 index.as :stored_searchable, :sortable, :facetable
             end
 

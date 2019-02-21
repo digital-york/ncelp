@@ -33,3 +33,5 @@ terms:
   term: "Phonics - sound-symbols in sentences"
 - id: Phonics_other
   term: "Phonics - other"
+- id: Other
+  term: Other

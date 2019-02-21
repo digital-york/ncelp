@@ -1,0 +1,4 @@
+<%= f.input :exposure, as: :radio_buttons,
+            collection: GenericLocalAuthorityService.select_all_options('exposure'),
+            input_html: { }
+%>

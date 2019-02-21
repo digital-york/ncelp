@@ -1,0 +1,11 @@
+<%= f.input :material_for_teachers, as: :check_boxes,
+            collection: GenericLocalAuthorityService.select_all_options('material_for_teachers'),
+            value_method: lambda {|v| v.last.to_s },
+            input_html: { multiple: true  }
+%>
+
+<div id="material_for_teachers_other_div" style="display: none; position: relative; top: -20px;">
+  <%= f.input :material_for_teachers_other,
+              input_html: { class: 'form-control' }
+  %>
+</div>

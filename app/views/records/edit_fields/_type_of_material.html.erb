@@ -1,0 +1,4 @@
+<%= f.input :type_of_material, as: :radio_buttons,
+            collection: GenericLocalAuthorityService.select_all_options('type_of_material'),
+            input_html: { }
+%>
