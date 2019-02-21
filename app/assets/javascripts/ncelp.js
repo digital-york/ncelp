@@ -33,5 +33,20 @@ $(function() {
     <!-- check if needs to show Pedagogical focus other field on load of the page -->
     check_pedagogical_other_fields();
 
-
+    // ---------------------------------------------------
+    // show/hide other material_for_teachers fields
+    function check_material_for_teachers_other_fields() {
+        if($('[id^=resource_material_for_teachers_]').eq(-2).is(':checked')) {
+            $("#material_for_teachers_other_div").css("display","block");
+        }else{
+            $("#material_for_teachers_other_div").css("display","none");
+        }
+    }
+    <!-- Show hiden 'other' material_for_teachers field -->
+    var material_for_teachers_last = $("[id^=resource_material_for_teachers_]").eq(-2);
+    material_for_teachers_last.click(function(){
+        check_material_for_teachers_other_fields();
+    });
+    <!-- check if needs to show Pedagogical focus other field on load of the page -->
+    check_material_for_teachers_other_fields();
 });
