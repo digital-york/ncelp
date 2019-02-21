@@ -13,6 +13,7 @@ en:
         topic: "Topic"
         thematic: "Thematic / semantic field"
         area_of_research: "Pedagogical focus"
+        area_of_research_other: "Pedagogical focus"
         modality: "Modality / mode (skill)"
         age: "Target age range"
         exposure: "Hours of prior instruction"

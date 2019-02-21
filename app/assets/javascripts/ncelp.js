@@ -15,4 +15,23 @@ $(function() {
     });
     <!-- check if needs to show language other field on load of the page -->
     check_language_other_fields();
+
+    // ---------------------------------------------------
+    // show/hide other Pedagogical focus fields
+    function check_pedagogical_other_fields() {
+        var t = $('#resource_area_of_research option').filter(':selected').text();
+        if(t.endsWith('Other')) {
+            $("#area_of_research_other_div").css("display","block");
+        }else{
+            $("#area_of_research_other_div").css("display","none");
+        }
+    }
+    <!-- Show hiden 'other' Pedagogical focus field -->
+    $("#resource_area_of_research").click(function(){
+        check_pedagogical_other_fields();
+    });
+    <!-- check if needs to show Pedagogical focus other field on load of the page -->
+    check_pedagogical_other_fields();
+
+
 });
