@@ -17,26 +17,25 @@ class ResourceIndexer < Hyrax::WorkIndexer
         authority_filename = "#{field_name}.yml"
         begin
           unless object[field_name].nil?
-            if object[field_name].is_a? String and object[field_name]!=''
-              if object[field_name].starts_with? 'http' or object[field_name].to_i <= 0
-                solr_doc[field_name+'_label_tesim'] = GenericLocalAuthorityService.id_to_label(field_name, object[field_name])
-              else
-                solr_doc[field_name+'_label_tesim'] = GenericLocalAuthorityService.id_to_label(field_name, object[field_name].to_i)
-              end
-            elsif object[field_name].size>0
+            # If current field value is a String
+            if object[field_name].is_a? String
+              solr_doc[field_name+'_label_tesim'] = GenericLocalAuthorityService.id_to_label(field_name, object[field_name])
+
+              # save synonyms
+              synonyms = SynonymsLoader.load_synonyms(field_name, object[field_name])
+              solr_doc[field_name+'_synonyms_tesim'] = synonyms unless synonyms.nil?
+            else # if current field value is a collection
               labels = []
-              object[field_name].each do |id|
-                unless (id.nil? or id=='')
-                  if id.starts_with? 'http' or id.to_i <= 0
-                    labels << GenericLocalAuthorityService.id_to_label(field_name, id)
-                  else
-                    labels << GenericLocalAuthorityService.id_to_label(field_name, id.to_i)
-                  end
+              synonyms = []
+              object[field_name].each do |field_value|
+                unless (field_value.nil? or field_value=='')
+                  labels << GenericLocalAuthorityService.id_to_label(field_name, field_value)
+                  s = SynonymsLoader.load_synonyms(field_name, field_value)
+                  synonyms << s unless s.nil?
                 end
               end
               solr_doc[field_name+'_label_tesim'] = labels
-            else
-              Rails.logger.info('ignored empty field: ' + field_name)
+              solr_doc[field_name+'_synonyms_tesim'] = synonyms
             end
           end
         rescue => exception
