@@ -1,7 +1,12 @@
 <% content_for(:navbar) do %>
   <div class="image-masthead">
-    <div class="background-container">
-      <%= image_tag(t('ncelp.banner_image'), alt: "NCELP") %>
+    <div class="background-container row">
+      <div class="col-xs-12 col-sm-8">
+        <%= image_tag(t('ncelp.banner_image'), alt: "NCELP", class: 'logo-image') %>
+      </div>
+      <div class="col-xs-12 col-sm-4 strapline-div">
+        <%= image_tag(t('ncelp.strapline_image'), alt: "NCELP", class: 'strapline-image') %>
+      </div>
     </div>
     <span class="background-container-gradient" style="background: none;"></span>
 

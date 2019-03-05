@@ -2,7 +2,8 @@
 en:
   ncelp:
     version: 0.1
-    banner_image: resource-portal.png
+    banner_image: logo1776x258.png
+    strapline_image: strapline.png
     footer:
       ncelp_logo: ncelp-logo.png
       uoy_logo:   uoy.gif
@@ -12,4 +13,4 @@ en:
       associated_resource: "Associated resouces"
     icons:
       iris: iris_logo_small.jpg
-      oasis: iris_logo_small.jpg
+      oasis: oasis_logo_small.png
