@@ -6,6 +6,20 @@
   filter: none;
 }
 
+.logo-image {
+  width: 90%;
+  max-height: 100px;
+}
+.strapline-div {
+  height: 100px;
+  position:relative;
+}
+.strapline-image {
+  width: 90%;
+  position:absolute;
+  bottom:0;
+}
+
 /* menubar customization */
 .image-masthead {
   .navbar {
@@ -127,8 +141,8 @@ div.facets h3 {
   text-align: right;
 }
 .ncelp-resource-icon {
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
 }
 .ncelp-resource-link-icon {
   height: 30px;
