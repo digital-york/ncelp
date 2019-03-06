@@ -1,11 +1,17 @@
 terms:
+- id: Comprehension
+  term: Comprehension
 - id: Listening
   term: Listening
-- id: Speaking
-  term: Speaking
+- id: Production
+  term: Production
+- id: Receptive
+  term: Receptive
 - id: Reading
   term: Reading
+- id: Speaking
+  term: Speaking
 - id: Writing
   term: Writing
-- id: Mixed
-  term: Mixed
+- id: Multiple_modalities
+  term: "Multiple modalities/modes (skills)"

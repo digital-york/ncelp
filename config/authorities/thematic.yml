@@ -1,29 +1,29 @@
 terms:
 - id: Basic_personal_information
   term: "Basic personal information"
+- id: Clothing_shopping_transactions
+  term: "Clothing, shopping & transactions"
 - id: Family_friends_and_relationships
   term: "Family, friends and relationships"
+- id: Food_customs_and_festivals
+  term: "Food, customs and festivals"
+- id: Free_time_sports_leisure
+  term: "Free time, sports & leisure"
+- id: Future_plans_jobs_careers
+  term: "Future plans, jobs & careers"
+- id: Global_and_social_issues
+  term: "Global and social issues"
+- id: Health_and_lifestyle_choices
+  term: "Health and lifestyle choices"
+- id: Holidays_travel_and_transport
+  term: "Holidays, travel & transport"
 - id: Home_and_daily_routine
   term: "Home and daily routine"
 - id: School_life_and_studies
   term: "School life and studies"
-- id: Future_plans_jobs_and_careers
-  term: "Future plans, jobs and careers"
-- id: The_natural_world_plants_and_animals
-  term: "The natural world, plants and animals"
-- id: Global_and_social_issues
-  term: "Global and social issues"
-- id: Free_time_sports_and_leisure
-  term: "Free time, sports and leisure"
 - id: Technology_in_everyday_life
   term: "Technology in everyday life"
-- id: Holidays_travel_and_transport
-  term: "Holidays, travel and transport"
-- id: Clothing_shopping_and_transactions
-  term: "Clothing, shopping and transactions"
+- id: The_natural_world_plants_and_animals
+  term: "The natural world, plants & animals"
 - id: Town_and_local_area
   term: "Town and local area"
-- id: Health_and_lifestyle_choices
-  term: "Health and lifestyle choices"
-- id: Food_customs_and_festivals
-  term: "Food, customs and festivals"

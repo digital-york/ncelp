@@ -1,8 +1,4 @@
 terms:
-- id: Adjectives
-  term: Adjectives
-- id: Adverbs
-  term: Adverbs
 - id: Agreeing_disagreeing
   term: "Agreeing and disagreeing"
 - id: Alphabet
@@ -17,10 +13,6 @@ terms:
   term: Colours
 - id: Common_abreviations
   term: "Common abreviations"
-- id: Comparisons
-  term: Comparisons
-- id: Connectives_conjunctions
-  term: "Connectives & conjunctions"
 - id: Countries_nationalities
   term: "Countries & nationalities"
 - id: Customs_festivals
@@ -37,8 +29,6 @@ terms:
   term: "Festivals & celebrations"
 - id: Food_drink
   term: Food & drink
-- id: Future_tense_equivalent_expressions
-  term: "Future tense & equivalent expressions"
 - id: Geographical_features
   term: "Geographical features"
 - id: Global_social_issues
@@ -65,22 +55,12 @@ terms:
   term: "Months & dates"
 - id: My_family_and_friends
   term: "My family and friends"
-- id: Negative_expressions
-  term: "Negative expressions"
 - id: Numbers_ordinals
   term: "Numbers & ordinals"
 - id: Objects_materials
   term: "Objects & materials"
 - id: Opinions
   term: Opinions
-- id: Past_tense
-  term: "Past tense"
-- id: Prepositions
-  term: Prepositions
-- id: Present_tense
-  term: "Present tense"
-- id: Question_words
-  term: "Question words"
 - id: Rubrics_instructions
   term: "Rubrics & instructions"
 - id: School_higher_education
@@ -89,14 +69,10 @@ terms:
   term: "Social conventions"
 - id: Sport_leisure
   term: "Sport & leisure"
-- id: Subjunctive
-  term: Subjunctive
 - id: Technology_social media
   term: "Technology & social media"
 - id: Time_expressions
   term: "Time expressions"
-- id: Verbs
-  term: Verbs
 - id: Weather
   term: Weather
 - id: Weights_measures

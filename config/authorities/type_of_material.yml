@@ -1,7 +1,7 @@
 terms:
-  - id: tests_assesments
-    term: "Tests / assesments"
   - id: material
     term: "Material for teachers (guides, observation schedule, CPD)"
   - id: resource_for_classroom
     term: "Resource for classroom (learning activity)"
+  - id: tests_assesments
+    term: "Tests / assesments"
