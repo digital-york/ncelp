@@ -1,0 +1,36 @@
+module Ncelp
+  class NcelpSearchBuilder < Hyrax::CatalogSearchBuilder
+    self.default_processor_chain += %i[add_authority_label_field_to_query add_ncelp_text_fields_to_query add_other_fields_to_query only_search_resource]
+
+    # Add NCELP authority label and synonyms fields to Solr query parameters
+    def add_authority_label_field_to_query(solr_parameters)
+      NcelpAuthorities.authority_list.each do |field_name|
+        solr_parameters[:qf] += format(' %s_label_tesim', field_name)
+        # Also query synonyms fields
+        solr_parameters[:qf] += format(' %s_synonyms_tesim', field_name)
+      end
+    end
+
+    # Add NCELP text fields to Solr query parameters
+    def add_ncelp_text_fields_to_query(solr_parameters)
+      solr_parameters[:qf] += ' title_tesim'
+      solr_parameters[:qf] += ' creator_tesim'
+      solr_parameters[:qf] += ' one_line_description_tesim'
+      solr_parameters[:qf] += ' full_description_tesim'
+      solr_parameters[:qf] += ' affiliation_tesim'
+      solr_parameters[:qf] += ' notes_tesim'
+    end
+
+    # Add 'other' fields to Solr query parameters
+    def add_other_fields_to_query(solr_parameters)
+      solr_parameters[:qf] += ' language_other_tesim'
+      solr_parameters[:qf] += ' material_for_teachers_other_tesim'
+      solr_parameters[:qf] += ' area_of_research_other_tesim'
+    end
+
+    # Only query Resource
+    def only_search_resource(solr_parameters)
+      solr_parameters[:fq] << "{!field f=has_model_ssim}#{Resource}"
+    end
+  end
+end
