@@ -1,18 +1,108 @@
 terms:
-- id: NOTES
-  term: "!!!THIS IS THE NON FINAL VRESION OF TERMS!!!"
+- id: Assessment
+  term: Assessment
+- id: Autonomy_independence
+  term: "Autonomy/independence"
+- id: Curriculum_design
+  term: "Curriculum design (e.g., syllabus, scheme of work)"
+- id: Figurative_language
+  term: "Figurative language (e.g., metaphor, idioms)"
+- id: Grammar_Adjectives
+  term: "Grammar - Adjectives"
+- id: Grammar_Adverbs
+  term: "Grammar - Adverbs"
+- id: Grammar_Articles
+  term: "Grammar - Articles"
+- id: Grammar_Connectives_conjunctions
+  term: "Grammar - Connectives & conjunctions"
+- id: Grammar_Comparisons
+  term: "Grammar - Comparisons"
 - id: Grammar_Noun_inflections
-  term: "Grammar - Noun inflections (e.g., case, gender, number)"
-- id: Grammar_Verb_inflections
-  term: "Grammar - Verb inflections (e.g., aspect, mood, tense)"
+  term: "Grammar - Noun inflections (case/gender/number)"
+- id: Grammar_Prepositions
+  term: "Grammar - Prepositions"
 - id: Grammar_Syntax
-  term: "Grammar - Syntax (e.g., word order for questions, negations, pronouns, post-adverb)"
+  term: "Grammar - Syntax (word order/questions, negations, pronouns, post-adverb)"
+- id: Grammar_Verb_inflections
+  term: "Grammar - Verb inflections (aspect, mood, tense)"
 - id: Grammar_Other
   term: "Grammar - Other"
+- id: Interaction
+  term: "Interaction (e.g., face to face, online) "
+- id: Language_awareness
+  term: "Language awareness (knowledge about language)"
+- id: Literacy
+  term: Literacy
+- id: Motivation
+  term: "Motivation (self-efficacy, attitudes)"
+- id: Multilingualism
+  term: "Multilingualism"
+- id: Phonics_Awareness
+  term: "Phonics - Awareness raising about sound-symbol systems"
+- id: Phonics_Applying_sound_symbol
+  term: "Phonics - Applying sound-symbol combination knowledge"
+- id: Phonics_Consolidating_sound_symbol
+  term: "Phonics - Consolidating sound-symbol combination knowledge"
+- id: Phonics_Introducing_new_sound_symbol
+  term: "Phonics - Introducing new sound-symbol combinations"
+- id: Phonics_Isolated_sound_symbol
+  term: "Phonics - Isolated sound-symbol combinations"
+- id: Phonics_sound_symbol_combinations
+  term: "Phonics - Sound-symbol combinations in sentences/discourse"
+- id: Phonics_sound_symbol_combinations_in_words
+  term: "Phonics - Sound-symbol combinations in words"
+- id: Phonics_Other
+  term: "Phonics - Other"
+- id: Pragmatics
+  term: "Pragmatics (e.g., apologising, requesting)"
+- id: Pronunciation
+  term: "Pronunciation (e.g., accent, intonation, prosody)"
+- id: Teaching_Methods_Content
+  term: "Teaching Methods: Content and Language Integrated Learning"
+- id: Teaching_Methods_Processing_Instruction
+  term: "Teaching Methods: Processing Instruction"
+- id: Teaching_Methods_Task_Based_Language_Teaching
+  term: "Teaching Methods: Task-Based Language Teaching"
+- id: Testing
+  term: "Testing"
+- id: Type_of_practice_Listening
+  term: "Type of practice - Listening"
+- id: Type_of_practice_Listening_authentic_language
+  term: "Type of practice - Listening (authentic language)"
+- id: Type_of_practice_Listening_songs
+  term: "Type of practice - Listening (songs)"
+- id: Type_of_practice_Reading
+  term: "Type of practice - Reading"
+- id: Type_of_practice_Reading_fact
+  term: "Type of practice - Reading (fact)"
+- id: Type_of_practice_Reading_fiction
+  term: "Type of practice - Reading (fiction)"
+- id: Type_of_practice_Reading_poetry
+  term: "Type of practice - Reading (poetry)"
+- id: Type_of_practice_Speaking
+  term: "Type of practice - Speaking"
+- id: Type_of_practice_Speaking_interaction
+  term: "Type of practice - Speaking (interaction)"
+- id: Type_of_practice_Speaking_narrative
+  term: "Type of practice - Speaking (narrative/presentation)"
+- id: Type_of_practice_Writing
+  term: "Type of practice - Writing"
+- id: Type_of_practice_Writing_interaction
+  term: "Type of practice - Writing (interaction)"
+- id: Type_of_practice_Writing_creative
+  term: "Type of practice - Writing (creative)"
+- id: Type_of_practice_Writing_factual
+  term: "Type of practice - Writing (factual)"
+- id: Visits_abroad
+  term: "Visits abroad (e.g., exchange trips)"
 - id: Vocabulary_Adjectives
   term: "Vocabulary - Adjectives"
 - id: Vocabulary_Adverbs
   term: "Vocabulary - Adverbs"
+- id: Vocabulary_Comparisons
+  term: "Vocabulary - Comparisons"
+- id: Vocabulary_Connectives_conjunctions
+  term: "Vocabulary - Connectives & conjunctions"
 - id: Vocabulary_Modals
   term: "Vocabulary - Modals"
 - id: Vocabulary_Nouns
@@ -21,17 +111,11 @@ terms:
   term: "Vocabulary - Prepositions"
 - id: Vocabulary_Pronouns
   term: "Vocabulary - Pronouns"
-- id: Vocabulary_Verbs
-  term: "Vocabulary - Verbs"
+- id: Vocabulary_Question_words
+  term: "Vocabulary - Question words"
+- id: Vocabulary_Verbs_stems
+  term: "Vocabulary - Verbs (stems/infinitives)"
 - id: Vocabulary_Other
   term: "Vocabulary - Other"
-- id: Phonics_isolated_sound-symbols
-  term: "Phonics - isolated sound-symbols"
-- id: Phonics_sound-symbols_in_words
-  term: "Phonics - sound-symbols in words"
-- id: Phonics_sound-symbols_in_sentences
-  term: "Phonics - sound-symbols in sentences"
-- id: Phonics_other
-  term: "Phonics - other"
 - id: Other
   term: Other
