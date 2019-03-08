@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :production do
+  # Standalone passenger
+  gem 'passenger', '~> 5.2.0'
+
   # Postgres DB
   gem 'pg', '~> 0.18'
 end
