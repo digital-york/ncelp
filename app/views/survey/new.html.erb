@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="vue-container">
   <h2>Download page</h2>
   <p>
     NCELP Resources are available for download free of charge. However,
@@ -233,3 +233,30 @@
 
 
 </div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var vapp = new Vue({
+        el: '#vue-container',
+        data: {
+            message: 'Hello Vue!',
+            hovermessage: 'The hover message',
+            seen: true,
+            todos: [
+                { text: 'shopping' },
+                { text: 'write a paper' },
+                { text: 'try Vue' }
+            ],
+            groceryList: [
+                { text: 'Vegetables' },
+                { text: 'Cheese' },
+                { text: 'Whatever else humans are supposed to eat' }
+            ]
+        },
+        methods: {
+            reverseMessage: function() {
+                this.message = this.message.split('').reverse().join('');
+            }
+        }
+    })
+</script>
