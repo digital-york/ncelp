@@ -49,7 +49,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = Figaro.env.log_level.nil? ? :info : Figaro.env.log_level
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -61,6 +61,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "my_app_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  # York SMTP server
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: Figaro.env.ncelp_host }
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.york.ac.uk',
+      port:                 25,
+      enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
