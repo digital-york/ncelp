@@ -86,6 +86,7 @@ Hyrax.config do |config|
 
   # Path to the file characterization tool
   # config.fits_path = "fits.sh"
+  config.fits_path = Figaro.env.fits_path
 
   # Path to the file derivatives creation tool
   # config.libreoffice_path = "soffice"
