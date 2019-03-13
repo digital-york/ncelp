@@ -6,7 +6,7 @@
     so we can make the Resource Portal even more useful.
   </p>
 
-  <form action="/survey/submit" method="post">
+  <form id="surveyform" @submit="checkForm" action="/survey/submit" method="post">
 
     <div class="form-group row">
       <label for="status" class="col-sm-3 col-form-label">About you - Please tell us what your current role(s) is / are.
@@ -15,8 +15,8 @@
       <div class="col-sm-9">
         <div class="form-check">
           <label class="form-check-label">
-            <%= check_box_tag 'survey[status][]', 'curriculum_developer', false, id: 'status_curriculum_developer' %>
-            Curriculum / materials developer
+            <%= check_box_tag 'survey[status][]', 'language_learner', false, id: 'status_language_learner' %>
+            Language learner
           </label>
         </div>
 
@@ -38,13 +38,13 @@
           <div class="form-check">
             <label class="form-check-label">
               <%= check_box_tag 'survey[status][]', 'language_teacher_primary', false, id: 'status_language_teacher_primary' %>
-              Primary
+              Primary school
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
               <%= check_box_tag 'survey[status][]', 'language_teacher_secondary', false, id: 'status_language_teacher_secondary' %>
-              Secondary / high
+              Secondary / high school
             </label>
           </div>
           <div class="form-check">
@@ -71,6 +71,14 @@
               Other
             </label>
           </div>
+        </div>
+
+        <!-- Materials / curriculum developer -->
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= check_box_tag 'survey[status][]', 'materials_developer', false, id: 'status_materials_developer' %>
+            Materials / curriculum developer
+          </label>
         </div>
 
         <!-- Media / journalist -->
@@ -202,16 +210,11 @@
         </select>
       </div>
     </div>
-    <p>If you are happy to be contacted by the OASIS team for feedback on whether
-     and how you have used the summary, please leave your email below. We will
-     not share your email with third parties. If you later decide that you would
-      prefer not to receive communication from us, please contact the oasis team at
-    <a href="mailto:oasis@oasis-database.org">oasis@oasis-database.org</a>
-    and we will remove your address.</p>
-
-    <p>
-      The OASIS team is not responsible for the use of the downloaded summaries.
-    </p>
+    <p>If you are happy to be contacted by the NCELP team for feedback on whether and how you have used the resource,
+      please leave your email below. We will not share your email with third parties.
+      If you later decide that you would prefer not to receive communication from us, please contact the NCELP team at
+    <a href="mailto:enquiries@ncelp.org">enquiries@ncelp.org</a>
+      and we will remove your address from our databases.</p>
 
     <!-- email -->
     <div class="form-group row">
@@ -221,42 +224,17 @@
       </div>
     </div>
 
-    <!-- Store summary id -->
+    <p>
+      NCELP is not responsible for the use of the downloaded resources.
+    </p>
+
+    <!-- Store resource id -->
     <div class="form-group row">
-      <input type="hidden" name="summary_id" value="<%= params["summary_id"] %>"/>
-      <input type="hidden" name="summary_fileset_id" value="<%= params["summary_fileset_id"] %>"/>
+      <input type="hidden" name="resource_id" value="<%= params["resource_id"] %>"/>
+      <input type="hidden" name="resource_fileset_id" value="<%= params["resource_fileset_id"] %>"/>
       <%= link_to t(:'helpers.action.cancel'), '#', onclick: "parent.$.fancybox.close();", class: 'btn btn-primary' %>
       <input type="submit" class="btn btn-primary" id="survey_form_submit" value="Save & Submit">
     </div>
 
   </form>
-
-
 </div>
-
-<script src="https://unpkg.com/vue"></script>
-<script>
-    var vapp = new Vue({
-        el: '#vue-container',
-        data: {
-            message: 'Hello Vue!',
-            hovermessage: 'The hover message',
-            seen: true,
-            todos: [
-                { text: 'shopping' },
-                { text: 'write a paper' },
-                { text: 'try Vue' }
-            ],
-            groceryList: [
-                { text: 'Vegetables' },
-                { text: 'Cheese' },
-                { text: 'Whatever else humans are supposed to eat' }
-            ]
-        },
-        methods: {
-            reverseMessage: function() {
-                this.message = this.message.split('').reverse().join('');
-            }
-        }
-    })
-</script>
