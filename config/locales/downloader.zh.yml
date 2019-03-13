@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      downloader:     'fa fa-file-text-o'
+    select_type:
+      downloader:
+        # TODO: translate `human_name` into Chinese
+        description:        "Downloader 作品"
+        name:               "Downloader"
+        # TODO: translate `human_name` into Chinese

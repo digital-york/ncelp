@@ -3,11 +3,9 @@
 class Resource < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
+  has_many :downloaders, dependent: :destroy, class_name: 'Downloader', :autosave => true, :predicate => ::RDF::URI.new('https://ncelp.org/terms#has_many_resource')
+
   self.indexer = ResourceIndexer
-  # Change this to restrict which works can be added as a child.
-  # self.valid_child_concerns = []
-  #validates :title,   presence: { message: 'Your resource must have a title.' }
-  #validates :creator, presence: { message: 'Your resource must have a creator.' }
 
   include ::Ncelp::NcelpMetadata
 

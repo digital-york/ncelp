@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      downloader:     'fa fa-file-text-o'
+    select_type:
+      downloader:
+        description:        "Downloader œuvres"
+        name:               "Downloader"
