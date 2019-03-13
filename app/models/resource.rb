@@ -3,7 +3,8 @@
 class Resource < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
-  has_many :downloaders, dependent: :destroy, class_name: 'Downloader', :autosave => true
+  has_many :downloaders, dependent: :destroy, class_name: 'Downloader', :autosave => true, :predicate => ::RDF::URI.new('https://ncelp.org/terms#has_many_resource')
+
   self.indexer = ResourceIndexer
 
   include ::Ncelp::NcelpMetadata
