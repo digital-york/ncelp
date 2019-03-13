@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  
+
+  get 'survey/new'
+
+  get 'survey/new'
+  get 'survey/saved'
+  get 'survey/error'
+  post 'survey/submit'
+
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount Blacklight::Engine => '/'
   

@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      downloader:     'fa fa-file-text-o'
+    select_type:
+      downloader:
+        # TODO: translate `human_name` into Spanish
+        description:        "Downloader trabajos"
+        name:               "Downloader"
+        # TODO: translate `human_name` into Spanish
