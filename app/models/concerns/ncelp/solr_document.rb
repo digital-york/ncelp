@@ -30,7 +30,7 @@ module Ncelp
     end
 
     included do
-      attribute :title,                       Solr::Array,  solr_name('title')
+      attribute :ncelp_title,                 Solr::String, solr_name('ncelp_title')
       attribute :creator,                     Solr::Array,  solr_name('creator')
       attribute :affiliation,                 Solr::Array,  solr_name('affiliation')
       attribute :one_line_description,        Solr::String, solr_name('one_line_description')

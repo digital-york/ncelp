@@ -13,7 +13,7 @@ module Ncelp
 
     # Add NCELP text fields to Solr query parameters
     def add_ncelp_text_fields_to_query(solr_parameters)
-      solr_parameters[:qf] += ' title_tesim'
+      solr_parameters[:qf] += ' ncelp_title_tesim'
       solr_parameters[:qf] += ' creator_tesim'
       solr_parameters[:qf] += ' one_line_description_tesim'
       solr_parameters[:qf] += ' full_description_tesim'

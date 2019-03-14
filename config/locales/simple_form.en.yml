@@ -2,7 +2,7 @@ en:
   simple_form:
     labels:
       resource:
-        title: "Title of resource"
+        ncelp_title: "Title of resource"
         creator: "Name of creator"
         affiliation: "Affiliation / institution"
         one_line_description: "One line description"
@@ -28,7 +28,7 @@ en:
         notes: "Notes"
     hints:
       resource:
-        title: ""
+        ncelp_title: ""
         creator: "Surname, initial. (e.g. Marsden, E.)"
         affiliation: ""
         one_line_description: "Please describe the resource in one sentence."
@@ -36,9 +36,9 @@ en:
         language: "This resource is meant for learning:"
         type_of_material: "You can use this resource for (e.g. testing & assesment):"
         material_for_teachers: ""
-        topic: "The theme of this resource is (e.g. travel & tourism):"
+        topic: "The theme of this resource is (e.g. travel & tourism). Hold down Ctrl/Command to select more than one term."
         thematic: "Thematic / semantic field"
-        area_of_research: "This resource is related to following area of pedagogy (e.g. grammar):"
+        area_of_research: "This resource is related to following area of pedagogy (e.g. grammar). Hold down Ctrl/Command to select more than one term."
         modality: ""
         age: "These categories are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools."
         exposure: "Please estimate the number of hours of classroom-instruction a learner needs to have had to use this resource. [# pop up with more information when clicking /hovering on estimate]."
