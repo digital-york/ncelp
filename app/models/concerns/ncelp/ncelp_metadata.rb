@@ -1,6 +1,11 @@
 module Ncelp
     module NcelpMetadata extend ActiveSupport::Concern
         included do
+            # Ncelp title, we don't use Hyrax work title as it's multiple
+            property :ncelp_title, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#ncelp_title'), multiple: false do |index|
+                index.as :stored_searchable, :sortable
+            end
+
             # Affiliation/institution
             property :affiliation, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#affiliation'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
