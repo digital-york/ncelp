@@ -2,7 +2,7 @@ en:
   simple_form:
     labels:
       resource:
-        title: "Title of resource"
+        ncelp_title: "Title of resource"
         creator: "Name of creator"
         affiliation: "Affiliation / institution"
         one_line_description: "One line description"
@@ -28,7 +28,7 @@ en:
         notes: "Notes"
     hints:
       resource:
-        title: ""
+        ncelp_title: ""
         creator: "Surname, initial. (e.g. Marsden, E.)"
         affiliation: ""
         one_line_description: "Please describe the resource in one sentence."

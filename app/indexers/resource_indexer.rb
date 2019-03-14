@@ -12,6 +12,9 @@ class ResourceIndexer < Hyrax::WorkIndexer
   # add custom indexing behavior for authority fields:
   def generate_solr_document
     super.tap do |solr_doc|
+      # Copy ncelp_title to Hyrax title to avoid lots of code changes to Hyrax
+      solr_doc['title_tesim'] = [object['ncelp_title']]
+
       # add authority labels into solr
       NcelpAuthorities.authority_list.each do |field_name|
         authority_filename = "#{field_name}.yml"

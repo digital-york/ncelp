@@ -4,7 +4,7 @@ module Hyrax
   # Generated form for Resource
   class ResourceForm < Hyrax::Forms::WorkForm
     self.model_class = ::Resource
-    self.terms = [:title,                # title from default Hyrax metadata
+    self.terms = [:ncelp_title,          # don't use title from default Hyrax metadata as NCELP title is NOT multiple filed
                   :one_line_description,
                   :creator,              # creator from default Hyrax
                   :affiliation,
@@ -33,7 +33,7 @@ module Hyrax
                  ]
 
     self.required_fields = [
-                  :title,
+                  :ncelp_title,
                   :one_line_description,
                   :creator,
                   :full_description,
