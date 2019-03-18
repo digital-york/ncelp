@@ -11,6 +11,9 @@ terms:
 - id: Grammar_Noun_inflections
   synonyms:
     synonym1: "noun endings AND noun agreement"
+- id: Grammar_Verb_inflections
+  synonyms:
+    synonym1: "verb endings AND verb agreement"
 - id: Interaction
   synonyms:
     synonym1: "computer mediated"
