@@ -32,7 +32,7 @@ module Ncelp
     included do
       attribute :ncelp_title,                 Solr::String, solr_name('ncelp_title')
       attribute :creator,                     Solr::Array,  solr_name('creator')
-      attribute :affiliation,                 Solr::Array,  solr_name('affiliation')
+      # attribute :affiliation,                 Solr::Array,  solr_name('affiliation')
       attribute :one_line_description,        Solr::String, solr_name('one_line_description')
       attribute :full_description,            Solr::String, solr_name('full_description')
       attribute :language,                    Solr::Array,  solr_name('language')
