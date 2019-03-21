@@ -7,7 +7,7 @@ module Hyrax
     self.terms = [:ncelp_title,          # don't use title from default Hyrax metadata as NCELP title is NOT multiple filed
                   :one_line_description,
                   :creator,              # creator from default Hyrax
-                  :affiliation,
+                  # :affiliation,
                   :full_description,
                   :language,             # language from default Hyrax
                   :language_other,
