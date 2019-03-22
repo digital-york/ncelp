@@ -41,7 +41,7 @@ en:
         area_of_research: "This resource is related to following area of pedagogy (e.g. grammar). Hold down Ctrl/Command to select more than one term."
         modality: ""
         age: "These categories are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools."
-        exposure: "Please estimate the number of hours of classroom-instruction a learner needs to have had to use this resource. [# pop up with more information when clicking /hovering on estimate]."
+        exposure: ""
         file_type: "Please indicate what types of file are included (e.g. audio):"
         link_to_oasis: "Enter the title of one or more OASIS summaries which explain the research principles behind this resource. "
         link_to_iris: "If this resource uses any material(s) held on IRIS, please enter the link(s) to them here."
