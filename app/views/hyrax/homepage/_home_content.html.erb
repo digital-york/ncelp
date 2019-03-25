@@ -1,16 +1,65 @@
 <!-- top boxes -->
-<div class="container row">
+<div class="container">
   <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
-    <h3>Search the Resource Portal</h3>
+    <h3>SEARCH</h3>
+    <br/>
+    Enter <b>any text</b> you wish into the search box (e.g. speaking, French, grammar)<br/>
+    <br/>
     <%= render partial: 'homepage_search_form' %>
-    Enter <b>any text</b> you wish into the search box (e.g. speaking, French, grammar) OR<br/>
-    Browse by: All resources; Topic; Language; Age; Type of material</br>
-    Click on "All Resources" to view all content on the Resource Portal and then use the filters to refine your search<br/>
+    <br/>
+    Don't know what to search for? Browse "<strong>All Resources</strong>" below and use the filters to refine your search
+  </div>
+  <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
+    <h3>BROWSE by</h3>
+    <div class="row ncelp-homepage-browse-buttons-row">
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to "All resources;", "/catalog", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Pedagogical focus', "/catalog/facet/area_of_research_sim", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Language being learnt', "/catalog/facet/language_tesim", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Target age range', "/catalog/facet/age_tesim", target: :_blank %>
+        </div>
+      </div>
+    </div>
+    <div class="row ncelp-homepage-browse-buttons-row">
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Type/purpose of resource', "/catalog/facet/type_of_material_tesim", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Modality/mode (skill)', "/catalog/facet/modality_tesim", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Topic', "/catalog/facet/topic_tesim", target: :_blank %>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        <div class="ncelp-homepage-browse-button">
+          <%=link_to 'Thematic/semantic field', "/catalog/facet/thematic_tesim", target: :_blank %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- bottom boxes -->
-<div class="container row">
+<div class="container">
   <div class="col-xs-12 col-sm-8 ncelp-homepage-bottom-box-left">
     <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
     <%= render 'featured_works' %>
