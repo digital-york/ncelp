@@ -50,7 +50,8 @@ en:
     directory:
       suffix: "@ncelp.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2019 NCELP</strong> Licensed under the Apache License, Version 2.0"
+      copyright_html: All resources are licensed as <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="navbar-link" target="_blank"><strong>CC BY-NC-SA 4.0</strong></a>
+      disclaimer_html: <a href="https://www.york.ac.uk/about/legal-statements/" class="navbar-link" target="_blank">Legal statements</a> @ University of York
       service_html: Powered by <a href="https://dlib.york.ac.uk/" class="navbar-link" target="_blank">York Digital Library</a>.
     institution_name: NCELP
     institution_name_full: "National Centre for Excellence for Language Pedagogy"

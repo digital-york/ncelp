@@ -1,5 +1,6 @@
-<footer class="navbar navbar-inverse site-footer ncelp-footer-border">
-  <div class="container-fluid row">
+<div class="container">
+<footer class="ncelp-footer-border">
+  <div>
     <div class="col-sm-4 ncelp_footer_container" style="padding-top: 20px;">
       <%= image_tag(t('ncelp.footer.ncelp_logo'), :class=>'ncelp_footer_image', alt: "NCELP") %>
     </div>
@@ -10,4 +11,19 @@
       <%= image_tag(t('ncelp.footer.education_dept_logo'), :class=>'ncelp_footer_image', alt: "Department for Education") %>
     </div>
   </div>
+
+  <div>
+    <div class="navbar-text text-left">
+      <p><%= t('hyrax.footer.service_html') %></p>
+      <p><%= t('hyrax.product_name') %> v0.1</p>
+    </div>
+    <div class="navbar-right">
+      <div class="navbar-text text-right">
+        <p><%= t('hyrax.footer.copyright_html') %></p>
+        <p><%= t('hyrax.footer.disclaimer_html') %></p>
+        <p><%= t('hyrax.background_attribution_html') %></p>
+      </div>
+    </div>
+  </div>
 </footer>
+</div>

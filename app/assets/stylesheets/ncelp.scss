@@ -52,10 +52,11 @@
 
 /* footer customizations */
 .ncelp-footer-border{
-  border-top: 5px solid #ed7d31;
+  border-top: 2px solid #ed7d31;
   border-bottom: 0px;
   border-left: 0px;
   border-right: 0px;
+  padding-top: 5px;
 }
 .ncelp_footer_container {
   vertical-align: middle;
@@ -69,24 +70,50 @@ footer.navbar-inverse {
 }
 
 /* homepage customizations */
+
 .ncelp-homepage-top-box {
   height: 200px;
   line-height: 200px;  /* to get vertical-align working */
-  background-color: #0d4f74;
   text-align: center;
   vertical-align: middle;
-  color: white;
   font-size: 30px;
   font-weight: bold;
   border: 10px solid white;
 }
 .ncelp-homepage-middle-box {
-  height: 220px;
-  background-color: #e97c1e;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
-  color: black;
-  border: 10px solid white;
+  border: 2px solid #eeeeee;
+  border-radius: 15px;
+  margin-top: 20px;
+  padding-left: 30px;
+}
+.ncelp-searchbox-image-header {
+  padding-top: 5px;
+  width: 100%;
+}
+.ncelp-homepage-browse-buttons-row {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ncelp-homepage-browse-button {
+  width: 220px;
+  height: 50px;
+  background-color: #e87d1e;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  border: 2px solid #e87d1e;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .ncelp-homepage-bottom-box-left {
   max-height: 100%;
