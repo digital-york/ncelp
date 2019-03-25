@@ -17,6 +17,10 @@
         <li <%= 'class=active' if current_page?(hyrax.contact_path) %>>
           <%= link_to t(:'hyrax.controls.contact'), hyrax.contact_path, aria: current_page?(hyrax.contact_path) ? {current: 'page'} : nil %></li>
       </ul><!-- /.nav -->
+
+      <% if current_page?('/catalog') %>
+        <%= render partial: 'catalog/ncelp_search_form' %>
+      <% end %>
     </div>
   </div>
 </nav><!-- /.navbar -->
