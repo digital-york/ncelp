@@ -38,12 +38,7 @@ module Hyrax
                   :full_description,
                   :language,
                   :type_of_material,
-                  :topic,
-                  :thematic,
                   :area_of_research,
-                  :modality,
-                  :age,
-                  :exposure,
                   :file_type,
                   :cty,
                   :email
