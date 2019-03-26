@@ -101,11 +101,6 @@ module Ncelp
                 index.as :stored_searchable, :sortable, :facetable
             end
 
-            # terms and conditions
-            property :terms_and_conditions, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#terms_and_conditions'), multiple: false do |index|
-                index.as :stored_searchable, :sortable, :facetable
-            end
-
             # email
             property :email, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#email'), multiple: false do |index|
                 index.as :stored_searchable, :sortable, :facetable

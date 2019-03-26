@@ -52,7 +52,6 @@ module Ncelp
       attribute :link_to_iris,                Solr::Array,  solr_name('link_to_iris')
       attribute :link_to_video,               Solr::Array,  solr_name('link_to_video')
       attribute :reference,                   Solr::Array,  solr_name('reference')
-      attribute :terms_and_conditions,        Solr::String, solr_name('terms_and_conditions')
       attribute :license,                     Solr::String, solr_name('license')
       attribute :email,                       Solr::String, solr_name('email')
       attribute :notes,                       Solr::String, solr_name('notes')
