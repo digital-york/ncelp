@@ -87,6 +87,7 @@ footer.navbar-inverse {
   border-radius: 15px;
   margin-top: 20px;
   padding-left: 30px;
+  padding-bottom: 15px;
 }
 .ncelp-searchbox-image-header {
   padding-top: 5px;
@@ -114,6 +115,13 @@ footer.navbar-inverse {
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  color: black;
+}
+.ncelp-homepage-browse-button a{
+  color: black;
+}
+.ncelp-homepage-browse-button a:visited {
+  color: black;
 }
 .ncelp-homepage-bottom-box-left {
   max-height: 100%;
