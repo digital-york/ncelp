@@ -49,4 +49,12 @@ $(function() {
     });
     <!-- check if needs to show Pedagogical focus other field on load of the page -->
     check_material_for_teachers_other_fields();
+
+    <!-- adjust floating window location for 'hours of prior instruction' -->
+    var floating_window = $('#estimate_floating_window');
+    var hours_of_prior_instruction_hidden_button = $('div.resource_exposure').children("input[type='hidden']:first");
+    if(floating_window && hours_of_prior_instruction_hidden_button) {
+      floating_window.insertAfter(hours_of_prior_instruction_hidden_button);
+    }
+
 });
