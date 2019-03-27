@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -51,6 +51,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'xray-rails'
+
+  gem 'guard'
+  gem 'guard-livereload', '~> 2.5', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -77,5 +80,7 @@ gem 'riiif', '~> 1.1'
 gem 'figaro'
 
 gem 'hydra-role-management'
-gem 'blacklight-access_controls'
 gem "actionview", ">= 5.1.6.2"
+
+gem 'blacklight-access_controls', '0.6.2'
+gem 'blacklight', '6.19.2'
