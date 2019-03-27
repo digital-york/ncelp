@@ -1,0 +1,33 @@
+production:
+  solr_url: http://127.0.0.1:8983/solr/ncelp
+  fedora_url: http://127.0.0.1:8984/rest
+  fedora_base_path: /ncelp
+
+development:
+  solr_url: http://127.0.0.1:8983/solr/ncelp
+  fedora_url: http://127.0.0.1:8984/rest
+  fedora_base_path: /ncelp
+
+# Settings
+log_level: :debug
+libreoffice_path: /usr/bin/soffice
+fits_path: /opt/fits/fits.sh
+realtime_notifications: 'false'
+
+# Change this path to your project folder or any other location
+derivatives_path: /path/to/project/folder
+
+# Path to where to store the minter-state file
+minter_statefile: /path/to/project/folder/minter-state
+
+# Add your GA ID:
+google_analytics_id:
+
+# Redis
+redis_namespace: hyrax-ncelp
+redis_host: 
+redis_port: 
+redis_password: 
+
+# Oasis
+oasis_host: 
