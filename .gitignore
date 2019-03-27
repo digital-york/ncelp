@@ -33,3 +33,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore .bak files
+*.bak
+
+# Ignore ubuntu/vagrant install log file
+ubuntu-xenial-16.04-cloudimg-console.log
