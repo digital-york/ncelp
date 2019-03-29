@@ -21,11 +21,26 @@ module GenericLocalAuthorityService
     begin
       term = authority.find(id).fetch('term')
     rescue => error
-      puts " >>>> Something wrong"
-      puts '----------------'
       puts error.backtrace
       return ''
     end
     term
+  end
+
+  def self.ids_to_sorted_labels(key, ids)
+    return [] if ids.nil? or ids.length==0
+
+    labels = []
+
+    begin
+      authority = Qa::Authorities::Local.subauthority_for(key)
+      ids.each do |id|
+        labels << authority.find(id).fetch('term')
+      end
+    rescue => error
+      puts error.backtrace
+    end
+
+    labels.sort
   end
 end
