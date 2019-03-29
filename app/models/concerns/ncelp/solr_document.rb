@@ -44,7 +44,7 @@ module Ncelp
       attribute :thematic,                    Solr::Array,  solr_name('thematic')
       attribute :area_of_research,            Solr::Array,  solr_name('area_of_research')
       attribute :area_of_research_other,      Solr::String, solr_name('area_of_research_other')
-      attribute :modality,                    Solr::String, solr_name('modality')
+      attribute :modality,                    Solr::Array, solr_name('modality')
       attribute :age,                         Solr::Array,  solr_name('age')
       attribute :exposure,                    Solr::String, solr_name('exposure')
       attribute :file_type,                   Solr::Array,  solr_name('file_type')
