@@ -12,8 +12,6 @@
           <li <%= 'class=active' if current_page?('/concern/resources/new') %>>
             <%= link_to t(:'ncelp.menubar.upload'), '/concern/resources/new', aria: current_page?('/concern/resources/new') ? {current: 'page'} : nil %></li>
         <% end %>
-        <li <%= 'class=active' if current_page?('/associated_resource') %>>
-          <%= link_to t(:'ncelp.menubar.associated_resource'), '/associated_resource', aria: current_page?('/associated_resource') ? {current: 'page'} : nil %></li>
         <li <%= 'class=active' if current_page?(hyrax.contact_path) %>>
           <%= link_to t(:'hyrax.controls.contact'), hyrax.contact_path, aria: current_page?(hyrax.contact_path) ? {current: 'page'} : nil %></li>
       </ul><!-- /.nav -->
