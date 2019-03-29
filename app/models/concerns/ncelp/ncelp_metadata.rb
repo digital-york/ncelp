@@ -62,7 +62,7 @@ module Ncelp
             end
 
             # Modality
-            property :modality, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#modality'), multiple: false do |index|
+            property :modality, predicate: ::RDF::URI.new('http://dlib.york.ac.uk/ontologies/ncelp#modality'), multiple: true do |index|
                 index.as :stored_searchable, :sortable, :facetable
             end
 
