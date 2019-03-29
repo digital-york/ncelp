@@ -35,7 +35,7 @@
   <%= render :partial => 'authority_field', :locals => {:field_name => 'type_of_material', :field_value => document.type_of_material} %><br/>
   <%= render :partial => 'authority_field', :locals => {:field_name => 'area_of_research', :field_value => document.area_of_research} %><br/>
   <%= render :partial => 'authority_field', :locals => {:field_name => 'modality', :field_value => document.modality} %><br/>
-  <%= render :partial => 'authority_field', :locals => {:field_name => 'age', :field_value => document.age} %><br/>
+  <%= render :partial => 'authority_field_index_by_id', :locals => {:field_name => 'age', :field_value => document.age} %><br/>
   <%= render :partial => 'authority_field', :locals => {:field_name => 'exposure', :field_value => document.exposure} %><br/>
   <%= render :partial => 'authority_field', :locals => {:field_name => 'thematic', :field_value => document.thematic} %><br/>
   <%= render :partial => 'authority_field', :locals => {:field_name => 'topic', :field_value => document.topic} %>
