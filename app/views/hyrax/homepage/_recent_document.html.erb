@@ -9,14 +9,8 @@
         </h3>
 
         <p class="recent-field">
-          <span class="recent-label">Topics: </span>
           <span style="color: black">
-          <% recent_document.topic.each_with_index do |t,index| %>
-            <%= t%>
-            <% unless index==recent_document.topic.length %>
-            ,
-            <% end %>
-          <% end %>
+            <%= recent_document.one_line_description %>
           </span>
         </p>
       </div>

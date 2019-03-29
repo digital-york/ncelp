@@ -1,24 +1,4 @@
-<% content_for(:navbar) do %>
-  <div class="container image-masthead">
-    <div class="background-container row">
-      <div class="col-xs-12 col-sm-8">
-        <%= image_tag(t('ncelp.banner_image'), alt: "NCELP", class: 'logo-image') %>
-      </div>
-      <div class="col-xs-12 col-sm-4 strapline-div">
-        <%= image_tag(t('ncelp.strapline_image'), alt: "NCELP", class: 'strapline-image') %>
-      </div>
-    </div>
-    <span class="background-container-gradient" style="background: none;"></span>
-
-    <div class="container site-title-container">
-      <div class="site-title h1" style="text-align: center;">
-        <%= render "hyrax/homepage/marketing" if controller_name == 'homepage' %>
-      </div>
-    </div>
-
-    <%= render '/controls' %>
-  </div>
-<% end %>
+<%= render 'shared/nceheader' %>
 
 <% content_for(:precontainer_content) do %>
   <%= render 'hyrax/homepage/announcement' if controller_name == 'homepage' %>
