@@ -43,5 +43,10 @@ module Hyrax
                   :cty,
                   :email
                  ]
+    def self.build_permitted_params
+        super + [
+            :visibility
+        ]
+    end
   end
 end
