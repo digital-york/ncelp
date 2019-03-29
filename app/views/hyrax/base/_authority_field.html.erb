@@ -1,6 +1,6 @@
 <%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
     <div class="row detail_page_block">
-        <div class="col-sm-3">
+        <div class="col-sm-3 ncelp-resource-details-label">
           <b><%=I18n.t('simple_form.labels.resource.'+field_name)%></b>
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">

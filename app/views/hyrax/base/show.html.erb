@@ -20,8 +20,8 @@
   <%= render :partial => 'generic_field', :locals => {:field_name => 'ncelp_title', :field_value => document.ncelp_title} %><br/>
   <%= render :partial => 'generic_field', :locals => {:field_name => 'full_description', :field_value => document.full_description} %><br/>
   <div class="row">
-    <div class="col-xs-12 col-sm-3">
-      File
+    <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
+      File type
     </div>
     <div class="col-xs-12 col-sm-9">
       <% document.file_type.each do |ft| %>
