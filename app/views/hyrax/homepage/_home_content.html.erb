@@ -70,15 +70,15 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="col-sm-4 ncelp_footer_container" style="padding-top: 20px;">
-    <%= image_tag(t('ncelp.footer.ncelp_logo'), :class=>'ncelp_footer_image', alt: "NCELP") %>
+<div class="container extra-space-bottom">
+  <div class="col-sm-8 ncelp_footer_container" style="padding-top: 20px;">
+    <%= link_to image_tag(t('ncelp.footer.ncelp_logo'), :class=>'ncelp_footer_image', alt: "NCELP"), "https://ncelp.org", target: :_blank %>
   </div>
   <div class="col-sm-2 ncelp_footer_container">
-    <%= image_tag(t('ncelp.footer.uoy_logo'), :class=>'ncelp_footer_image', alt: "University of York") %>
+    <%= link_to image_tag(t('ncelp.footer.uoy_logo'), :class=>'ncelp_footer_image', alt: "University of York"), "https://www.york.ac.uk/", target: :_blank %>
   </div>
-  <div class="col-sm-6 ncelp_footer_container">
-    <%= image_tag(t('ncelp.footer.education_dept_logo'), :class=>'ncelp_footer_image', alt: "Department for Education") %>
+  <div class="col-sm-2 ncelp_footer_container">
+    <%= link_to image_tag(t('ncelp.footer.education_dept_logo'), :class=>'ncelp_footer_image', alt: "Department for Education"), "https://www.york.ac.uk/education/", target: :_blank %>
   </div>
 </div>
 
