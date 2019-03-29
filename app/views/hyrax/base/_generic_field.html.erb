@@ -5,7 +5,7 @@
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
-            <%field_value.each do |w|%>
+            <%field_value.sort.each do |w|%>
                 <%=w%>
             <%end%>
           <% else %>

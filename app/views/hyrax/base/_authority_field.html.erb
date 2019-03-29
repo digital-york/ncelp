@@ -5,8 +5,8 @@
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
-            <%field_value.each_with_index do |w,index|%>
-              <%= GenericLocalAuthorityService.id_to_label(field_name, w) %>
+            <%GenericLocalAuthorityService.ids_to_sorted_labels(field_name, field_value).each_with_index do |w,index|%>
+              <%= w %>
               <br/>
             <%end%>
           <% else %>
