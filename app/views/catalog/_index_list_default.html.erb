@@ -23,7 +23,7 @@
   <div class="col-md-8">
     <% document.language.each do |l| %>
       <span class="ncelp-search-result-resource-field-value">
-        <%=l %>
+        <%=GenericLocalAuthorityService.id_to_label('language', l) %>
       </span>
     <% end %>
   </div>
