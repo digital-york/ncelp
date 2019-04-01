@@ -43,17 +43,19 @@
 </div>
 <br/>
 
-<!-- middle box -->
-<div class="row ncelp-resource-details-box">
-  <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
-  <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
-</div>
-<br/>
-<!-- bottom box -->
-<div class="row ncelp-resource-details-box">
-  <%= render :partial => 'oasis_link_field', :locals => {:field_name => 'link_to_oasis', :field_value => document.link_to_oasis} %><br/>
-</div>
-<br/>
+<% if document.link_to_iris.length > 0 %>
+  <div class="row ncelp-resource-details-box">
+    <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
+    <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
+  </div>
+  <br/>
+<% end %>
+<% if document.link_to_iris.length > 0 %>
+  <div class="row ncelp-resource-details-box">
+    <%= render :partial => 'oasis_link_field', :locals => {:field_name => 'link_to_oasis', :field_value => document.link_to_oasis} %><br/>
+  </div>
+  <br/>
+<% end %>
 <div class="row ncelp-resource-details-box">
   <div class="col-sm-12">
     <%= render 'items', presenter: @presenter %>
