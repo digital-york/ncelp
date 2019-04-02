@@ -6,11 +6,17 @@
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
             <%field_value.sort.each_with_index do |w,index|%>
-              <%= GenericLocalAuthorityService.id_to_label(field_name, w) %>
+              <%= link_to  GenericLocalAuthorityService.id_to_label(field_name, w),
+                           '/catalog?f['+field_name+'_sim][]='+w+'&locale=en&q=&search_field=all_fields',
+                           :target => "_blank"
+              %>
               <br/>
             <%end%>
           <% else %>
-            <%= GenericLocalAuthorityService.id_to_label(field_name, field_value) %>
+            <%= link_to  GenericLocalAuthorityService.id_to_label(field_name, field_value),
+                         '/catalog?f['+field_name+'_sim][]='+field_value+'&locale=en&q=&search_field=all_fields',
+                         :target => "_blank"
+            %>
           <% end %>
         </div>
     </div>

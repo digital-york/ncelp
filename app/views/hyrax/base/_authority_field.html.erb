@@ -5,12 +5,23 @@
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
-            <%GenericLocalAuthorityService.ids_to_sorted_labels(field_name, field_value).each_with_index do |w,index|%>
-              <%= w %>
+            <%GenericLocalAuthorityService.ids_to_sorted_labels_and_ids(field_name, field_value).each do |v,index|%>
+              <%
+                pairs = v.split(GenericLocalAuthorityService.label_id_divider)
+                label = pairs[0]
+                id    = pairs[1]
+              %>
+              <%= link_to  label,
+                           '/catalog?f['+field_name+'_sim][]='+id+'&locale=en&q=&search_field=all_fields',
+                           :target => "_blank"
+              %>
               <br/>
             <%end%>
           <% else %>
-            <%= GenericLocalAuthorityService.id_to_label(field_name, field_value) %>
+            <%= link_to  GenericLocalAuthorityService.id_to_label(field_name, field_value),
+                         '/catalog?f['+field_name+'_sim][]='+field_value+'&locale=en&q=&search_field=all_fields',
+                         :target => "_blank"
+            %>
           <% end %>
         </div>
     </div>

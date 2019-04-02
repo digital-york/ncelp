@@ -1,6 +1,12 @@
 module GenericLocalAuthorityService
   mattr_accessor :authority
 
+  @@label_id_divider = '####'
+
+  def self.label_id_divider
+    @@label_id_divider
+  end
+
   def self.select_all_options(key)
     self.authority = Qa::Authorities::Local.subauthority_for(key)
 
@@ -42,5 +48,23 @@ module GenericLocalAuthorityService
     end
 
     labels.sort
+  end
+
+  # return array of hashes, each element is <label,id>
+  def self.ids_to_sorted_labels_and_ids(key, ids)
+    return [] if ids.nil? or ids.length==0
+
+    label_and_ids = []
+
+    begin
+      authority = Qa::Authorities::Local.subauthority_for(key)
+      ids.each do |id|
+        label_and_ids << "#{authority.find(id).fetch('term')}#{@@label_id_divider}#{id}"
+      end
+    rescue => error
+      puts error.backtrace
+    end
+
+    label_and_ids.sort
   end
 end
