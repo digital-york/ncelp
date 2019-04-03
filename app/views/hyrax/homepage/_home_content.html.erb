@@ -60,10 +60,11 @@
 
 <!-- bottom boxes -->
 <div class="container">
-  <div class="col-xs-12 col-sm-8 ncelp-homepage-bottom-box-left">
+  <div class="col-xs-12 col-sm-7 ncelp-homepage-bottom-box-left">
     <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
     <%= render 'featured_works' %>
   </div>
+  <div class="col-sm-1"></div>
   <div class="col-xs-12 col-sm-4 ncelp-homepage-bottom-box-right">
     <h4><%= t('hyrax.homepage.recently_uploaded.tab_label') %></h4>
     <%= render 'recently_uploaded', recent_documents: @recent_documents %>

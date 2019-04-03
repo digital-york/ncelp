@@ -133,16 +133,22 @@ footer.navbar-inverse {
   color: black;
 }
 .ncelp-homepage-bottom-box-left {
+  margin-top: 10px;
+  margin-bottom: 10px;
   max-height: 100%;
   background-color: #0d4f74;
   color: white;
-  border: 10px solid white;
+  border: 2px solid #0d4f74;
+  border-radius: 10px;
 }
 .ncelp-homepage-bottom-box-right {
+  margin-top: 10px;
+  margin-bottom: 10px;
   max-height: 100%;
   background-color: #4472c4;
   color: white;
-  border: 10px solid white;
+  border: 2px solid #4472c4;
+  border-radius: 10px;
 }
 
 /*search result page customization*/
