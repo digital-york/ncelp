@@ -8,7 +8,10 @@
   <div class="col-md-12">
     <% document.file_type.each do |ft| %>
       <span>
-        <%= image_tag(FileTypeIcon.get_icon(ft), class: "ncelp-search-result-resource-filetype-icon")%>
+        <%= image_tag(FileTypeIcon.get_icon(ft),
+                      class: "ncelp-search-result-resource-filetype-icon",
+                      alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
+                      title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
       </span>
     <% end %>
   </div>

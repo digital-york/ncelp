@@ -26,7 +26,10 @@
     <div class="col-xs-12 col-sm-9">
       <% document.file_type.each do |ft| %>
         <span>
-          <%= image_tag(FileTypeIcon.get_icon(ft.downcase), class: "ncelp-resource-icon")%>
+          <%= image_tag(FileTypeIcon.get_icon(ft),
+                        class: "ncelp-resource-icon",
+                        alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
+                        title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
         </span>
       <% end %>
     </div>
