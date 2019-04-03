@@ -11,4 +11,7 @@
   <div class="featured-field featured-item-keywords" style="color: black">
     <%= featured.solr_document.one_line_description %>
   </div>
+  <div class="featured-field featured-item-keywords" style="color: black">
+    <%= GenericLocalAuthorityService.id_to_label('type_of_material', featured.solr_document.type_of_material) %>
+  </div>
 </div>
