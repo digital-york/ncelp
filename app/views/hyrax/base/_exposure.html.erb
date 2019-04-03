@@ -1,0 +1,166 @@
+<%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
+    <div class="row detail_page_block">
+        <div class="col-sm-3 ncelp-resource-details-label exposure-title-div">
+          <b><%=I18n.t('simple_form.labels.resource.exposure')%></b><br/>
+          <a id="estimate_link" href="">exposure table</a>
+        </div>
+        <div class="col-sm-9 ncelp-resource-details-content">
+          <% if field_value.kind_of?(Array) %>
+            <%GenericLocalAuthorityService.ids_to_sorted_labels_and_ids('exposure', field_value).each do |v,index|%>
+              <%
+                pairs = v.split(GenericLocalAuthorityService.label_id_divider)
+                label = pairs[0]
+                id    = pairs[1]
+              %>
+              <%= link_to  label,
+                           '/catalog?f[exposure_sim][]='+id+'&locale=en&q=&search_field=all_fields',
+                           :target => "_blank"
+              %>
+              <br/>
+            <%end%>
+          <% else %>
+            <%= link_to  GenericLocalAuthorityService.id_to_label('exposure', field_value),
+                         '/catalog?f[exposure_sim][]='+field_value+'&locale=en&q=&search_field=all_fields',
+                         :target => "_blank"
+            %>
+          <% end %>
+          <div id="estimate_floating_window">
+            <table id="exposure_table">
+              <tr>
+                <th><span style="color:red">Key stage</span></th>
+                <th>Year</th>
+                <th>Ages</th>
+                <th>Hours of instruction (based on 40 weeks in a year)</th>
+                <th>Total hours</th>
+              </tr>
+              <tr>
+                <td rowspan="4"></td>
+                <td>3</td>
+                <td>7-8</td>
+                <td>40</td>
+                <td rowspan="4"></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>8-9</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>9-10</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>10-11</td>
+                <td>40</td>
+              </tr>
+              <tr>
+                <td><span style="color:red">KS2</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span style="color:red">160</span></td>
+              </tr>
+
+              <tr>
+                <td rowspan="3"></td>
+                <td>7</td>
+                <td>11-12</td>
+                <td>80</td>
+                <td rowspan="3"></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>12-13</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>13-14</td>
+                <td>80</td>
+              </tr>
+              <tr>
+                <td><span style="color:red">KS3</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span style="color:red">400</span></td>
+              </tr>
+
+              <tr>
+                <td rowspan="2"></td>
+                <td>10</td>
+                <td>14-15</td>
+                <td>120</td>
+                <td rowspan="2"></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>15-16</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td><span style="color:red">KS4</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span style="color:red">640</span></td>
+              </tr>
+
+              <tr>
+                <td rowspan="2"></td>
+                <td>12</td>
+                <td>16-17</td>
+                <td>200</td>
+                <td rowspan="2"></td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>17-18</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <td><span style="color:red">A-levels</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><span style="color:red">1040</span></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+    </div>
+<%end%>
+
+<style>
+  table#exposure_table{
+    display:none;
+    position: relative;
+    background: white;
+    z-index: 0;
+  }
+  table#exposure_table th,table#exposure_table td{
+    border:1px solid black;
+    padding: 0 2px;
+    text-align: right;
+  }
+</style>
+
+<script>
+    $('div.exposure-title-div').hover(function(ev){
+        $('table#exposure_table').stop(true,true).fadeIn();
+    },function(ev){
+        $('table#exposure_table').stop(true,true).fadeOut();
+    }).mousemove(function(ev){
+        $('table#exposure_table').css({left:ev.layerX+10,top:ev.layerY+10});
+    });
+
+    <!-- adjust floating window location for 'hours of prior instruction' -->
+    var floating_window = $('#estimate_floating_window');
+    var hours_of_prior_instruction_hidden_button = $('div.resource_exposure').children("input[type='hidden']:first");
+    if(floating_window && hours_of_prior_instruction_hidden_button) {
+        floating_window.insertAfter(hours_of_prior_instruction_hidden_button);
+    }
+</script>
