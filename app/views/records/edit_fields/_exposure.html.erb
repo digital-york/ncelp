@@ -1,7 +1,7 @@
 <div id="estimate_floating_window">
   Please <a id="estimate_link" href="">estimate</a> the number of hours of classroom-instruction a learner needs to have had to use this resource. <br/><br/>
 
-  <table>
+  <table id="exposure_table">
     <tr>
       <th><span style="color:red">Key stage</span></th>
       <th>Year</th>
@@ -113,13 +113,13 @@
 %>
 
 <style>
-  table{
+  table#exposure_table{
     display:none;
     position: relative;
     background: white;
     z-index: 0;
   }
-  th,td{
+  table#exposure_table th,table#exposure_table td{
     border:1px solid black;
     padding: 0 2px;
     text-align: right;
@@ -128,11 +128,11 @@
 
 <script>
     $('#estimate_link').hover(function(ev){
-        $('table').stop(true,true).fadeIn();
+        $('table#exposure_table').stop(true,true).fadeIn();
     },function(ev){
-        $('table').stop(true,true).fadeOut();
+        $('table#exposure_table').stop(true,true).fadeOut();
     }).mousemove(function(ev){
-        $('table').css({left:ev.layerX+10,top:ev.layerY+10});
+        $('table#exposure_table').css({left:ev.layerX+10,top:ev.layerY+10});
     });
 
     <!-- adjust floating window location for 'hours of prior instruction' -->
