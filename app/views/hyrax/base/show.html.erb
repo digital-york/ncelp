@@ -50,7 +50,7 @@
     <%= render :partial => 'authority_field', :locals => {:field_name => 'modality', :field_value => document.modality} %><br/>
   <% end %>
   <% if document.age.length > 0 %>
-    <%= render :partial => 'authority_field_index_by_id', :locals => {:field_name => 'age', :field_value => document.age, :hover_text => 'These ages are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools.'} %><br/>
+    <%= render :partial => 'authority_field_index_by_id', :locals => {:field_name => 'age', :field_value => document.age, :icon => 'fa-info-circle', :hover_text => 'These ages are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools.'} %><br/>
   <% end %>
   <% if document.exposure %>
     <%= render :partial => 'exposure', :locals => {:field_value => document.exposure} %><br/>
