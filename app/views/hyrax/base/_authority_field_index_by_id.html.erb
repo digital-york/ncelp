@@ -2,6 +2,7 @@
     <div class="row detail_page_block">
         <div class="col-sm-3 ncelp-resource-details-label" title="<%= hover_text%>">
           <b><%=I18n.t('simple_form.labels.resource.'+field_name)%></b>
+          <i class="fa <%=icon %>"></i>
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
