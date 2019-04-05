@@ -5,9 +5,9 @@
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
-            <%field_value.each do |w|%>
-                <%= link_to w, w, target: :_blank %>
-            <%end%>
+            <% field_value.each do |w| %>
+                <%= link_to w, w, target: :_blank %><br/>
+            <% end %>
           <% else %>
             <%= link_to field_value, field_value, target: :_blank  %>
           <% end %>
