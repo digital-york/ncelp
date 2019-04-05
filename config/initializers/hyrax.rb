@@ -79,12 +79,16 @@ Hyrax.config do |config|
 
   # Use the database-backed minter class
   # config.noid_minter_class = Noid::Rails::Minter::Db
-
   # Store identifier minter's state in a file for later replayability
   # config.minter_statefile = '/tmp/minter-state'
+  # ******************************************************
+  # YF: DONOT use file based minter state, by default, it's stored in DB minter_states table which is a better choice for production
+  # ******************************************************
+
 
   # Prefix for Redis keys
   # config.redis_namespace = "hyrax"
+  config.redis_namespace = Figaro.env.redis_namespace
 
   # Path to the file characterization tool
   # config.fits_path = "fits.sh"
@@ -92,6 +96,7 @@ Hyrax.config do |config|
 
   # Path to the file derivatives creation tool
   # config.libreoffice_path = "soffice"
+  config.libreoffice_path = Figaro.env.libreoffice_path
 
   # Option to enable/disable full text extraction from PDFs
   # Default is true, set to false to disable full text extraction
@@ -184,9 +189,7 @@ Hyrax.config do |config|
   #  config.upload_path = ->() { Rails.root + 'tmp' + 'uploads' }
   #  config.cache_path = ->() { Rails.root + 'tmp' + 'uploads' + 'cache' }
 
-  # Location on local file system where derivatives will be stored
-  # If you use a multi-server architecture, this MUST be a shared volume
-  # config.derivatives_path = Rails.root.join('tmp', 'derivatives')
+  config.derivatives_path = Figaro.env.derivatives_path
 
   # Should schema.org microdata be displayed?
   # config.display_microdata = true
