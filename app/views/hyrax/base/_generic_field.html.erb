@@ -1,7 +1,14 @@
 <%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
     <div class="row">
-        <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
+        <% if defined?(hover_text).nil? %>
+          <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
+        <% else %>
+          <div class="col-xs-12 col-sm-3 ncelp-resource-details-label" title="<%= hover_text%>">
+        <% end %>
           <b><%=I18n.t('simple_form.labels.resource.'+field_name)%></b>
+          <% unless defined?(icon).nil? %>
+            <i class="fa <%=icon %>"></i>
+          <% end %>
         </div>
         <div class="col-sm-9 ncelp-resource-details-content">
           <% if field_value.kind_of?(Array) %>
