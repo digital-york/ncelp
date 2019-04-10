@@ -68,7 +68,7 @@
   <div class="row ncelp-resource-details-box">
     <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
     <% if document.reference.length > 0 %>
-      <%= render :partial => 'generic_field', :locals => {:field_name => 'reference', :field_value => document.reference} %><br/>
+      <%= render :partial => 'generic_field', :locals => {:field_name => 'reference', :field_value => document.reference, :icon => 'fa-info-circle', :hover_text => 'This resource uses material(s) created by:'} %><br/>
     <% end %>
     <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
   </div>
