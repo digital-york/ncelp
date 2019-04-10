@@ -8,10 +8,14 @@
     </h3>
   </div>
 
-  <div class="featured-field featured-item-keywords" style="color: black">
+  <div class="featured-field featured-item-keywords ncelp-homepage-featured-field">
     <%= featured.solr_document.one_line_description %>
   </div>
-  <div class="featured-field featured-item-keywords" style="color: black">
-    <%= GenericLocalAuthorityService.id_to_label('type_of_material', featured.solr_document.type_of_material) %>
+
+  <div class="featured-field featured-item-keywords ncelp-homepage-featured-field">
+    <%= link_to  GenericLocalAuthorityService.id_to_label('type_of_material', featured.solr_document.type_of_material),
+                 '/catalog?f[type_of_material_sim][]='+featured.solr_document.type_of_material+'&locale=en&q=&search_field=all_fields',
+                 :target => "_blank"
+    %>
   </div>
 </div>
