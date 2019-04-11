@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<style>
+  .fancybox-container {
+    width: 100%;
+  }
+  .fancybox-content {
+    max-width: 600px;
+    max-height: 800px;
+  }
+</style>
+
+<% if Hyrax.config.display_media_download_link? %>
+    <div>
+      <h2 class="sr-only"><%= t('hyrax.file_set.show.downloadable_content.heading') %></h2>
+      <audio controls="controls" class="audiojs" style="width:100%" controlsList="nodownload" preload="auto">
+        <source src="<%= hyrax.download_path(file_set, file: 'ogg') %>" type="audio/ogg" />
+        <source src="<%= hyrax.download_path(file_set, file: 'mp3') %>" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+
+      <% resourceid= request.original_url[/#{"parent/"}(.*?)#{"/file_sets"}/m, 1]%>
+
+      <% if session['has_done_survey'] != 'yes' %>
+        <a data-fancybox
+           data-type="iframe"
+           data-captain="Downloader Survey"
+           data-src="/survey/new?resource_id=<%= resourceid %>&resource_fileset_id=<%= file_set.id%>"
+           data-options='{
+              "buttons" : ["close"],
+              "animationEffect": "fade",
+              "animationDuration": "500",
+              "autoFocus": "true",
+              "modal": "true"
+            }'
+           href="javascript:;" >
+          <%= t('hyrax.file_set.show.downloadable_content.audio_link') %>
+        </a>
+      <% else %>
+        <%= link_to t('hyrax.file_set.show.downloadable_content.audio_link'),
+                    hyrax.download_path(file_set),
+                    data: { label: file_set.id },
+                    target: :_blank,
+                    id: "file_download" %>
+      <% end %>
+
+    </div>
+<% else %>
+    <div>
+      <audio controls="controls" class="audiojs" style="width:100%" controlsList="nodownload" preload="auto">
+        <source src="<%= hyrax.download_path(file_set, file: 'ogg') %>" type="audio/ogg" />
+        <source src="<%= hyrax.download_path(file_set, file: 'mp3') %>" type="audio/mpeg" />
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+<% end %>

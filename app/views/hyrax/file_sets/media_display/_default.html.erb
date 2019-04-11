@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<style>
+  .fancybox-container {
+    width: 100%;
+  }
+  .fancybox-content {
+    max-width: 600px;
+    max-height: 800px;
+  }
+</style>
+
+<div class="no-preview">
+  <%= t('hyrax.works.show.no_preview') %>
+  <% if Hyrax.config.display_media_download_link? %>
+    <p />
+    <% resourceid= request.original_url[/#{"parent/"}(.*?)#{"/file_sets"}/m, 1]%>
+
+    <% if session['has_done_survey'] != 'yes' %>
+      <a data-fancybox
+         data-type="iframe"
+         data-captain="Downloader Survey"
+         data-src="/survey/new?resource_id=<%= resourceid %>&resource_fileset_id=<%= file_set.id%>"
+         data-options='{
+              "buttons" : ["close"],
+              "animationEffect": "fade",
+              "animationDuration": "500",
+              "autoFocus": "true",
+              "modal": "true"
+            }'
+         href="javascript:;" >
+        <%= t('hyrax.file_set.show.download') %>
+      </a>
+    <% else %>
+      <%= link_to t('hyrax.file_set.show.download'),
+                  hyrax.download_path(file_set),
+                  id: "file_download",
+                  data: { label: file_set.id },
+                  target: "_new" %>
+    <% end %>
+  <% end %>
+</div>
