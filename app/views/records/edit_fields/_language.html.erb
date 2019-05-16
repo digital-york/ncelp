@@ -4,8 +4,12 @@
             input_html: { multiple: true  }
 %>
 
-<div id="language_other_div" style="display: none; position: relative; top: -20px;">
-  <%= f.input :language_other,
-              input_html: { class: 'form-control' }
-  %>
-</div>
+<!--language_other field may break Collection form, so just ignore it while not available-->
+<% begin %>
+  <div id="language_other_div" style="display: none; position: relative; top: -20px;">
+    <%= f.input :language_other,
+        input_html: { class: 'form-control' }
+    %>
+  </div>
+<% rescue %>
+<% end %>
