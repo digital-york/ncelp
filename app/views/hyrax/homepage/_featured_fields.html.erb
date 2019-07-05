@@ -13,9 +13,10 @@
   </div>
 
   <div class="featured-field featured-item-keywords ncelp-homepage-featured-field">
-    <%= link_to  GenericLocalAuthorityService.id_to_label('type_of_material', featured.solr_document.type_of_material),
-                 '/catalog?f[type_of_material_sim][]='+featured.solr_document.type_of_material+'&locale=en&q=&search_field=all_fields',
-                 :target => "_blank"
-    %>
+    <% unless featured.solr_document.type_of_material.nil? %>
+      <%= link_to GenericLocalAuthorityService.id_to_label('type_of_material', featured.solr_document.type_of_material),
+                  '/catalog?f[type_of_material_sim][]=' + featured.solr_document.type_of_material + '&locale=en&q=&search_field=all_fields',
+                  :target => "_blank" %>
+    <% end %>
   </div>
 </div>
