@@ -18,7 +18,10 @@ class SurveyController < ApplicationController
 
     redirect_to '/survey/saved?survey_done=yes&resource_id=' + resource_id.to_s + '&downloader_id=' + d.id.to_s + '&fileset_id=' + resource_fileset_id.to_s
   rescue StandardError => e
-    puts e.backtrace
+    message = "Sorry, error occured while saving your data at"
+    message += " SurveyController.submit\n"
+    message += "\t #{e.backtrace}"
+    Rails.logger.fatal(message)
     redirect_to '/survey/error'
   end
 end
