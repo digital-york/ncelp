@@ -209,7 +209,6 @@ module Blacklight::CatalogHelperBehavior
       send(blacklight_config.view_config(document_index_view_type).thumbnail_method, document, image_options)
     elsif blacklight_config.view_config(document_index_view_type).thumbnail_field
       url = thumbnail_url(document)
-
       image_tag url, image_options if url.present?
     end
 
@@ -222,6 +221,28 @@ module Blacklight::CatalogHelperBehavior
         value
       else
         link_to_document document, value, url_options
+      end
+    end
+  end
+
+  # Render the thumbnail to a provided path, if available
+  def render_ncelp_thumbnail_tag document, path, image_options = {}, url_options = {}
+    value = if blacklight_config.view_config(document_index_view_type).thumbnail_method
+              send(blacklight_config.view_config(document_index_view_type).thumbnail_method, document, image_options)
+            elsif blacklight_config.view_config(document_index_view_type).thumbnail_field
+              url = thumbnail_url(document)
+              image_tag url, image_options if url.present?
+            end
+    if value
+      if url_options == false
+        Deprecation.warn(self, "passing false as the second argument to render_thumbnail_tag is deprecated. Use suppress_link: true instead. This behavior will be removed in Blacklight 7")
+        url_options = { suppress_link: true }
+      end
+      if url_options[:suppress_link]
+        value
+      else
+        #link_to_document document, value
+        link_to value, path
       end
     end
   end
