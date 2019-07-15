@@ -43,11 +43,12 @@
 
     <% if can?(:download, file_set.id) %>
       <li role="menuitem" tabindex="-1">
-        <% if session['has_done_survey'] != 'yes' %>
+        <% resourceid= @presenter.solr_document.id %>
+        <% unless (session['has_done_survey'] == 'yes' or resourceid.nil?) %>
           <a data-fancybox
              data-type="iframe"
              data-captain="Downloader Survey"
-             data-src="/survey/new?resource_id=<%= @presenter.solr_document.id %>&resource_fileset_id=<%= file_set.id%>"
+             data-src="/survey/new?resource_id=<%= resourceid %>&resource_fileset_id=<%= file_set.id%>"
              data-options='{
               "buttons" : ["close"],
               "animationEffect": "fade",
