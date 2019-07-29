@@ -79,3 +79,4 @@ gem 'figaro'
 gem 'hydra-role-management'
 gem 'blacklight-access_controls'
 gem "actionview", ">= 5.1.6.2"
+gem "mini_magick", ">= 4.9.4"
