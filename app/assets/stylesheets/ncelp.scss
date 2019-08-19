@@ -136,20 +136,21 @@ footer.navbar-inverse {
 .ncelp-homepage-bottom-box-left {
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-right: 5px;
   max-height: 100%;
   background-color: #0d4f74;
   color: white;
-  border: 5px solid white;
+  border: 2px solid #0d4f74;
   border-radius: 10px;
 }
 .ncelp-homepage-bottom-box-right {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  padding-top: 5px;
   max-height: 100%;
-  background-color: #4472c4;
-  color: white;
-  border: 5px solid white;
-  border-radius: 10px;
+  border: 2px solid #0d4f74;
+  border-radius: 5px;
 }
 .ncelp-homepage-featured-and-recent-box {
   display: flex;
