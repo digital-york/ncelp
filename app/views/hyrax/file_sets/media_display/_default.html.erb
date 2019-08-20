@@ -29,15 +29,17 @@
               "autoFocus": "true",
               "modal": "true"
             }'
+         class="btn btn-default"
          href="javascript:;" >
-        <%= t('hyrax.file_set.show.download') %>
+         <%= t('hyrax.file_set.show.download') %>
       </a>
     <% else %>
       <%= link_to t('hyrax.file_set.show.download'),
                   hyrax.download_path(file_set),
                   id: "file_download",
                   data: { label: file_set.id },
-                  target: "_new" %>
+                  target: "_new",
+                  class: "btn btn-default" %>
     <% end %>
   <% end %>
 </div>
