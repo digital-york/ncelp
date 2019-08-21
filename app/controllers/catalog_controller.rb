@@ -66,7 +66,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("creator", :facetable), label: "Name of creator / institution", limit: 5
 
     # facet 12
-    # config.add_facet_field solr_name("member_of_collections", :facetable), label: "Collection", limit: 5
+    config.add_facet_field 'member_of_collections_ssim', label: "Collection", limit: 5
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
