@@ -21,7 +21,7 @@
 <ul class="list-inline collection-highlights-list">
   <li>
     <%= link_to t('hyrax.homepage.admin_sets.link'),
-                main_app.search_catalog_path(f: { human_readable_type_sim: ["Collection"]}),
+                '/catalog?locale=en&q=Collection&search_field=human_readable_type',
                 class: 'btn btn-default' %>
   </li>
 </ul>
