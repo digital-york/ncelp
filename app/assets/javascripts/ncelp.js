@@ -50,4 +50,27 @@ $(function() {
     <!-- check if needs to show Pedagogical focus other field on load of the page -->
     check_material_for_teachers_other_fields();
 
+    // --------------------------------------------------------
+    // Activate/deactivate download survey save button
+    // By default, disable submit button on survey form
+    $('#survey_form_submit').attr('disabled','true');
+    // Toggle submit button, depending on if the checkboxes are ticked
+    $("[name='survey[status][]']").on("click", function() {
+        if( $("input[name='survey[status][]']:checked").length > 0 &&
+            $("#summary_participants_country :selected").text().length > 0 ) {
+            $('#survey_form_submit').removeAttr('disabled');
+        }else{
+            $('#survey_form_submit').attr('disabled','true');
+        }
+    });
+    // Toggle submit button, depending on if the country is selected
+    $("#summary_participants_country").on("click", function() {
+        if( $("#summary_participants_country :selected").text().length > 0 &&
+            $("input[name='survey[status][]']:checked").length > 0  ) {
+            $('#survey_form_submit').removeAttr('disabled');
+        }else{
+            $('#survey_form_submit').attr('disabled','true');
+        }
+    });
+
 });
