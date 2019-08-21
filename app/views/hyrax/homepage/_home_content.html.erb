@@ -60,14 +60,27 @@
 
 <!-- bottom boxes -->
 <div class="container ncelp-homepage-featured-and-recent-box">
-  <div class="col-xs-12 col-sm-8 ncelp-homepage-bottom-box-left">
+  <div class="col-xs-12 col-sm-7 ncelp-homepage-bottom-box-left">
     <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
     <%= render 'featured_works' %>
     <br/>
   </div>
-  <div class="col-xs-12 col-sm-4 ncelp-homepage-bottom-box-right">
-    <h4><%= t('hyrax.homepage.recently_uploaded.tab_label') %></h4>
-    <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+  <div class="col-xs-12 col-sm-5 ncelp-homepage-bottom-box-right">
+    <ul class="nav nav-pills" role="tablist">
+      <li class="active"><a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></a></li>
+      <li class=""><a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab">Explore Collections</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-col2-first">
+        <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+      </div>
+      <div class="tab-pane" id="tab-col2-second">
+        <%= render 'explore_collections', collections: @presenter.collections %>
+      </div>
+    </div>
+
+
   </div>
 </div>
 

@@ -42,9 +42,11 @@
   </div>
   <div class="col-md-8">
     <span class="ncelp-search-result-resource-field-value">
-      <%= link_to GenericLocalAuthorityService.id_to_label('type_of_material',document.type_of_material),
+      <% unless document.type_of_material.nil? %>
+          <%= link_to GenericLocalAuthorityService.id_to_label('type_of_material',document.type_of_material),
                   '/catalog?f[type_of_material_sim][]='+document.type_of_material+'&locale=en&q=&search_field=all_fields',
                   :target => "_blank" %>
+      <% end %>
     </span>
   </div>
 </div>
