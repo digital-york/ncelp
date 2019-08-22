@@ -262,5 +262,13 @@ div.facets h3 {
 
 
 form#surveyform label {
-  font-weight: normal !important;
+  font-weight: normal;
+}
+
+#surveyform .about-you {
+  padding-bottom: 20px;
+}
+
+#surveyform .bold {
+  font-weight: bold;
 }
