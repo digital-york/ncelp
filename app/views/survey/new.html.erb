@@ -89,6 +89,22 @@
           </label>
         </div>
 
+        <!-- NCELP Specialist Teacher -->
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= check_box_tag 'survey[status][]', 'ncelp_specialist_teacher', false, id: 'status_ncelp_specialist_teacher' %>
+            NCELP Specialist Teacher
+          </label>
+        </div>
+
+        <!-- NCELP Hub School Teacher -->
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= check_box_tag 'survey[status][]', 'ncelp_hub_school_teacher', false, id: 'status_ncelp_hub_school_teacher' %>
+            NCELP Hub School Teacher
+          </label>
+        </div>
+
         <!-- Parent -->
         <div class="form-check">
           <label class="form-check-label">
@@ -190,22 +206,6 @@
               Established scholar
             </label>
           </div>
-        </div>
-
-        <!-- NCELP Specialist Teacher -->
-        <div class="form-check">
-          <label class="form-check-label">
-            <%= check_box_tag 'survey[status][]', 'ncelp_specialist_teacher', false, id: 'status_ncelp_specialist_teacher' %>
-            NCELP Specialist Teacher
-          </label>
-        </div>
-
-        <!-- NCELP Hub School Teacher -->
-        <div class="form-check">
-          <label class="form-check-label">
-            <%= check_box_tag 'survey[status][]', 'ncelp_hub_school_teacher', false, id: 'status_ncelp_hub_school_teacher' %>
-            NCELP Hub School Teacher
-          </label>
         </div>
 
       </div>
