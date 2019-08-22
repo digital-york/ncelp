@@ -2,25 +2,25 @@
 
   <div class="row">
 
-    <h2>Download page</h2>
+    <div class="col-md-12">
 
-    <p>
-      NCELP Resources are available for download free of charge. However,
-      it would be helpful to us and our funders to have some information about who uses these resources,
-      so we can make the Resource Portal even more useful.
-    </p>
+      <h2>Download page</h2>
 
-    <form id="surveyform" @submit="checkForm" action="/survey/submit" method="post">
+      <p>
+        NCELP Resources are available for download free of charge. However,
+        it would be helpful to us and our funders to have some information about who uses these resources,
+        so we can make the Resource Portal even more useful.
+      </p>
 
-      <div class="form-group">
+      <form id="surveyform" @submit="checkForm" action="/survey/submit" method="post">
 
-        <div class="col-md-12 about-you">
-          <strong>About you</strong><br />
-          Please tell us what your current role(s) is / are.
-          Tick at least one field (this is obligatory in order to download a resource):
-        </div>
+        <div class="form-group">
 
-        <div class="col-sm-12">
+          <div class="about-you">
+            <strong>About you</strong><br />
+            Please tell us what your current role(s) is / are.
+            Tick at least one field (this is obligatory in order to download a resource):
+          </div>
 
           <div class="form-check">
             <label class="form-check-label">
@@ -218,54 +218,58 @@
           </div>
 
         </div>
-      </div>
 
-      <!-- Countries dropdown list -->
-      <% countries = YAML.load_file("#{Rails.root.to_s}/config/authorities/country_code.yml") %>
-      <div class="form-group select optional summary_participants_country">
-        <div class="col-sm-3">
-          <label class="control-label select optional bold" for="summary_participants_country">Country (this is
-            obligatory in order to download a resource):</label>
-          <p class="help-block">Hold down Ctrl/Command to select more than one term</p>
+        <!-- Countries dropdown list -->
+        <% countries = YAML.load_file("#{Rails.root.to_s}/config/authorities/country_code.yml") %>
+        <div class="form-group select optional summary_participants_country">
+          <div class="col-sm-3">
+            <label class="control-label select optional bold" for="summary_participants_country">Country (this is
+              obligatory in order to download a resource):</label>
+            <p class="help-block">Hold down Ctrl/Command to select more than one term</p>
+          </div>
+          <div class="col-sm-9">
+            <select class="form-control select optional" multiple="multiple" name="survey[participants_country][]"
+              id="summary_participants_country">
+              <%=countries["terms"].each do |t| %>
+              <option value=<%=t.fetch("id")%>><%=t.fetch("term")%></option>
+              <% end %>
+            </select>
+          </div>
         </div>
-        <div class="col-sm-9">
-          <select class="form-control select optional" multiple="multiple" name="survey[participants_country][]"
-            id="summary_participants_country">
-            <%=countries["terms"].each do |t| %>
-            <option value=<%=t.fetch("id")%>><%=t.fetch("term")%></option>
-            <% end %>
-          </select>
+
+        <p>If you are happy to be contacted by the NCELP team for feedback on whether and how you have used the
+          resource,
+          please leave your email below. We will not share your email with third parties.
+          If you later decide that you would prefer not to receive communication from us, please contact the NCELP team
+          at
+          <a href="mailto:enquiries@ncelp.org">enquiries@ncelp.org</a>
+          and we will remove your address from our databases.</p>
+
+        <!-- email -->
+        <div class="form-group">
+          <label id="survey-status-email-label" for="email" class="col-sm-3 col-form-label bold">Email
+            (optional):</label>
+          <div class="col-sm-9">
+            <%= text_field_tag 'survey[email]', nil, class: "form-control", placeholder: "Email", id: 'survey-status-email' %>
+          </div>
         </div>
-      </div>
 
-      <p>If you are happy to be contacted by the NCELP team for feedback on whether and how you have used the resource,
-        please leave your email below. We will not share your email with third parties.
-        If you later decide that you would prefer not to receive communication from us, please contact the NCELP team at
-        <a href="mailto:enquiries@ncelp.org">enquiries@ncelp.org</a>
-        and we will remove your address from our databases.</p>
+        <p>
+          NCELP is not responsible for the use of the downloaded resources.
+        </p>
 
-      <!-- email -->
-      <div class="form-group">
-        <label id="survey-status-email-label" for="email" class="col-sm-3 col-form-label bold">Email (optional):</label>
-        <div class="col-sm-9">
-          <%= text_field_tag 'survey[email]', nil, class: "form-control", placeholder: "Email", id: 'survey-status-email' %>
+        <!-- Store resource id -->
+        <div class="form-group">
+          <input type="hidden" name="resource_id" value="<%= params["resource_id"] %>" />
+          <input type="hidden" name="resource_fileset_id" value="<%= params["resource_fileset_id"] %>" />
+          <%= link_to t(:'helpers.action.cancel'), '#', onclick: "parent.$.fancybox.close();", class: 'btn btn-primary' %>
+          <input type="submit" class="btn btn-primary" id="survey_form_submit" value="Save & Submit">
         </div>
-      </div>
 
-      <p>
-        NCELP is not responsible for the use of the downloaded resources.
-      </p>
+      </form>
 
-      <!-- Store resource id -->
-      <div class="form-group">
-        <input type="hidden" name="resource_id" value="<%= params["resource_id"] %>" />
-        <input type="hidden" name="resource_fileset_id" value="<%= params["resource_fileset_id"] %>" />
-        <%= link_to t(:'helpers.action.cancel'), '#', onclick: "parent.$.fancybox.close();", class: 'btn btn-primary' %>
-        <input type="submit" class="btn btn-primary" id="survey_form_submit" value="Save & Submit">
-      </div>
+    </div>
 
-    </form>
-    
   </div>
 
 </div>
