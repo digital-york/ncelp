@@ -136,21 +136,20 @@ footer.navbar-inverse {
 .ncelp-homepage-bottom-box-left {
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-right: 5px;
   max-height: 100%;
   background-color: #0d4f74;
   color: white;
-  border: 2px solid #0d4f74;
+  border: 5px solid white;
   border-radius: 10px;
 }
 .ncelp-homepage-bottom-box-right {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-left: 5px;
-  padding-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   max-height: 100%;
-  border: 2px solid #0d4f74;
-  border-radius: 5px;
+  background-color: #4472c4;
+  color: white;
+  border: 5px solid white;
+  border-radius: 10px;
 }
 .ncelp-homepage-featured-and-recent-box {
   display: flex;
@@ -235,4 +234,41 @@ div.facets h3 {
 }
 .visibility-widget {
   display: none;
+}
+
+.file-details {
+  border-top: 1px solid black;
+  width: 100%;
+}
+
+.file-details tr td {
+  padding: 5px;
+}
+
+.file-details tr td:nth-child(1) {
+  padding-right: 20px;
+  padding-left: 0;
+  font-weight: bold;
+  width: 130px;
+}
+
+.form-actions .social-media {
+  padding-left: 0;
+}
+
+.form-actions .social-media a.resp-sharing-button__link {
+  margin-left: 0;
+}
+
+
+form#surveyform label {
+  font-weight: normal;
+}
+
+#surveyform .about-you {
+  padding-bottom: 20px;
+}
+
+#surveyform .bold {
+  font-weight: bold;
 }
