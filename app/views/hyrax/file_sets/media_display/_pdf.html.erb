@@ -23,6 +23,7 @@
 
       <% unless (session['has_done_survey'] == 'yes' or resourceid.nil?) %>
         <a data-fancybox
+           class="btn btn-primary"
            data-type="iframe"
            data-captain="Downloader Survey"
            data-src="/survey/new?resource_id=<%= resourceid %>&resource_fileset_id=<%= file_set.id%>"
