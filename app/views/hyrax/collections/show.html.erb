@@ -57,24 +57,6 @@
     </div>
   </div>
 
-  <div class="row hyc-body">
-    <div class="col-md-12 hyc-description">
-      <%= render 'collection_description', presenter: @presenter %>
-
-      <% if @presenter.collection_type_is_nestable? && @presenter.total_parent_collections > 0 %>
-          <div class="hyc-blacklight hyc-bl-title">
-            <h2>
-              <%= t('.parent_collection_header') %> (<%= @presenter.total_parent_collections %>)
-            </h2>
-          </div>
-          <div class="hyc-blacklight hyc-bl-results">
-            <%= render 'show_parent_collections', presenter: @presenter %>
-          </div>
-      <% end %>
-
-    </div>
-  </div>
-
   <!-- Search results label -->
   <% if @members_count > 0 || @presenter.subcollection_count > 0 %>
     <div class="hyc-blacklight hyc-bl-title">
@@ -84,17 +66,6 @@
         <% end %>
       </h2>
     </div>
-  <% end %>
-
-
-  <!-- Subcollections -->
-  <% if @presenter.collection_type_is_nestable? && @subcollection_count > 0 %>
-      <div class="hyc-blacklight hyc-bl-title">
-        <h4><%= t('.subcollection_count') %> (<%= @subcollection_count %>)</h4>
-      </div>
-      <div class="hyc-blacklight hyc-bl-results">
-        <%= render 'subcollection_list', collection: @subcollection_docs %>
-      </div>
   <% end %>
 
   <!-- Works -->
@@ -115,4 +86,28 @@
         <%= render 'paginate' %>
       </div>
   <% end # if @members_count > 0 %>
+
+
+  <% if @presenter.collection_type_is_nestable? && @presenter.total_parent_collections > 0 %>
+    <div class="hyc-blacklight hyc-bl-title">
+      <h4>
+        <%= t('.parent_collection_header') %> (<%= @presenter.total_parent_collections %>)
+      </h4>
+    </div>
+    <div class="hyc-blacklight hyc-bl-results">
+      <%= render 'show_parent_collections', presenter: @presenter %>
+    </div>
+  <% end %>
+
+
+  <!-- Subcollections -->
+  <% if @presenter.collection_type_is_nestable? && @subcollection_count > 0 %>
+    <div class="hyc-blacklight hyc-bl-title">
+      <h4><%= t('.subcollection_count') %> (<%= @subcollection_count %>)</h4>
+    </div>
+    <div class="hyc-blacklight hyc-bl-results">
+      <%= render 'subcollection_list', collection: @subcollection_docs %>
+    </div>
+  <% end %>
+
 </div>
