@@ -86,17 +86,6 @@
     </div>
   <% end %>
 
-
-  <!-- Subcollections -->
-  <% if @presenter.collection_type_is_nestable? && @subcollection_count > 0 %>
-      <div class="hyc-blacklight hyc-bl-title">
-        <h4><%= t('.subcollection_count') %> (<%= @subcollection_count %>)</h4>
-      </div>
-      <div class="hyc-blacklight hyc-bl-results">
-        <%= render 'subcollection_list', collection: @subcollection_docs %>
-      </div>
-  <% end %>
-
   <!-- Works -->
   <% if @members_count > 0 %>
       <div class="hyc-blacklight hyc-bl-title">
@@ -115,4 +104,15 @@
         <%= render 'paginate' %>
       </div>
   <% end # if @members_count > 0 %>
+
+  <!-- Subcollections -->
+  <% if @presenter.collection_type_is_nestable? && @subcollection_count > 0 %>
+    <div class="hyc-blacklight hyc-bl-title">
+      <h4><%= t('.subcollection_count') %> (<%= @subcollection_count %>)</h4>
+    </div>
+    <div class="hyc-blacklight hyc-bl-results">
+      <%= render 'subcollection_list', collection: @subcollection_docs %>
+    </div>
+  <% end %>
+
 </div>
