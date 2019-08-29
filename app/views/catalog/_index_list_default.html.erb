@@ -17,6 +17,7 @@
   </div>
 </div>
 
+<% unless document.language.nil? or document.language.length==0 %>
 <div class="row ncelp-search-result-resource-field-div">
   <div class="col-md-4">
     <div>
@@ -33,7 +34,9 @@
     <% end %>
   </div>
 </div>
+<% end %>
 
+<% unless document.type_of_material.nil? %>
 <div class="row ncelp-search-result-resource-field-div">
   <div class="col-md-4">
     <div>
@@ -42,11 +45,12 @@
   </div>
   <div class="col-md-8">
     <span class="ncelp-search-result-resource-field-value">
-      <% unless document.type_of_material.nil? %>
+
           <%= link_to GenericLocalAuthorityService.id_to_label('type_of_material',document.type_of_material),
                   '/catalog?f[type_of_material_sim][]='+document.type_of_material+'&locale=en&q=&search_field=all_fields',
                   :target => "_blank" %>
-      <% end %>
+
     </span>
   </div>
 </div>
+<% end %>
