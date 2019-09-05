@@ -103,4 +103,37 @@ namespace :report do
         end
     end
 
+    desc 'Generate downloader statistics per month'
+    task :downloader_per_month => :environment do
+        results = {}
+
+        solr_query = 'has_model_ssim:Downloader'
+        solr = RSolr.connect :url => SOLR
+        response = solr.get 'select', :params => {
+            :q=>"#{solr_query}",
+            :start=>0,
+            :rows=>10000
+        }
+        number_of_downloaders = response['response']['numFound']
+        if number_of_downloaders == 0
+            puts 'No downloader found.'
+        else
+            puts "Total downloads: #{number_of_downloaders}"
+            puts '------------------------------'
+
+            response['response']['docs'].each do |doc|
+                download_time = Date.parse(doc['system_create_dtsi']).strftime("%Y.%m")
+                if results[download_time].nil?
+                    results[download_time] = 1
+                else
+                    results[download_time] = results[download_time] + 1
+                end
+            end
+
+            results.each do |k,v|
+                puts "#{k} => #{v}"
+            end
+        end
+    end
+
 end
