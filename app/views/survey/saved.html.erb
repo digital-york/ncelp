@@ -13,9 +13,9 @@
         <div class="row">
           <div class="col-sm-12">
 
-            <button type="button" class="btn btn-info" onclick="window.open('/downloads/<%= params["fileset_id"]%>','_blank');parent.$.fancybox.close();">Download resource</button>
+            <button type="button" class="btn btn-info" onclick="window.open('/downloads/<%= params["fileset_id"]%>','_blank');parent.location.reload(true);">Download resource</button>
 
-            <button type="button" class="btn btn-info" onclick="parent.$.fancybox.close();">Close</button>
+            <button type="button" class="btn btn-info" onclick="parent.location.reload(true);">Close</button>
 
           </div>
 
