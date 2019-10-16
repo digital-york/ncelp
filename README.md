@@ -69,7 +69,7 @@ ncelp-mac git:master ❯ bundle exec rake hyrax:workflow:load
 ```
 9. Configure admin user
 ```
-bunlde exec rails c
+bundle exec rails c
 # Admin role should exists
 admin = Role.create(name: "admin")
 # admin = Role.find_by(name: "admin")
