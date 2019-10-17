@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -32,7 +32,7 @@ group :production do
   gem 'passenger', '~> 5.2.0'
 
   # Postgres DB
-  gem 'pg', '~> 0.18'
+  gem 'pg', '~> 1.1.4'
 end
 
 group :development, :test do

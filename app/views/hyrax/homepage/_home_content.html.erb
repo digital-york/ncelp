@@ -1,59 +1,51 @@
 <!-- top boxes -->
 <div class="container">
+
+  <div class="hidden">
+      <h1>NCELP Resource Portal - National Centre for Excellence for Language Pedagogy</h1>
+  </div>
+
   <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
-    <h3>SEARCH</h3>
+
+    <h3>Search</h3>
+
     <br/>
-    Enter <b>any text</b> you wish into the search box (e.g. speaking, French, grammar)<br/>
+
+    <label class="homepage-search-label" for="search-field-header">
+        Enter <b>any text</b> you wish into the search box (e.g. speaking, French, grammar)
+    </label><br/>
+
     <br/>
     <%= render partial: 'homepage_search_form' %>
     <br/>
     Don't know what to search for? Browse "<strong>All Resources</strong>" below and use the filters to refine your search
   </div>
+
   <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
-    <h3>BROWSE by</h3>
-    <div class="row ncelp-homepage-browse-buttons-row">
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to "All resources", "/catalog", target: :_blank %>
+
+    <h3>Browse by</h3>
+
+    <div class="row">
+
+      <%
+      browse_by_links = [
+        ['All resources', '/catalog'],
+        ['Pedagogical focus', '/catalog/facet/area_of_research_sim'],
+        ['Language being learnt', '/catalog/facet/language_sim'],
+        ['Target age range', '/catalog/facet/age_sim'],
+        ['Type/purpose of resource', '/catalog/facet/type_of_material_sim'],
+        ['Modality/mode (skill)', '/catalog/facet/modality_sim'],
+        ['Topic', '/catalog/facet/topic_sim'],
+        ['Thematic/semantic field', '/catalog/facet/thematic_sim']
+      ]
+      %>
+
+      <% browse_by_links.each do |browse_by_link| %>
+        <div class="col-md-3 col-xs-6 col-sm-12 ncelp-homepage-browse-button-div">
+          <%=link_to browse_by_link[0], browse_by_link[1], target: :_blank, title: 'Browse by ' + browse_by_link[0].downcase, class: "ncelp-homepage-browse-button-link" %>
         </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Pedagogical focus', "/catalog/facet/area_of_research_sim", target: :_blank %>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Language being learnt', "/catalog/facet/language_sim", target: :_blank %>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Target age range', "/catalog/facet/age_sim", target: :_blank %>
-        </div>
-      </div>
-    </div>
-    <div class="row ncelp-homepage-browse-buttons-row">
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Type/purpose of resource', "/catalog/facet/type_of_material_sim", target: :_blank %>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Modality/mode (skill)', "/catalog/facet/modality_sim", target: :_blank %>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Topic', "/catalog/facet/topic_sim", target: :_blank %>
-        </div>
-      </div>
-      <div class="col-xs-6 col-sm-3 ncelp-homepage-browse-button-div">
-        <div class="ncelp-homepage-browse-button">
-          <%=link_to 'Thematic/semantic field', "/catalog/facet/thematic_sim", target: :_blank %>
-        </div>
-      </div>
+      <% end %>
+
     </div>
   </div>
 </div>
@@ -66,10 +58,11 @@
     <br/>
   </div>
   <div class="col-xs-12 col-sm-5 ncelp-homepage-bottom-box-right">
-    <ul class="nav nav-pills" role="tablist">
-      <li class="active"><a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></a></li>
-      <li class=""><a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab">Explore Collections</a></li>
-    </ul>
+    
+    <div class="tab-buttons">
+      <a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab" class="btn btn-primary"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></a>
+      <a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab" class="btn btn-default">Explore Collections</a>
+    </div>
 
     <div class="tab-content">
       <div class="tab-pane active" id="tab-col2-first">
