@@ -73,4 +73,14 @@ $(function() {
         }
     });
 
+    /* Enable tab buttons and changing button status */
+    var tab_buttons = $('.tab-buttons > .btn');
+    $.each(tab_buttons, function(i,btn){
+        $(btn).on('click',function(){
+            tab_buttons.removeClass('btn-primary');
+            tab_buttons.addClass('btn-default');
+            $(this).addClass('btn-primary');
+        })
+    });
+
 });
