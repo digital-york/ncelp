@@ -242,7 +242,7 @@ module Blacklight::CatalogHelperBehavior
         value
       else
         #link_to_document document, value
-        link_to value, path
+        link_to value, path, url_options
       end
     end
   end

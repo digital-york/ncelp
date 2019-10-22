@@ -332,5 +332,12 @@ form#surveyform label {
 }
 
 .tab-content {
-  margin-top:15px;
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }

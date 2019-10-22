@@ -13,8 +13,9 @@
 <% document=@presenter.solr_document %>
 <!-- top box -->
 <div class="row ncelp-resource-details-box">
-  <%= render :partial => 'generic_title_field', :locals => {:field_name => 'ncelp_title', :field_value => document.ncelp_title} %><br/>
+  
   <%= render :partial => 'generic_field', :locals => {:field_name => 'full_description', :field_value => document.full_description} %><br/>
+  
   <div class="row">
     <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
       File type
@@ -30,6 +31,7 @@
       <% end %>
     </div>
   </div><br/>
+
   <% if document.language.length > 0 %>
     <%= render :partial => 'authority_field',   :locals => {:field_name => 'language', :field_value => document.language} %><br/>
   <% end %>
@@ -81,3 +83,7 @@
     <%= render 'items', presenter: @presenter %>
   </div>
 </div>
+
+<%= render 'social_media', presenter: @presenter %>
+
+<%= render "show_ncelp_actions", presenter: @presenter %>
