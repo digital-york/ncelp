@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-12">
+    
+    <h1>Contact us</h1>
+
+    <strong>For general Resource Portal enquiries and feedback:</strong><br />
+    Email: <a href="mailto:resources@ncelp.org" title="Contact us at resources@ncelp.org">resources@ncelp.org</a><br />
+    Telephone: 01904 328159<br /><br />
+
+    <strong>To report a problem or to request help in using the system:</strong><br />
+    Please first visit the 'Help' page. If your query is not answered there, email us at <a href="mailto:resources@ncelp.org" title="Contact us at resources@ncelp.org">resources@ncelp.org</a> with details and one of the team will get back to you.<br /><br />
+
+    <strong>Postal address:</strong><br />
+    National Centre for Excellence for Language Pedagogy (NCELP)<br />
+    Department of Education<br />
+    University of York<br />
+    York<br />
+    YO10 5DD<br /><br />
+
+    <strong>Mailing list:</strong><br />
+    If you would like to receive a regular bulletin of the latest materials added to the NCELP Resource Portal as well updates on the Centre’s activities, sign up to our <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJy-sMKW_1qQQMJWxatdS_FBS2a8IMIBT_XOSoNf9nvsCb_w/viewform" title="Sign up for our mailing list" target="_blank">mailing list</a>.
+
+  </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br />
+
+
+
+<div class="alert alert-info">
+  <%= render 'directions' %>
+</div>
+
+<h1>
+    <%= t('hyrax.contact_form.header') %>
+</h1>
+
+<% if user_signed_in? %>
+  <% nm = current_user.name %>
+  <% em = current_user.email %>
+<% else %>
+  <% nm = '' %>
+  <% em = '' %>
+<% end %>
+
+<%= form_for @contact_form, url: hyrax.contact_form_index_path,
+                            html: { class: 'form-horizontal' } do |f| %>
+  <%= f.text_field :contact_method, class: 'hide' %>
+  <div class="form-group">
+    <%= f.label :category, t('hyrax.contact_form.type_label'), class: "col-sm-2 control-label" %>
+    <% issue_types = Hyrax::ContactForm.issue_types_for_locale.dup %>
+    <% issue_types.unshift([t('hyrax.contact_form.select_type'), nil]) %>
+    <div class="col-sm-10">
+      <%= f.select 'category', options_for_select(issue_types), {}, {class: 'form-control', required: true } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, t('hyrax.contact_form.name_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_field :name, value: nm, class: 'form-control', required: true %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, t('hyrax.contact_form.email_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_field :email, value: em, class: 'form-control', required: true %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :subject, t('hyrax.contact_form.subject_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_field :subject, class: 'form-control', required: true %></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :message, t('hyrax.contact_form.message_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_area :message, rows: 4, class: 'form-control', required: true %></div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+      <%= f.submit value: t('hyrax.contact_form.button_label'), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
