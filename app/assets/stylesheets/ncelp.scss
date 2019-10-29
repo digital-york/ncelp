@@ -196,7 +196,7 @@ footer.navbar-inverse {
 .ncelp-search-result-resource-div {
   border: 2px solid #eef0f2;
   -moz-border-radius: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
 }
 .ncelp-search-result-resource-field-div {
@@ -205,7 +205,13 @@ footer.navbar-inverse {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.ncelp-search-result-resource-filetype-icon {
+
+.ncelp-search-result-resource-field-div {
+  padding: 0; 
+  padding-top: 10px;
+}
+
+.ncelp-search-result-resource-filetype-icon{
   height: 50px;
   width: 50px;
 }
@@ -214,6 +220,20 @@ footer.navbar-inverse {
   border: 5px solid white;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  padding-right: 3px;
+  margin-right: 5px;
+  border-right: 1px solid lightgray;
+
+  a {
+    color: #104f75;
+  }
+
+  // Remove border from last child
+  &:last-child {
+    border:0;
+    margin-right: 0;
+  }
+
 }
 // facet header
 div.facets h3 {
@@ -303,6 +323,28 @@ form#surveyform label {
 
 #surveyform .bold {
   font-weight: bold;
+}
+
+#search-results {
+  .search-result-wrapper {
+    margin-bottom: 0;
+  }
+  li {
+    margin-bottom: 15px;
+  }
+  .search-result-title {
+    a {
+      color: #104f75;
+    }
+  }
+}
+
+#facet-panel-collapse {
+  .panel-body {
+    ul {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .resource-title .show-actions,
