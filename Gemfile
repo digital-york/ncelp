@@ -67,7 +67,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'hyrax', '>= 2.5.0'
 
 gem 'bootstrap-sass', '>= 3.4.1'
-gem 'devise', '>= 4.6.0'
+gem 'devise', '>= 4.7.1'
 gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'rsolr', '>= 1.0'
