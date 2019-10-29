@@ -69,7 +69,8 @@ class ContentBlock < ActiveRecord::Base
     end
 
     def help_page
-      find_or_create_by(name: 'help_page')
+      find_by(name: 'help_page') ||
+        create(name: 'help_page', value: default_help_text)
     end
 
     def help_page=(value)
@@ -97,6 +98,14 @@ class ContentBlock < ActiveRecord::Base
       ERB.new(
         IO.read(
           Hyrax::Engine.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'terms.html.erb')
+        )
+      ).result
+    end
+
+    def default_help_text
+      ERB.new(
+        IO.read(
+            Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'help.html.erb')
         )
       ).result
     end
