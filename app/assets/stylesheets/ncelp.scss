@@ -207,7 +207,7 @@ footer.navbar-inverse {
 }
 
 .ncelp-search-result-resource-field-div {
-  padding: 0; 
+  padding: 0;
   padding-top: 10px;
 }
 
@@ -374,7 +374,13 @@ form#surveyform label {
 }
 
 .tab-content {
-  margin-top: 15px;
+  margin-top:15px;
+}
+
+form#new_resource {
+  select {
+    height: 230px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
