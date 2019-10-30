@@ -1,9 +1,9 @@
 development:
-  host: localhost
-  port: 6379
+  host: <%= Figaro.env.redis_host %>
+  port: <%= Figaro.env.redis_port %>
 test:
-  host: localhost
-  port: 6379
+  host: <%= Figaro.env.redis_host %>
+  port: <%= Figaro.env.redis_port %>
 production:
-  host: localhost
-  port: 6379
+  host: <%= Figaro.env.redis_host %>
+  port: <%= Figaro.env.redis_port %>
