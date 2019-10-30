@@ -1,0 +1,58 @@
+roles:
+  - title: "Language learner"
+    id: language_learner
+  - title: "Language teacher/instructor"
+    id: "language_teacher"
+    subroles:
+      - title: "Pre-elementary / kindergarten"
+        id: language_teacher_pre_elementary
+      - title: "Primary school"
+        id: language_teacher_primary
+      - title: "Secondary / high school"
+        id: language_teacher_secondary
+      - title: "Tertiary / university"
+        id: language_teacher_tertiary
+      - title: "Adult education"
+        id: language_teacher_adult_edu
+      - title: "Private institution"
+        id: language_teacher_private
+      - title: "Other"
+        id: "language_teacher_other"
+  - title: "Materials / curriculum developer"
+    id: "materials_developer"
+  - title: "Media / journalist"
+    id: media
+  - title: "NCELP Specialist Teacher"
+    id: ncelp_specialist_teacher
+  - title: "NCELP Hub School Teacher"
+    id: ncelp_hub_school_teacher
+  - title: "Parent"
+    id: parent
+  - title: "Policy maker"
+    id: policy_maker
+  - title: "Professional development provider"
+    id: professional_development_provider
+  - title: "Student"
+    id: student
+    subroles:
+      - title: "Undergraduate"
+        id: undergraduate
+      - title: "Masters"
+        id: masters
+      - title: "PhD"
+        id: phd
+      - title: "Other"
+        id: other
+  - title: "Teacher educator"
+    id: teacher_educator
+  - title: "Test developer"
+    id: test_developer
+  - title: "University academic"
+    id: university_academic
+    subroles:
+      - title: "Early career"
+        id: early_career
+      - title: "Mid-career"
+        id: mid_career
+      - title: "Established scholar"
+        id: established_scholar

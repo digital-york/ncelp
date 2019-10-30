@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" /> -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script> -->
 
-<style>
+<!-- <style>
     .fancybox-container {
         width: 100%;
     }
@@ -9,7 +9,7 @@
         max-width: 600px;
         max-height: 800px;
     }
-</style>
+</style> -->
 
 <% if Hyrax.config.display_media_download_link? && can?(:download, file_set.id) %>
     <div>
@@ -22,7 +22,12 @@
       <% resourceid= request.original_url[/#{"parent/"}(.*?)#{"/file_sets"}/m, 1]%>
 
       <% unless (session['has_done_survey'] == 'yes' or resourceid.nil?) %>
-        <a data-fancybox
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          <%= t('hyrax.file_set.show.downloadable_content.image_link') %>
+        </button>
+
+        <!-- <a data-fancybox
            class="btn btn-primary"
            data-type="iframe"
            data-captain="Downloader Survey"
@@ -36,7 +41,7 @@
             }'
            href="javascript:;" >
           <%= t('hyrax.file_set.show.downloadable_content.image_link') %>
-        </a>
+        </a> -->
       <% else %>
         <%= link_to t('hyrax.file_set.show.downloadable_content.image_link'),
                     hyrax.download_path(file_set),
