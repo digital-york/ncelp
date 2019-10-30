@@ -73,6 +73,7 @@ gem 'hyrax', '>= 2.5.0'
 gem 'blacklight-access_controls'
 gem 'hydra-role-management'
 gem 'nokogiri', '>= 1.10.4'
+gem 'riiif', '~> 1.1'
 gem 'rsolr', '>= 1.0'
 
 gem 'figaro'          # env managment
