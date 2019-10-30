@@ -57,7 +57,8 @@ $(function() {
     // Toggle submit button, depending on if the checkboxes are ticked
     $("[name='survey[status][]']").on("click", function() {
         if( $("input[name='survey[status][]']:checked").length > 0 &&
-            $("#summary_participants_country :selected").text().length > 0 ) {
+            // $("#summary_participants_country :selected").text().length > 0 ) {
+        ) {
             $('#survey_form_submit').removeAttr('disabled');
         }else{
             $('#survey_form_submit').attr('disabled','true');
