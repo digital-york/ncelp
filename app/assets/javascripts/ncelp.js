@@ -1,3 +1,5 @@
+//= require jquery-ui/widgets/accordion
+
 $(function() {
     // ---------------------------------------------------
     // show/hide other language fields
@@ -81,6 +83,15 @@ $(function() {
             tab_buttons.addClass('btn-default');
             $(this).addClass('btn-primary');
         })
+    });
+
+
+    /**
+     * Use the accordion effect on the resource details page to hide the details.
+     */
+    $("#accordion").accordion({
+        active: false,
+        collapsible: true
     });
 
 });
