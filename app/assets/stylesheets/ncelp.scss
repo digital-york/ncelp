@@ -374,7 +374,13 @@ form#surveyform label {
 }
 
 .tab-content {
-  margin-top: 15px;
+  margin-top:15px;
+}
+
+form#new_resource {
+  select {
+    height: 230px;
+  }
 }
 
 form#new_resource {
