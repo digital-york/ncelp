@@ -77,4 +77,5 @@ gem 'rsolr', '>= 1.0'
 
 gem 'figaro'          # env managment
 gem 'pg', '~> 1.1.4'  # Postgres DB
+gem 'sidekiq'
 gem 'zip'
