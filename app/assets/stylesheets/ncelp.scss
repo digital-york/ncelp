@@ -318,7 +318,11 @@ form#surveyform label {
 }
 
 #surveyform .about-you {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  &.alert-danger {
+    padding: 10px;
+  }
 }
 
 #surveyform .bold {
