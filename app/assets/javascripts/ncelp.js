@@ -77,7 +77,6 @@ $(function() {
     //     }
     // });
 
-
     $('#surveyform').on('submit',function(e){
         if( $('div.checkbox-group.required :checkbox:checked').length == 0 )
         {
@@ -88,10 +87,13 @@ $(function() {
             $('#aboutyou').addClass('alert-danger');
 
             // First find the iframe by class name - sinds the ID is nog unique :(
-            var iframe = parent.window.document.getElementsByClassName("fancybox-iframe");
+            // var iframe = parent.window.document.getElementsByClassName("fancybox-iframe");
 
             // If no checkbox is selected scroll up and show error message.
-            $(iframe).contents().find("html, body").animate({ scrollTop: 0 }, { duration: 'medium', easing: 'swing' });
+            // $(iframe).contents().find("html, body").animate({ scrollTop: 0 }, { duration: 'medium', easing: 'swing' });
+
+            // Scroll modal up to top
+            $('#myModal').animate({ scrollTop: 0 }, { duration: 'medium', easing: 'swing' });
 
             // Remove the alert message when checkbox is checked
             $('div.checkbox-group.required :checkbox').on('click', function(e){
