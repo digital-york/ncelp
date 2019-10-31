@@ -2,16 +2,18 @@
 
 <%= render 'shared/citations' %>
 
+<% document=@presenter.solr_document %>
+
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= render 'resource_show_title', presenter: @presenter %>
     </div>
+    <div class="panel-body">
+      <%= document.full_description %>
+    </div>
   </div>
 </div>
-
-<% document=@presenter.solr_document %>
-<!-- top box -->
 
 <div class="row">
 
@@ -21,9 +23,7 @@
 
     <div class="ncelp-resource-details-box">
       
-      <%= render :partial => 'generic_field', :locals => {:field_name => 'full_description', :field_value => document.full_description} %><br/>
-      
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
           File type
         </div>
@@ -37,7 +37,7 @@
             </span>
           <% end %>
         </div>
-      </div><br/>
+      </div><br/> -->
 
       <% if document.language.length > 0 %>
         <%= render :partial => 'authority_field',   :locals => {:field_name => 'language', :field_value => document.language} %><br/>
