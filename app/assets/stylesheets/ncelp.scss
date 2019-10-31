@@ -41,11 +41,13 @@ body {
     .navbar-nav {
       a {
         text-transform: uppercase;
-        color: #534f4a;
+        // color: #534f4a;
+        color: #000;
 
         &:hover,
         &:focus {
-          color: #e8803d;
+          // color: #e8803d;
+          color: #ff6400;
         }
       }
     }
@@ -55,7 +57,8 @@ body {
       &:hover,
       &:focus {
         background-color: white;
-        color: #e8803d;
+        // color: #e8803d;
+        color: #ff6400;
       }
     }
   }
@@ -154,7 +157,7 @@ footer.navbar-inverse {
   font-size: 16px;
   text-align: center;
   border: 2px solid #e87d1e;
-  border-radius: 10px;
+  border-radius: 4px;
   color: black;
 
   &,
@@ -216,10 +219,6 @@ footer.navbar-inverse {
   width: 50px;
 }
 .ncelp-search-result-resource-field-value {
-  background-color: #eef0f2;
-  border: 5px solid white;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   padding-right: 3px;
   margin-right: 5px;
   border-right: 1px solid lightgray;
@@ -244,7 +243,7 @@ div.facets h3 {
 .ncelp-resource-details-box {
   border: 2px solid #eef0f2;
   -moz-border-radius: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
   font-weight: bold;
 }
@@ -396,6 +395,10 @@ form#new_resource {
 
 #accordion {
 
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border-color: #ddd;
+  }
+
   .ui-state-active {
     border: 1px solid #c5c5c5;
     background-color: #f6f6f6;
@@ -419,8 +422,8 @@ form#new_resource {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
 
 }
