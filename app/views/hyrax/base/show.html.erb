@@ -9,9 +9,11 @@
     <div class="panel-heading">
       <%= render 'resource_show_title', presenter: @presenter %>
     </div>
-    <div class="panel-body">
-      <%= document.full_description %>
-    </div>
+    <% if document.full_description != '' %>
+      <div class="panel-body">
+        <%= document.full_description %>
+      </div>
+    <% end %>
   </div>
 </div>
 
