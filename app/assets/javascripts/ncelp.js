@@ -55,23 +55,48 @@ $(function() {
     // --------------------------------------------------------
     // Activate/deactivate download survey save button
     // By default, disable submit button on survey form
-    $('#survey_form_submit').attr('disabled','true');
+    // $('#survey_form_submit').attr('disabled','true');
+
     // Toggle submit button, depending on if the checkboxes are ticked
-    $("[name='survey[status][]']").on("click", function() {
-        if( $("input[name='survey[status][]']:checked").length > 0 &&
-            $("#summary_participants_country :selected").text().length > 0 ) {
-            $('#survey_form_submit').removeAttr('disabled');
-        }else{
-            $('#survey_form_submit').attr('disabled','true');
-        }
-    });
+    // $("[name='survey[status][]']").on("click", function() {
+    //     if( $("input[name='survey[status][]']:checked").length > 0 &&
+    //         $("#summary_participants_country :selected").text().length > 0 ) {
+    //     // ) {
+    //         $('#survey_form_submit').removeAttr('disabled');
+    //     }else{
+    //         $('#survey_form_submit').attr('disabled','true');
+    //     }
+    // });
     // Toggle submit button, depending on if the country is selected
-    $("#summary_participants_country").on("click", function() {
-        if( $("#summary_participants_country :selected").text().length > 0 &&
-            $("input[name='survey[status][]']:checked").length > 0  ) {
-            $('#survey_form_submit').removeAttr('disabled');
-        }else{
-            $('#survey_form_submit').attr('disabled','true');
+    // $("#summary_participants_country").on("click", function() {
+    //     if( $("#summary_participants_country :selected").text().length > 0 &&
+    //         $("input[name='survey[status][]']:checked").length > 0  ) {
+    //         $('#survey_form_submit').removeAttr('disabled');
+    //     }else{
+    //         $('#survey_form_submit').attr('disabled','true');
+    //     }
+    // });
+
+
+    $('#surveyform').on('submit',function(e){
+        if( $('div.checkbox-group.required :checkbox:checked').length == 0 )
+        {
+            // Stop the form from being send
+            e.preventDefault();
+
+            // Add an alert
+            $('#aboutyou').addClass('alert-danger');
+
+            // First find the iframe by class name - sinds the ID is nog unique :(
+            var iframe = parent.window.document.getElementsByClassName("fancybox-iframe");
+
+            // If no checkbox is selected scroll up and show error message.
+            $(iframe).contents().find("html, body").animate({ scrollTop: 0 }, { duration: 'medium', easing: 'swing' });
+
+            // Remove the alert message when checkbox is checked
+            $('div.checkbox-group.required :checkbox').on('click', function(e){
+                $('#aboutyou').removeClass('alert-danger');
+            });
         }
     });
 
