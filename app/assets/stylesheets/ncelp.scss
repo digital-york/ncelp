@@ -207,7 +207,7 @@ footer.navbar-inverse {
 }
 
 .ncelp-search-result-resource-field-div {
-  padding: 0; 
+  padding: 0;
   padding-top: 10px;
 }
 
@@ -378,7 +378,13 @@ form#surveyform label {
 }
 
 .tab-content {
-  margin-top: 15px;
+  margin-top:15px;
+}
+
+form#new_resource {
+  select {
+    height: 230px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -386,4 +392,35 @@ form#surveyform label {
     margin-right: 0;
     margin-left: 0;
   }
+}
+
+#accordion {
+
+  .ui-state-active {
+    border: 1px solid #c5c5c5;
+    background-color: #f6f6f6;
+    color: #454545;
+    font-weight: normal;
+  }
+
+  .ui-state-active .ui-icon, .ui-button:active .ui-icon {
+    color: #444;
+  }
+
+  .ui-accordion .ui-accordion-content {
+    padding: 0;
+  }
+
+  .ui-icon {
+    background-image: url(/assets/jquery-ui/ui-icons_444444_256x240-31d988765b4e6f56553c29588c500381dc3e6f0aa2980c8212202e5644aefd5d.png);
+  }
+
+  .ncelp-resource-details-box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
 }

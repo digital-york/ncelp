@@ -60,3 +60,5 @@ en:
     institution_name_full: "National Centre for Excellence for Language Pedagogy"
     product_name: NCELP
     product_twitter_handle: "@ncelp"
+    content_blocks:
+      help: Help
