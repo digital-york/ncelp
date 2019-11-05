@@ -119,4 +119,30 @@ $(function() {
         collapsible: true
     });
 
+    function checkPageExist()    {
+        var u = window.location.href.split('?')[0];
+        var collectionid = u.substr(u.lastIndexOf('/')+1);
+        var zipfileurl = window.location.origin + "/zipfiles/" + collectionid + ".zip";
+
+        $.ajax({
+            url: zipfileurl,
+            statusCode: {
+                404: function () {
+                }
+            },
+            success: function () {
+                $('#collection_download_all').css("display", "block");
+                $('#collection_download_all').click(function(){
+                    window.open(zipfileurl,'_blank');
+                });
+            },
+            error: function () {
+            }
+        });
+    }
+
+    if ($('#collection_download_all').length) {
+        checkPageExist();
+    }
+
 });
