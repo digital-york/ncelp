@@ -427,3 +427,12 @@ form#new_resource {
   }
 
 }
+
+#facets {
+  .facet-field-heading {
+    a {
+      width: 90%;
+      display: inline-block;
+    }
+  }
+}
