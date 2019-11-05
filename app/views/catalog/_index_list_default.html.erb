@@ -1,35 +1,34 @@
-<div class="row ncelp-search-result-resource-field-div">
-  <div class="col-md-12">
-    <%= document.one_line_description %>
-  </div>
+<div class="col-md-12">
+  <%= document.one_line_description %>
 </div>
 
-<div class="row ncelp-search-result-resource-field-div">
-  <div class="col-md-12">
+<div class="col-md-12">
+  <div class="ncelp-search-result-resource-field-div">
     <% document.file_type.each do |ft| %>
       <span>
         <%= image_tag(FileTypeIcon.get_icon(ft),
-                      class: "ncelp-search-result-resource-filetype-icon",
-                      alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
-                      title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
+                class: "ncelp-search-result-resource-filetype-icon",
+                alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
+                title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
       </span>
     <% end %>
   </div>
 </div>
 
 <% unless document.language.nil? or document.language.length==0 %>
-<div class="row ncelp-search-result-resource-field-div">
-  <div class="col-md-4">
-    <div>
-      Language being learnt
-    </div>
+<div class="col-md-4">
+  <div class="ncelp-search-result-resource-field-div">
+    Language being learnt
   </div>
-  <div class="col-md-8">
-    <% document.language.each do |l| %>
+</div>
+<div class="col-md-8">
+  <div class="ncelp-search-result-resource-field-div">
+    <% document.language.each do |_language| %>
       <span class="ncelp-search-result-resource-field-value">
-        <%= link_to GenericLocalAuthorityService.id_to_label('language', l),
-                     '/catalog?f[language_sim][]='+l+'&locale=en&q=&search_field=all_fields',
-                     :target => "_blank" %>
+        <%= link_to GenericLocalAuthorityService.id_to_label('language', _language),
+              '/catalog?f[language_sim][]=' + _language + '&locale=en&q=&search_field=all_fields',
+              :target => "_blank",
+              :title => _language %>
       </span>
     <% end %>
   </div>
@@ -37,19 +36,19 @@
 <% end %>
 
 <% unless document.type_of_material.nil? %>
-<div class="row ncelp-search-result-resource-field-div">
-  <div class="col-md-4">
-    <div>
-      Type / purpose of resource
-    </div>
+<div class="col-md-4">
+  <div class="ncelp-search-result-resource-field-div">
+    Type / purpose of resource
   </div>
-  <div class="col-md-8">
+</div>
+<div class="col-md-8">
+  <div class="ncelp-search-result-resource-field-div">
     <span class="ncelp-search-result-resource-field-value">
-
-          <%= link_to GenericLocalAuthorityService.id_to_label('type_of_material',document.type_of_material),
-                  '/catalog?f[type_of_material_sim][]='+document.type_of_material+'&locale=en&q=&search_field=all_fields',
-                  :target => "_blank" %>
-
+      <% material_type_title = GenericLocalAuthorityService.id_to_label('type_of_material',document.type_of_material) %>
+      <%= link_to material_type_title,
+            '/catalog?f[type_of_material_sim][]=' + document.type_of_material + '&locale=en&q=&search_field=all_fields',
+            :target => "_blank",
+            :title => material_type_title %>
     </span>
   </div>
 </div>
