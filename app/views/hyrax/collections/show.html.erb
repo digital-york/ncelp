@@ -89,6 +89,7 @@
       </div>
   <% end # if @members_count > 0 %>
 </div>
+<button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
 <br/><br/>
 
 <% if @presenter.collection_type_is_nestable? && @presenter.total_parent_collections > 0 %>
