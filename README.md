@@ -82,3 +82,19 @@ admin.save
 ```
 bundle exec rails s
 ```
+
+## How to make 'Download all' button for collections working?
+
+1. Add alias in Apache configuration:
+
+    Alias /zipfiles "YOUR LOCAL FOLDER TO STORE ZIP FILES"
+    
+2. Setup a cron job to run the following rake task daily:
+
+    RAILS_ENV=production bundle exec rake zipfile:collections[NCELP_URL, YOUR LOCAL FOLDER TO STORE ZIP FILES]
+
+e.g.
+
+    RAILS_ENV=production bundle exec rake zipfile:collections[http://localhost:3000/, /opt/york/digilib/tmp]    
+   
+3. The frontend, e.g. collection show page should show a 'Download All' button if the zip file for that collection is available.    
