@@ -82,3 +82,4 @@ gem 'blacklight-access_controls'
 gem 'hydra-role-management'
 gem 'mini_magick', '>= 4.9.4'
 gem "nokogiri", ">= 1.10.4"
+gem "zip"
