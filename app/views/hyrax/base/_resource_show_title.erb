@@ -1,16 +1,10 @@
 <% presenter.title.each_with_index do |title, index| %>
-  <div class="row">
-    <div class="col-sm-6">
-      <% if index == 0 %>
-        <h2>Resource details
-        </h2>
+  <div class="row resource-title">
+    <div class="col-sm-12">
+      <% if title.present? %>
+        <h1 class="modal-title"><%= title %></h1>
       <% else %>
-        <h2><%= title %></h2>
-      <% end %>
-    </div>
-    <div class="col-sm-6 text-right">
-      <% if index == 0 %>
-        <%= render "show_ncelp_actions", presenter: presenter %>
+      <h1 class="modal-title">Resource details</h1>
       <% end %>
     </div>
   </div>

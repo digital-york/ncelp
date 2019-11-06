@@ -16,205 +16,209 @@
 
         <div class="form-group">
 
-          <div class="about-you">
+          <div class="about-you" id="aboutyou">
             <strong>About you</strong><br />
             Please tell us what your current role(s) is / are.
             Tick at least one field (this is obligatory in order to download a resource):
           </div>
 
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'language_learner', false, id: 'status_language_learner' %>
-              Language learner
-            </label>
-          </div>
+          <div class="checkbox-group required">
 
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'language_teacher', false, id: 'status_language_teacher' %>
-              Language teacher/instructor
-            </label>
-          </div>
-
-          <!-- Language teacher -->
-          <div style="padding-left: 20px;">
             <div class="form-check">
               <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_pre_elementary', false, id: 'status_language_teacher_pre_elementary' %>
-                Pre-elementary / kindergarten
+                <%= check_box_tag 'survey[status][]', 'language_learner', false, id: 'status_language_learner' %>
+                Language learner
               </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_primary', false, id: 'status_language_teacher_primary' %>
-                Primary school
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_secondary', false, id: 'status_language_teacher_secondary' %>
-                Secondary / high school
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_tertiary', false, id: 'status_language_teacher_tertiary' %>
-                Tertiary / university
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_adult_edu', false, id: 'status_language_teacher_adult_edu' %>
-                Adult education
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_private', false, id: 'status_language_teacher_private' %>
-                Private institution
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'language_teacher_other', false, id: 'status_language_teacher_other' %>
-                Other
-              </label>
-            </div>
-          </div>
 
-          <!-- Materials / curriculum developer -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'materials_developer', false, id: 'status_materials_developer' %>
-              Materials / curriculum developer
-            </label>
-          </div>
-
-          <!-- Media / journalist -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'media', false, id: 'status_media' %>
-              Media / journalist
-            </label>
-          </div>
-
-          <!-- NCELP Specialist Teacher -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'ncelp_specialist_teacher', false, id: 'status_ncelp_specialist_teacher' %>
-              NCELP Specialist Teacher
-            </label>
-          </div>
-
-          <!-- NCELP Hub School Teacher -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'ncelp_hub_school_teacher', false, id: 'status_ncelp_hub_school_teacher' %>
-              NCELP Hub School Teacher
-            </label>
-          </div>
-
-          <!-- Parent -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'parent', false, id: 'status_parent' %>
-              Parent
-            </label>
-          </div>
-
-          <!-- Policy maker -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'policy_maker', false, id: 'status_policy_maker' %>
-              Policy maker
-            </label>
-          </div>
-
-          <!-- Professional development provider -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'professional_development_provider', false, id: 'status_professional_development_provider' %>
-              Professional development provider
-            </label>
-          </div>
-
-          <!-- Student -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'student', false, id: 'status_student' %>
-              Student
-            </label>
-          </div>
-
-          <div style="padding-left: 20px;">
             <div class="form-check">
               <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'undergraduate', false, id: 'status_undergraduate' %>
-                Undergraduate
+                <%= check_box_tag 'survey[status][]', 'language_teacher', false, id: 'status_language_teacher' %>
+                Language teacher/instructor
               </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'masters', false, id: 'status_masters' %>
-                Masters
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'phd', false, id: 'status_phd' %>
-                PhD
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'other', false, id: 'status_other' %>
-                Other
-              </label>
-            </div>
-          </div>
 
-          <!-- Teacher educator -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'teacher_educator', false, id: 'status_teacher_educator' %>
-              Teacher educator
-            </label>
-          </div>
+            <!-- Language teacher -->
+            <div style="padding-left: 20px;">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_pre_elementary', false, id: 'status_language_teacher_pre_elementary' %>
+                  Pre-elementary / kindergarten
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_primary', false, id: 'status_language_teacher_primary' %>
+                  Primary school
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_secondary', false, id: 'status_language_teacher_secondary' %>
+                  Secondary / high school
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_tertiary', false, id: 'status_language_teacher_tertiary' %>
+                  Tertiary / university
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_adult_edu', false, id: 'status_language_teacher_adult_edu' %>
+                  Adult education
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_private', false, id: 'status_language_teacher_private' %>
+                  Private institution
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'language_teacher_other', false, id: 'status_language_teacher_other' %>
+                  Other
+                </label>
+              </div>
+            </div>
 
-          <!-- Test developer -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'test_developer', false, id: 'status_test_developer' %>
-              Test developer
-            </label>
-          </div>
+            <!-- Materials / curriculum developer -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'materials_developer', false, id: 'status_materials_developer' %>
+                Materials / curriculum developer
+              </label>
+            </div>
 
-          <!-- University academic -->
-          <div class="form-check">
-            <label class="form-check-label">
-              <%= check_box_tag 'survey[status][]', 'university_academic', false, id: 'status_university_academic' %>
-              University academic
-            </label>
-          </div>
-          <div style="padding-left: 20px;">
+            <!-- Media / journalist -->
             <div class="form-check">
               <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'early_career', false, id: 'status_early_career' %>
-                Early career
+                <%= check_box_tag 'survey[status][]', 'media', false, id: 'status_media' %>
+                Media / journalist
               </label>
             </div>
+
+            <!-- NCELP Specialist Teacher -->
             <div class="form-check">
               <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'mid_career', false, id: 'status_mid_career' %>
-                Mid-career
+                <%= check_box_tag 'survey[status][]', 'ncelp_specialist_teacher', false, id: 'status_ncelp_specialist_teacher' %>
+                NCELP Specialist Teacher
               </label>
             </div>
+
+            <!-- NCELP Hub School Teacher -->
             <div class="form-check">
               <label class="form-check-label">
-                <%= check_box_tag 'survey[status][]', 'established_scholar', false, id: 'status_established_scholar' %>
-                Established scholar
+                <%= check_box_tag 'survey[status][]', 'ncelp_hub_school_teacher', false, id: 'status_ncelp_hub_school_teacher' %>
+                NCELP Hub School Teacher
               </label>
             </div>
+
+            <!-- Parent -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'parent', false, id: 'status_parent' %>
+                Parent
+              </label>
+            </div>
+
+            <!-- Policy maker -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'policy_maker', false, id: 'status_policy_maker' %>
+                Policy maker
+              </label>
+            </div>
+
+            <!-- Professional development provider -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'professional_development_provider', false, id: 'status_professional_development_provider' %>
+                Professional development provider
+              </label>
+            </div>
+
+            <!-- Student -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'student', false, id: 'status_student' %>
+                Student
+              </label>
+            </div>
+
+            <div style="padding-left: 20px;">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'undergraduate', false, id: 'status_undergraduate' %>
+                  Undergraduate
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'masters', false, id: 'status_masters' %>
+                  Masters
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'phd', false, id: 'status_phd' %>
+                  PhD
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'other', false, id: 'status_other' %>
+                  Other
+                </label>
+              </div>
+            </div>
+
+            <!-- Teacher educator -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'teacher_educator', false, id: 'status_teacher_educator' %>
+                Teacher educator
+              </label>
+            </div>
+
+            <!-- Test developer -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'test_developer', false, id: 'status_test_developer' %>
+                Test developer
+              </label>
+            </div>
+
+            <!-- University academic -->
+            <div class="form-check">
+              <label class="form-check-label">
+                <%= check_box_tag 'survey[status][]', 'university_academic', false, id: 'status_university_academic' %>
+                University academic
+              </label>
+            </div>
+            <div style="padding-left: 20px;">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'early_career', false, id: 'status_early_career' %>
+                  Early career
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'mid_career', false, id: 'status_mid_career' %>
+                  Mid-career
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag 'survey[status][]', 'established_scholar', false, id: 'status_established_scholar' %>
+                  Established scholar
+                </label>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -223,8 +227,7 @@
         <% countries = YAML.load_file("#{Rails.root.to_s}/config/authorities/country_code.yml") %>
         <div class="form-group select optional summary_participants_country">
           <div class="">
-            <label class="control-label select optional bold" for="summary_participants_country">Country (this is
-              obligatory in order to download a resource):</label>
+            <label class="control-label select optional bold" for="summary_participants_country">Country:</label>
             <p class="help-block">Hold down Ctrl/Command to select more than one term</p>
           </div>
           <div class="">
@@ -247,8 +250,7 @@
 
         <!-- email -->
         <div class="form-group">
-          <label id="survey-status-email-label" for="email" class="col-form-label bold">Email
-            (optional):</label>
+          <label id="survey-status-email-label" for="email" class="col-form-label bold">Email:</label>
           <div class="">
             <%= text_field_tag 'survey[email]', nil, class: "form-control", placeholder: "Email", id: 'survey-status-email' %>
           </div>

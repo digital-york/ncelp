@@ -52,10 +52,13 @@ en:
     directory:
       suffix: "@ncelp.org"
     footer:
-      copyright_html: All resources are licensed as <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="navbar-link" target="_blank"><strong>CC BY-NC-SA 4.0</strong></a>
-      disclaimer_html: <a href="https://www.york.ac.uk/about/legal-statements/" class="navbar-link" target="_blank">Legal statements</a> @ University of York
-      service_html: Powered by <a href="https://dlib.york.ac.uk/" class="navbar-link" target="_blank">York Digital Library</a>.
+      copyright_html: All resources are licensed as <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="navbar-link" target="_blank" title="All resources are licensed as CC BY-NC-SA 4.0"><strong>CC BY-NC-SA 4.0</strong></a>
+      disclaimer_html: <a href="https://www.york.ac.uk/about/legal-statements/" class="navbar-link" target="_blank" title="Legal statements">Legal statements</a> @ University of York
+      accessibility_html: <a href="https://ncelp.org/accessibility/" class="navbar-link" target="_blank" title="Accessibility">Accessibility</a>
+      service_html: Powered by <a href="https://dlib.york.ac.uk/" class="navbar-link" target="_blank" title="Powered by York Digital Library">York Digital Library</a>.
     institution_name: NCELP
     institution_name_full: "National Centre for Excellence for Language Pedagogy"
     product_name: NCELP
     product_twitter_handle: "@ncelp"
+    content_blocks:
+      help: Help

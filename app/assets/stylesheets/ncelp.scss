@@ -12,12 +12,12 @@
 }
 .strapline-div {
   height: 100px;
-  position:relative;
+  position: relative;
 }
 .strapline-image {
   width: 90%;
-  position:absolute;
-  bottom:0;
+  position: absolute;
+  bottom: 0;
 }
 
 .extra-space-bottom {
@@ -30,6 +30,9 @@ body {
 
 /* menubar customization */
 .image-masthead {
+  border-bottom: 0;
+  margin-bottom: 15px;
+
   .navbar {
     background-color: white;
     color: #534f4a;
@@ -38,11 +41,13 @@ body {
     .navbar-nav {
       a {
         text-transform: uppercase;
-        color: #534f4a;
+        // color: #534f4a;
+        color: #000;
 
         &:hover,
         &:focus {
-          color: #e8803d;
+          // color: #e8803d;
+          color: #ff6400;
         }
       }
     }
@@ -52,23 +57,28 @@ body {
       &:hover,
       &:focus {
         background-color: white;
-        color: #e8803d;
+        // color: #e8803d;
+        color: #ff6400;
       }
     }
   }
 }
 
 /* footer customizations */
-.ncelp-footer-border{
+.ncelp-footer-border {
   border-top: 2px solid #ed7d31;
   border-bottom: 0px;
   border-left: 0px;
   border-right: 0px;
   padding-top: 5px;
+  margin-top: 15px;
+}
+.ncelp-footer-border .navbar-text {
+  margin-left: 0;
 }
 .ncelp_footer_container {
-  display : flex;
-  align-items : center;
+  display: flex;
+  align-items: center;
 }
 .ncelp_footer_image {
   max-width: 100%;
@@ -82,7 +92,7 @@ footer.navbar-inverse {
 
 .ncelp-homepage-top-box {
   height: 200px;
-  line-height: 200px;  /* to get vertical-align working */
+  line-height: 200px; /* to get vertical-align working */
   text-align: center;
   vertical-align: middle;
   font-size: 30px;
@@ -93,9 +103,10 @@ footer.navbar-inverse {
   text-align: left;
   vertical-align: middle;
   border: 2px solid #eeeeee;
-  border-radius: 15px;
-  margin-top: 20px;
-  padding-left: 30px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 15px;
 }
 .ncelp-searchbox-image-header {
@@ -127,12 +138,36 @@ footer.navbar-inverse {
   border-radius: 10px;
   color: black;
 }
-.ncelp-homepage-browse-button a{
+.ncelp-homepage-browse-button a {
   color: black;
 }
 .ncelp-homepage-browse-button a:visited {
   color: black;
 }
+
+/* New styling for the `Browse by` buttons on homepage */
+.ncelp-homepage-browse-button-link {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  margin-top: 10px;
+
+  background-color: #e87d1e;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #e87d1e;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #fd871f;
+    color: black;
+  }
+}
+
 .ncelp-homepage-bottom-box-left {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -150,38 +185,54 @@ footer.navbar-inverse {
   padding-top: 5px;
   max-height: 100%;
   border: 2px solid #0d4f74;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 .ncelp-homepage-featured-and-recent-box {
   display: flex;
 }
 .ncelp-homepage-featured-field {
   padding: 4px;
-  color: black
+  color: black;
 }
 
 /*search result page customization*/
 .ncelp-search-result-resource-div {
   border: 2px solid #eef0f2;
   -moz-border-radius: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
 }
 .ncelp-search-result-resource-field-div {
-  padding-left:   12px;
-  padding-right:  10px;
-  padding-top:    5px;
+  padding-left: 12px;
+  padding-right: 10px;
+  padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.ncelp-search-result-resource-field-div {
+  padding: 0;
+  padding-top: 10px;
+}
+
 .ncelp-search-result-resource-filetype-icon{
   height: 50px;
   width: 50px;
 }
-.ncelp-search-result-resource-field-value{
-  background-color: #eef0f2;
-  border: 5px solid white;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+.ncelp-search-result-resource-field-value {
+  padding-right: 3px;
+  margin-right: 5px;
+  border-right: 1px solid lightgray;
+
+  a {
+    color: #104f75;
+  }
+
+  // Remove border from last child
+  &:last-child {
+    border:0;
+    margin-right: 0;
+  }
+
 }
 // facet header
 div.facets h3 {
@@ -192,7 +243,7 @@ div.facets h3 {
 .ncelp-resource-details-box {
   border: 2px solid #eef0f2;
   -moz-border-radius: 15px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
   font-weight: bold;
 }
@@ -210,7 +261,7 @@ div.facets h3 {
 .ncelp-resource-details-title-content {
   font-weight: normal;
   font-size: 16px;
-  color: rgb(16,79,117);
+  color: rgb(16, 79, 117);
 }
 .ncelp-resource-details-label {
   font-weight: bold;
@@ -261,15 +312,127 @@ div.facets h3 {
   margin-left: 0;
 }
 
-
 form#surveyform label {
   font-weight: normal;
 }
 
 #surveyform .about-you {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  &.alert-danger {
+    padding: 10px;
+  }
 }
 
 #surveyform .bold {
   font-weight: bold;
+}
+
+#search-results {
+  .search-result-wrapper {
+    margin-bottom: 0;
+  }
+  li {
+    margin-bottom: 15px;
+  }
+  .search-result-title {
+    a {
+      color: #104f75;
+    }
+  }
+}
+
+#facet-panel-collapse {
+  .panel-body {
+    ul {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.resource-title .show-actions,
+.resource-title .social-media {
+  padding: 0;
+}
+
+.resource-title .social-media {
+  display: inline-block;
+}
+
+.resp-sharing-button__link {
+  margin: 0;
+}
+
+.ncelp-resource-details-box h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.ncelp-resource-details-box table th:first-child {
+  padding-left: 0;
+}
+
+.homepage-search-label {
+  font-weight: normal;
+}
+
+.tab-content {
+  margin-top:15px;
+}
+
+form#new_resource {
+  select {
+    height: 230px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+#accordion {
+
+  .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border-color: #ddd;
+  }
+
+  .ui-state-active {
+    border: 1px solid #c5c5c5;
+    background-color: #f6f6f6;
+    color: #454545;
+    font-weight: normal;
+  }
+
+  .ui-state-active .ui-icon, .ui-button:active .ui-icon {
+    color: #444;
+  }
+
+  .ui-accordion .ui-accordion-content {
+    padding: 0;
+  }
+
+  .ui-icon {
+    background-image: url(/assets/jquery-ui/ui-icons_444444_256x240-31d988765b4e6f56553c29588c500381dc3e6f0aa2980c8212202e5644aefd5d.png);
+  }
+
+  .ncelp-resource-details-box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+}
+
+#facets {
+  .facet-field-heading {
+    a {
+      width: 90%;
+      display: inline-block;
+    }
+  }
 }

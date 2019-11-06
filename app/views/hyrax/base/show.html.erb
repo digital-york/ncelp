@@ -2,66 +2,78 @@
 
 <%= render 'shared/citations' %>
 
+<% document=@presenter.solr_document %>
+
 <div class="row">
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= render 'resource_show_title', presenter: @presenter %>
     </div>
+    <% if document.full_description != '' %>
+      <div class="panel-body">
+        <%= document.full_description %>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<div class="row ncelp-resource-details-social">
-  <%= render 'social_media' %>
-</div>
+<div class="row">
 
-<% document=@presenter.solr_document %>
-<!-- top box -->
-<div class="row ncelp-resource-details-box">
-  <%= render :partial => 'generic_title_field', :locals => {:field_name => 'ncelp_title', :field_value => document.ncelp_title} %><br/>
-  <%= render :partial => 'generic_field', :locals => {:field_name => 'full_description', :field_value => document.full_description} %><br/>
-  <div class="row">
-    <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
-      File type
-    </div>
-    <div class="col-xs-12 col-sm-9">
-      <% document.file_type.each do |ft| %>
-        <span>
-          <%= image_tag(FileTypeIcon.get_icon(ft),
-                        class: "ncelp-resource-icon",
-                        alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
-                        title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
-        </span>
+  <div id="accordion">
+
+    <h3>More details</h3>
+
+    <div class="ncelp-resource-details-box">
+      
+      <!-- <div class="row">
+        <div class="col-xs-12 col-sm-3 ncelp-resource-details-label">
+          File type
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <% document.file_type.each do |ft| %>
+            <span>
+              <%= image_tag(FileTypeIcon.get_icon(ft),
+                            class: "ncelp-resource-icon",
+                            alt: GenericLocalAuthorityService.id_to_label('file_type', ft),
+                            title: GenericLocalAuthorityService.id_to_label('file_type', ft))%>
+            </span>
+          <% end %>
+        </div>
+      </div><br/> -->
+
+      <% if document.language.length > 0 %>
+        <%= render :partial => 'authority_field',   :locals => {:field_name => 'language', :field_value => document.language} %><br/>
+      <% end %>
+      <% if document.type_of_material != '' %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'type_of_material', :field_value => document.type_of_material} %><br/>
+      <% end %>
+      <% if document.material_for_teachers.length > 0 %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'material_for_teachers', :field_value => document.material_for_teachers} %><br/>
+      <% end %>
+      <% if document.area_of_research.length > 0 %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'area_of_research', :field_value => document.area_of_research} %><br/>
+      <% end %>
+      <% if document.modality.length > 0 %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'modality', :field_value => document.modality} %><br/>
+      <% end %>
+      <% if document.age.length > 0 %>
+        <%= render :partial => 'authority_field_index_by_id', :locals => {:field_name => 'age', :field_value => document.age, :icon => 'fa-info-circle', :hover_text => 'These ages are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools.'} %><br/>
+      <% end %>
+      <% if document.exposure %>
+        <%= render :partial => 'exposure', :locals => {:field_value => document.exposure} %><br/>
+      <% end %>
+      <% if document.thematic.length > 0 %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'thematic', :field_value => document.thematic} %><br/>
+      <% end %>
+      <% if document.topic.length > 0 %>
+        <%= render :partial => 'authority_field', :locals => {:field_name => 'topic', :field_value => document.topic} %>
       <% end %>
     </div>
-  </div><br/>
-  <% if document.language.length > 0 %>
-    <%= render :partial => 'authority_field',   :locals => {:field_name => 'language', :field_value => document.language} %><br/>
-  <% end %>
-  <% if document.type_of_material != '' %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'type_of_material', :field_value => document.type_of_material} %><br/>
-  <% end %>
-  <% if document.material_for_teachers.length > 0 %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'material_for_teachers', :field_value => document.material_for_teachers} %><br/>
-  <% end %>
-  <% if document.area_of_research.length > 0 %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'area_of_research', :field_value => document.area_of_research} %><br/>
-  <% end %>
-  <% if document.modality.length > 0 %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'modality', :field_value => document.modality} %><br/>
-  <% end %>
-  <% if document.age.length > 0 %>
-    <%= render :partial => 'authority_field_index_by_id', :locals => {:field_name => 'age', :field_value => document.age, :icon => 'fa-info-circle', :hover_text => 'These ages are intended as a guideline. Defining who this resource is for is ultimately up to the judgement of the downloader. Suggestions are based on typical language curriculum structures in UK schools.'} %><br/>
-  <% end %>
-  <% if document.exposure %>
-    <%= render :partial => 'exposure', :locals => {:field_value => document.exposure} %><br/>
-  <% end %>
-  <% if document.thematic.length > 0 %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'thematic', :field_value => document.thematic} %><br/>
-  <% end %>
-  <% if document.topic.length > 0 %>
-    <%= render :partial => 'authority_field', :locals => {:field_name => 'topic', :field_value => document.topic} %>
-  <% end %>
+
+  </div>
+
 </div>
+
 <br/>
 
 <% if document.link_to_iris.length > 0 %>
@@ -85,3 +97,7 @@
     <%= render 'items', presenter: @presenter %>
   </div>
 </div>
+
+<%= render 'social_media', presenter: @presenter %>
+
+<%= render "show_ncelp_actions", presenter: @presenter %>
