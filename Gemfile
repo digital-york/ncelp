@@ -68,7 +68,7 @@ gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 
-gem 'hyrax', '>= 2.5.0'
+gem 'hyrax', '>= 2.6.0'
 
 gem 'blacklight-access_controls'
 gem 'hydra-role-management'
@@ -78,3 +78,6 @@ gem 'rsolr', '>= 1.0'
 gem 'figaro'          # env managment
 gem 'pg', '~> 1.1.4'  # Postgres DB
 gem 'zip'
+gem "simple_form", ">= 5.0.0"
+gem "rubyzip", ">= 1.3.0"
+gem 'riiif', '~> 1.1'
