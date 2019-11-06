@@ -30,9 +30,6 @@ gem 'jbuilder', '~> 2.5'
 group :production do
   # Standalone passenger
   gem 'passenger', '~> 5.2.0'
-
-  # Postgres DB
-  gem 'pg', '~> 1.1.4'
 end
 
 group :development, :test do
@@ -64,21 +61,20 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'hyrax', '>= 2.5.0'
-
+gem 'actionview', '>= 5.1.6.2'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'devise', '>= 4.7.1'
 gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
-gem 'rsolr', '>= 1.0'
-gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
+gem 'mini_magick', '>= 4.9.4'
 
-gem 'riiif', '~> 1.1'
+gem 'hyrax', '>= 2.5.0'
 
-gem 'figaro'
-
-gem 'actionview', '>= 5.1.6.2'
 gem 'blacklight-access_controls'
 gem 'hydra-role-management'
-gem 'mini_magick', '>= 4.9.4'
-gem "nokogiri", ">= 1.10.4"
+gem 'nokogiri', '>= 1.10.4'
+gem 'rsolr', '>= 1.0'
+
+gem 'figaro'          # env managment
+gem 'pg', '~> 1.1.4'  # Postgres DB
+gem 'zip'
