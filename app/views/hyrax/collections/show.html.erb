@@ -1,3 +1,16 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<style>
+  .fancybox-container {
+    width: 100%;
+  }
+  .fancybox-content {
+    max-width: 600px;
+    max-height: 800px;
+  }
+</style>
+
 <% provide :page_title, construct_page_title(@presenter.title) %>
 <div class="hyc-container" itemscope itemtype="http://schema.org/CollectionPage">
   <div class="row hyc-header">
@@ -85,7 +98,26 @@
       </div>
 
       <div class="hyc-blacklight">
-        <button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
+        <% collectionid= @presenter.solr_document.id %>
+        <% unless (session['has_done_survey'] == 'yes' or collectionid.nil?) %>
+          <a data-fancybox
+             class="btn btn-primary"
+             data-type="iframe"
+             data-captain="Downloader Survey"
+             data-src="/survey/new?from=collection&collection_id=<%= collectionid %>"
+             data-options='{
+                "buttons" : ["close"],
+                "animationEffect": "fade",
+                "animationDuration": "500",
+                "autoFocus": "true",
+                "modal": "true"
+             }'
+             href="javascript:;" >
+            Download All
+          </a>
+        <% else %>
+          <button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
+        <% end %>
       </div>
 
       <div class="hyc-blacklight hyc-bl-pager">
