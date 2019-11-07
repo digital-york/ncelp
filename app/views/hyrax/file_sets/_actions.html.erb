@@ -17,7 +17,7 @@
     <% resourceid= @presenter.solr_document.id %>
     <% unless (session['has_done_survey'] == 'yes' or resourceid.nil?) %>
       <a data-fancybox
-        class="btn btn-primary"
+        class="btn btn-primary btn-block"
         data-type="iframe"
         data-captain="Downloader Survey"
         data-src="/survey/new?resource_id=<%= resourceid %>&resource_fileset_id=<%= file_set.id%>"
@@ -38,15 +38,17 @@
                   target: "_blank",
                   id: "file_download",
                   data: { label: file_set.id },
-                  class: "btn btn-primary" %>
+                  class: "btn btn-primary btn-block" %>
     <% end %>
   <% end %>
 
   <% if can?(:edit, file_set.id) or can?(:destroy, file_set.id) %>
 
-    <div class="btn-group">
+    <br />
 
-      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" id="dropdownMenu_<%= file_set.id %>" aria-haspopup="true" aria-expanded="false">
+    <div class="btn-group btn-block">
+
+      <button class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown" type="button" id="dropdownMenu_<%= file_set.id %>" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only">Press to </span>
         <%= t('.header') %>
         <span class="caret" aria-hidden="true"></span>
