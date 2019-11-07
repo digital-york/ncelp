@@ -262,7 +262,9 @@
 
         <!-- Store resource id -->
         <div class="form-group">
+          <input type="hidden" name="from" value="<%= params["from"] %>" />
           <input type="hidden" name="resource_id" value="<%= params["resource_id"] %>" />
+          <input type="hidden" name="collection_id" value="<%= params["collection_id"] %>" />
           <input type="hidden" name="resource_fileset_id" value="<%= params["resource_fileset_id"] %>" />
           <%= link_to t(:'helpers.action.cancel'), '#', onclick: "parent.$.fancybox.close();", class: 'btn btn-primary' %>
           <input type="submit" class="btn btn-primary" id="survey_form_submit" value="Save & Submit">
