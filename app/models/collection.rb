@@ -5,5 +5,5 @@ class Collection < ActiveFedora::Base
   include Hyrax::BasicMetadata
   self.indexer = Hyrax::CollectionWithBasicMetadataIndexer
 
-  has_many :downloaders, dependent: :destroy, class_name: 'Downloader', :autosave => true, :predicate => ::RDF::URI.new('https://ncelp.org/terms#has_many_resource')
+  has_many :downloaders, dependent: :destroy, class_name: 'Downloader', :autosave => true, :predicate => ::RDF::URI.new('https://ncelp.org/terms#has_many_collection')
 end
