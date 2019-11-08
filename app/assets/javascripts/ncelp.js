@@ -1,5 +1,3 @@
-//= require jquery-ui/widgets/accordion
-
 $(function() {
     // ---------------------------------------------------
     // show/hide other language fields
