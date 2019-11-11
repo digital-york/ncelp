@@ -15,6 +15,7 @@
 //
 // Required by Blacklight
 //= require jquery
+//= require jquery-ui/widgets/accordion
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
