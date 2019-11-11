@@ -81,3 +81,4 @@ gem 'pg', '~> 1.1.4'  # Postgres DB
 gem 'sidekiq'
 gem "rubyzip", ">= 1.3.0"
 gem "simple_form", ">= 5.0.0"
+gem "browse-everything", "< 1.0.0"
