@@ -1,12 +1,12 @@
 <div class="row download-item">
   <div class="col-xs-12 col-sm-2 col-md-2">
     <div class="inner">
-      <%= render_ncelp_thumbnail_tag member, contextual_path(member, @presenter), { alt: "Download file " + member.link_name, class: "img-responsive" }, { title: "Download file " + member.link_name } %>
+      <%= render_ncelp_thumbnail_tag member, contextual_path(member, @presenter), { alt: "File details " + member.link_name, class: "img-responsive" }, { title: "File details " + member.link_name } %>
     </div>
   </div>
   <div class="col-xs-12 col-sm-7 col-md-8">
     <div class="inner text">
-      <%= link_to(member.link_name, contextual_path(member, @presenter), title: "Download file " + member.link_name) %><br />
+      <%= link_to(member.link_name, contextual_path(member, @presenter), title: "File details " + member.link_name) %><br />
       Uploaded on <%= member.try(:date_uploaded) %><br />
       <%= member.permission_badge %>
     </div>
