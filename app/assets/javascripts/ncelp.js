@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
     // ---------------------------------------------------
     // show/hide other language fields
     function check_language_other_fields() {
