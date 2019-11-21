@@ -4,6 +4,7 @@ class Downloader < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
 
   belongs_to :ncelp_resource, class_name: 'Resource', :autosave => true, :predicate => ActiveFedora::RDF::Fcrepo::RelsExt.isPartOf
+  belongs_to :collection, class_name: 'Collection', :autosave => true, :predicate => ActiveFedora::RDF::Fcrepo::RelsExt.isPartOf
 
   self.indexer = DownloaderIndexer
 

@@ -33,3 +33,7 @@
 
 # Ignore local bundling
 /vendor/*
+
+# Docker file
+/docker/ncelp_id_rsa*
+/.env

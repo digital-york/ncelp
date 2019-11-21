@@ -244,8 +244,32 @@ div.facets h3 {
   border: 2px solid #eef0f2;
   -moz-border-radius: 15px;
   border-radius: 10px;
-  padding: 10px;
-  font-weight: bold;
+
+  .download-item {
+    
+    .inner {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    &:nth-child(odd) {
+      background-color: #eee;
+    }
+
+    &:hover {
+      background-color: #ddd;
+    }
+
+    .text {
+      display: inline-block;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+    }
+    
+  }
+
 }
 .ncelp-resource-details-social {
   text-align: right;

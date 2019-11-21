@@ -12,8 +12,16 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-sm-12">
+            <%
+            download_url = ''
+            if params['from']=='collection'
+                download_url = "/zipfiles/#{params['collection_id']}.zip"
+            else
+                download_url = "/downloads/#{params['fileset_id']}"
+            end
+            %>
 
-            <button type="button" class="btn btn-info" onclick="window.open('/downloads/<%= params["fileset_id"]%>','_blank');parent.location.reload(true);">Download resource</button>
+            <button type="button" class="btn btn-info" onclick="window.open('<%= download_url%>','_blank');parent.location.reload(true);">Download resource</button>
 
             <button type="button" class="btn btn-info" onclick="parent.location.reload(true);">Close</button>
 
