@@ -1,11 +1,11 @@
 <!-- top boxes -->
-<div class="container">
+<div class="containerX">
 
   <div class="hidden">
       <h1>NCELP Resource Portal - National Centre for Excellence for Language Pedagogy</h1>
   </div>
 
-  <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
+  <div class="col-md-12 ncelp-homepage-middle-box">
 
     <h3>Search</h3>
 
@@ -21,11 +21,11 @@
     Don't know what to search for? Browse "<strong>All Resources</strong>" below and use the filters to refine your search
   </div>
 
-  <div class="col-xs-12 col-sm-12 ncelp-homepage-middle-box">
-
-    <h3>Browse by</h3>
-
+  <div class="col-md-12 ncelp-homepage-middle-box">
+    
     <div class="row">
+
+      <h3 class="col-md-12">Browse by</h3>
 
       <%
       browse_by_links = [
@@ -41,7 +41,7 @@
       %>
 
       <% browse_by_links.each do |browse_by_link| %>
-        <div class="col-md-3 col-xs-6 col-sm-12 ncelp-homepage-browse-button-div">
+        <div class="col-md-3 col-xs-12 col-sm-12 ncelp-homepage-browse-button-div">
           <%=link_to browse_by_link[0], browse_by_link[1], target: :_blank, title: 'Browse by ' + browse_by_link[0].downcase, class: "ncelp-homepage-browse-button-link" %>
         </div>
       <% end %>
@@ -51,33 +51,49 @@
 </div>
 
 <!-- bottom boxes -->
-<div class="container ncelp-homepage-featured-and-recent-box">
-  <div class="col-xs-12 col-sm-7 ncelp-homepage-bottom-box-left">
-    <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
-    <%= render 'featured_works' %>
-    <br/>
-  </div>
-  <div class="col-xs-12 col-sm-5 ncelp-homepage-bottom-box-right">
+<div class="containerX ncelp-homepage-featured-and-recent-box">
+
+  <div class="col-xs-12 col-sm-12 col-md-6 ncelp-homepage-bottom-box">
+
+    <div class="ncelp-homepage-bottom-box-left">
     
-    <div class="tab-buttons">
-      <a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab" class="btn btn-primary"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></a>
-      <a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab" class="btn btn-default">Explore Collections</a>
-    </div>
+          <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
+          <%= render 'featured_works' %>
 
-    <div class="tab-content">
-      <div class="tab-pane active" id="tab-col2-first">
-        <%= render 'recently_uploaded', recent_documents: @recent_documents %>
-      </div>
-      <div class="tab-pane" id="tab-col2-second">
-        <%= render 'explore_collections', collections: @presenter.collections %>
-      </div>
     </div>
-
 
   </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 ncelp-homepage-bottom-box">
+    
+    <div class="ncelp-homepage-bottom-box-right tabs">
+
+        <div class="tab-buttons" role="tablist" aria-label="Recently uploaded and explore collections">
+          <button aria-expanded="true" href="#tab-col2-first" role="tab" aria-selected="true" aria-controls="tab-col2-first" id="tab-1" data-toggle="tab" class="btn btn-primary"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></button>
+          <button aria-expanded="false" href="#tab-col2-second" role="tab" aria-selected="false" aria-controls="tab-col2-second" id="tab-2" data-toggle="tab" class="btn btn-default">Explore Collections</button>
+        </div>
+
+        <div class="tab-content">
+
+          <div class="tab-pane active" id="tab-col2-first" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+            <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+          </div>
+
+          <div class="tab-pane" id="tab-col2-second" role="tabpanel" tabindex="0" aria-labelledby="tab-2">
+            <%= render 'explore_collections', collections: @presenter.collections %>
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
 </div>
 
-<div class="container extra-space-bottom ncelp_footer_container">
+
+
+<div class="containerX extra-space-bottom ncelp_footer_container">
   <div class="col-sm-10" style="padding-top: 20px;">
     <%= link_to image_tag(t('ncelp.footer.education_dept_logo'), :class=>'ncelp_footer_image', alt: "Department for Education"), "https://www.york.ac.uk/education/", target: :_blank %>
   </div>

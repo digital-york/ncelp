@@ -2,7 +2,9 @@
 <% share_url ||= request.original_url %>
 <div class="social-media">
   <!-- Sharingbutton Facebook -->
-  <%= link_to "https://facebook.com/sharer/sharer.php?#{{u: share_url}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.facebook') do %>
+  <%#= link_to "https://facebook.com/sharer/sharer.php?#{{u: share_url}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.facebook') do %>
+
+  <a class="resp-sharing-button__link" target="_blank" rel="noopener noreferrer" title="Facebook" href="https://facebook.com/sharer/sharer.php?u=<%= u share_url %>" aria-label="Share this item on Facebook">
     <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
           <g>
@@ -11,10 +13,14 @@
       </svg>
       </div>
     </div>
-  <% end %>
+  </a>
+
+  <%# end %>
 
   <!-- Sharingbutton Twitter -->
-  <%= link_to "https://twitter.com/intent/tweet/?#{{text: page_title, url: share_url}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.twitter') do %>
+  <%#= link_to "https://twitter.com/intent/tweet/?#{{text: page_title, url: share_url}.to_param}", class: 'resp-sharing-button__link', target: '_blank', rel: 'noopener noreferrer', title: t('hyrax.base.social_media.twitter') do %>
+
+  <a class="resp-sharing-button__link" target="_blank" rel="noopener noreferrer" title="Twitter" href="https://twitter.com/intent/tweet/?text=<%= CGI.escape page_title %>&amp;url=<%= u share_url %>" aria-label="Share this item on Twitter">
     <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
           <g>
@@ -23,6 +29,8 @@
       </svg>
       </div>
     </div>
-  <% end %>
+  </a>
+
+  <%# end %>
 
 </div>
