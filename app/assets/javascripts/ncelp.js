@@ -123,6 +123,8 @@ $(document).on('turbolinks:load', function() {
         var zipfileurl = window.location.origin + "/zipfiles/" + collectionid + ".zip";
 
         $.ajax({
+            type: 'HEAD',
+            async: true,
             url: zipfileurl,
             statusCode: {
                 404: function () {
