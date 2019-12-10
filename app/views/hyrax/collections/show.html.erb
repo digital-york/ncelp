@@ -102,6 +102,8 @@
         <% unless (session['has_done_survey'] == 'yes' or collectionid.nil?) %>
           <a data-fancybox
              class="btn btn-primary"
+             id="collection_download_all"
+             style="display:none; width: 107px;"
              data-type="iframe"
              data-captain="Downloader Survey"
              data-src="/survey/new?from=collection&collection_id=<%= collectionid %>"
@@ -119,6 +121,7 @@
           <button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
         <% end %>
       </div>
+      <br/>
 
       <div class="hyc-blacklight hyc-bl-pager">
         <%= render 'paginate' %>
