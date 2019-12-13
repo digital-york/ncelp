@@ -76,6 +76,8 @@ namespace :zipfile do
                         File.delete("#{download_folder}/#{collection_id}.zip") if File.exist?("#{download_folder}/#{collection_id}.zip")
                         # Create a zip file
                         create_zip(download_folder, collection_id)
+                        # Delete temporary folder/files
+                        FileUtils.rm_rf("#{download_folder}/#{collection_id}")
                     end
                 else
                     Rails.logger.info "    no update for collection: #{collection_id}, can use previously generated zip file."
