@@ -7,17 +7,25 @@
 }
 
 .logo-image {
-  width: 90%;
+  width: 100%;
   max-height: 100px;
 }
 .strapline-div {
-  height: 100px;
   position: relative;
+
+  @media only screen and (min-width: 1024px) {
+    height: 100px
+}
 }
 .strapline-image {
-  width: 90%;
-  position: absolute;
-  bottom: 0;
+  max-width: 100%;
+
+  @media only screen and (min-width: 1024px) {
+      width: 90%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+  }
 }
 
 .extra-space-bottom {
@@ -29,37 +37,32 @@ body {
 }
 
 /* menubar customization */
-.image-masthead {
-  border-bottom: 0;
-  margin-bottom: 15px;
+.navbar {
+  background-color: white;
+  color: #534f4a;
 
-  .navbar {
-    background-color: white;
-    color: #534f4a;
-    margin-bottom: 0;
+  .container-fluid {
+    padding: 0;
+  }
 
-    .navbar-nav {
-      a {
-        text-transform: uppercase;
-        // color: #534f4a;
-        color: #000;
+  .navbar-nav {
+    a {
+      text-transform: uppercase;
+      color: #000 !important;
 
-        &:hover,
-        &:focus {
-          // color: #e8803d;
-          color: #ff6400;
-        }
-      }
-    }
-
-    .active > a {
-      &,
       &:hover,
       &:focus {
-        background-color: white;
-        // color: #e8803d;
         color: #ff6400;
       }
+    }
+  }
+
+  .active > a {
+    &,
+    &:hover,
+    &:focus {
+      background-color: white;
+      color: #ff6400;
     }
   }
 }
@@ -105,9 +108,12 @@ footer.navbar-inverse {
   border: 2px solid #eeeeee;
   border-radius: 10px;
   margin-bottom: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
   padding-bottom: 15px;
+
+
+
 }
 .ncelp-searchbox-image-header {
   padding-top: 5px;
@@ -169,27 +175,40 @@ footer.navbar-inverse {
 }
 
 .ncelp-homepage-bottom-box-left {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  max-height: 100%;
+  // margin-top: 10px;
+  // margin-bottom: 10px;
+  // margin-right: 5px;
+  // max-height: 100%;
   background-color: #0d4f74;
   color: white;
   border: 2px solid #0d4f74;
   border-radius: 10px;
+
+  padding: 15px;
+
+  h4 {
+    margin-top: 0;
+  }
 }
 .ncelp-homepage-bottom-box-right {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  margin-left: 5px;
-  padding-top: 5px;
-  max-height: 100%;
+  // margin-top: 12px;
+  // margin-bottom: 12px;
+  // margin-left: 5px;
+  // padding-top: 5px;
+  // max-height: 100%;
   border: 2px solid #0d4f74;
   border-radius: 10px;
+
+  padding: 15px;
 }
-.ncelp-homepage-featured-and-recent-box {
-  display: flex;
+// .ncelp-homepage-featured-and-recent-box {
+//   display: flex;
+// }
+
+.ncelp-homepage-bottom-box {
+  margin-bottom: 15px;
 }
+
 .ncelp-homepage-featured-field {
   padding: 4px;
   color: black;
@@ -253,7 +272,7 @@ div.facets h3 {
     }
 
     &:nth-child(odd) {
-      background-color: #eee;
+      background-color: #f6f6f6;
     }
 
     &:hover {
@@ -411,9 +430,14 @@ form#new_resource {
 }
 
 @media only screen and (max-width: 800px) {
-  .row {
-    margin-right: 0;
-    margin-left: 0;
+  // .row {
+  //   margin-right: 0;
+  //   margin-left: 0;
+  // }
+
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
