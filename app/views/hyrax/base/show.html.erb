@@ -11,7 +11,7 @@
     </div>
     <% if document.full_description != '' %>
       <div class="panel-body">
-        <%= document.full_description %>
+        <%= simple_format(document.full_description).gsub(/https?:\/\/[\S]+/, '<a href="\0">\0</a>').html_safe %>
       </div>
     <% end %>
   </div>
