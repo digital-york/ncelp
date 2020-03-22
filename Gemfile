@@ -5,9 +5,9 @@ gem 'rails', '~> 5.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12.4'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :production do
   # Standalone passenger
-  gem 'passenger', '~> 5.2.0'
+  gem 'passenger'
 end
 
 group :development, :test do
@@ -61,14 +61,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'actionview', '>= 5.1.6.2'
+#gem 'actionview', '>= 5.2.4.2'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'devise', '>= 4.7.1'
 gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 
-gem 'hyrax', '>= 2.7.0'
+gem 'hyrax', '~> 2.7.1'
 
 gem 'blacklight-access_controls'
 gem 'browse-everything', '< 1.0.0'
