@@ -484,3 +484,26 @@ form#new_resource {
     }
   }
 }
+
+#coronavirus {
+  border-color: #074e76;
+  background-color: #074e76;
+
+  h2 {
+    color: #fff;
+    text-transform: none;
+    border-bottom: 2px solid #b75f00;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    .btn {
+      background-color: #fd871f;
+      &:hover {
+        text-decoration: underline;
+
+      }
+    }
+  }
+}
