@@ -5,23 +5,28 @@
       <h1>NCELP Resource Portal - National Centre for Excellence for Language Pedagogy</h1>
   </div>
 
-  <div class="col-md-12 ncelp-homepage-middle-box" id="coronavirus">
+  <div class="col-md-12 ncelp-homepage-middle-box" id="coronavirus" aria-label="Coronavirus banner" role="banner">
     <h2>Coronavirus (COVID-19)</h2>
 
     <div class="buttons">
       <a class="btn btn-primary"
+          role="button"
           href="https://ncelp.org/ncelp-approaches-to-remote-teaching-and-learning/"
+          target="_blank"
           title="NCELP approaches to
-      remote teaching and learning">NCELP approaches to
+      remote teaching and learning (opens in a new window)">NCELP approaches to
           remote teaching and learning</a>
-      <a class="btn btn-primary" href="https://ncelp.org/ncelp-teacher-cpd"
-          title="NCELP teacher CPD">NCELP teacher CPD</a>
+      <a class="btn btn-primary"
+          role="button" 
+          href="https://ncelp.org/ncelp-teacher-cpd"
+          target="_blank"
+          title="NCELP teacher CPD (opens in a new window)">NCELP teacher CPD</a>
     </div>
   </div>
 
   <div class="col-md-12 ncelp-homepage-middle-box">
 
-    <h3>Search</h3>
+    <h2>Search</h2>
 
     <br/>
 
@@ -39,7 +44,7 @@
     
     <div class="row">
 
-      <h3 class="col-md-12">Browse by</h3>
+      <h2 class="col-md-12">Browse by</h2>
 
       <%
       browse_by_links = [
@@ -71,7 +76,7 @@
 
     <div class="ncelp-homepage-bottom-box-left">
     
-          <h4><%= t('hyrax.homepage.featured_works.tab_label') %></h4>
+          <h2><%= t('hyrax.homepage.featured_works.tab_label') %></h2>
           <%= render 'featured_works' %>
 
     </div>
