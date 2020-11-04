@@ -68,7 +68,7 @@ gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 
-gem 'hyrax', '>= 2.6.0'
+gem 'hyrax', '>= 2.9.0'
 
 gem 'blacklight-access_controls'
 gem 'browse-everything', '< 1.0.0'
