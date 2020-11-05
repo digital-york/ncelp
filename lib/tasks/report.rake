@@ -161,11 +161,14 @@ namespace :report do
             response['response']['docs'].each do |doc|
                 puts "Analysing [#{i} / #{number_of_resources}]"
                 resource_id = doc['id']
+                collection_id = doc['member_of_collection_ids_ssim'][0] unless doc['member_of_collection_ids_ssim'].blank?
                 fileset_ids = doc['file_set_ids_ssim']
                 unless fileset_ids.blank?
                     fileset_ids.each do |fileset_id|
                         fs = FileSet.find(fileset_id)
-                        results << "#{base_url}/download/#{fileset_id}, #{base_url}/concern/resources/#{resource_id}," + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+",#{fs.creator[0]}"
+                        collection_url = ''
+                        collection_url = "#{base_url}/collections/#{collection_id}" unless collection_id.blank?
+                        results << "#{base_url}/download/#{fileset_id}, #{base_url}/concern/resources/#{resource_id}," + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+",#{fs.creator[0]},#{collection_url}"
                     end
                 end
                 i = i + 1
