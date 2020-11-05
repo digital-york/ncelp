@@ -136,11 +136,16 @@ namespace :report do
         end
     end
 
-    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.html,https://resources.ncelp.org]
+    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.html,https://resources.ncelp.org,7]
+    # The rake task takes 3 parameters:
+    # The first one is the output file name
+    # The second one is the base URL
+    # The third one is the number of days from now. The file must be uploaded within these days.
     desc 'Generate file report'
-    task :files, [:csv_filename,:base_url]  => :environment do |t, args|
+    task :files, [:csv_filename,:base_url,:days]  => :environment do |t, args|
         csv = args[:csv_filename]
         base_url = args[:base_url]
+        days = args[:days].to_i
         results = []
 
         solr_query = 'has_model_ssim:Resource'
@@ -176,6 +181,11 @@ namespace :report do
                 unless fileset_ids.blank?
                     fileset_ids.each do |fileset_id|
                         fs = FileSet.find(fileset_id)
+                        # ignore files created before days from now
+                        if Date.today - days > fs.date_modified
+                            next
+                        end
+
                         fileset_title = ''
                         fileset_title = fs.title[0] unless fs.title.blank?
                         collection_url = ''
