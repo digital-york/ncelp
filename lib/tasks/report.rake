@@ -136,7 +136,7 @@ namespace :report do
         end
     end
 
-    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.csv,https://resources.ncelp.org]
+    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.html,https://resources.ncelp.org]
     desc 'Generate file report'
     task :files, [:csv_filename,:base_url]  => :environment do |t, args|
         csv = args[:csv_filename]
@@ -158,21 +158,50 @@ namespace :report do
             puts '------------------------------'
 
             i = 1
+            results << "<table>"
+            results << "<tr>"
+            results << "<td width=\"25%\">File</td>"
+            results << "<td width=\"25%\">Resource</td>"
+            results << "<td width=\"10%\">Date</td>"
+            results << "<td width=\"15%\">Depositor</td>"
+            results << "<td width=\"25%\">Collection</td>"
+            results << "</tr>"
             response['response']['docs'].each do |doc|
                 puts "Analysing [#{i} / #{number_of_resources}]"
                 resource_id = doc['id']
+                resource_title = ''
+                resource_title = doc['title_tesim'][0] unless doc['title_tesim'].blank?
                 collection_id = doc['member_of_collection_ids_ssim'][0] unless doc['member_of_collection_ids_ssim'].blank?
                 fileset_ids = doc['file_set_ids_ssim']
                 unless fileset_ids.blank?
                     fileset_ids.each do |fileset_id|
                         fs = FileSet.find(fileset_id)
+                        fileset_title = ''
+                        fileset_title = fs.title[0] unless fs.title.blank?
                         collection_url = ''
-                        collection_url = "#{base_url}/collections/#{collection_id}" unless collection_id.blank?
-                        results << "#{base_url}/download/#{fileset_id}, #{base_url}/concern/resources/#{resource_id}," + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+",#{fs.creator[0]},#{collection_url}"
+                        collection_title = ''
+                        collection_column = ''
+                        unless collection_id.blank?
+                            c = Collection.find(collection_id)
+                            collection_title = c.title[0]
+                            collection_column = "<a href=\"#{base_url}/collections/#{collection_id}\">#{collection_title}</a>"
+                        end
+
+                        fs_column = "<a href=\"#{base_url}/concern/parent/#{resource_id}/file_sets/#{fileset_id}\">#{fileset_title}</a>"
+                        resource_column = "<a href=\"#{base_url}/concern/resources/#{resource_id}\">#{resource_title}</a>"
+
+                        results << "<tr>"
+                        results << "<td width=\"25%\">#{fs_column}</td>"
+                        results << "<td width=\"25%\">#{resource_column}</td>"
+                        results << "<td width=\"10%\">" + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
+                        results << "<td width=\"15%\">#{fs.creator[0]}</td>"
+                        results << "<td width=\"25%\">#{collection_column}</td>"
+                        results << "</tr>"
                     end
                 end
                 i = i + 1
             end
+            results << "</table>"
             File.open(csv, "w") do |f|
                 results.each { |line| f.puts(line) }
             end
