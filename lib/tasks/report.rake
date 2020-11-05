@@ -136,4 +136,44 @@ namespace :report do
         end
     end
 
+    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.csv,https://resources.ncelp.org]
+    desc 'Generate file report'
+    task :files, [:csv_filename,:base_url]  => :environment do |t, args|
+        csv = args[:csv_filename]
+        base_url = args[:base_url]
+        results = []
+
+        solr_query = 'has_model_ssim:Resource'
+        solr = RSolr.connect :url => SOLR
+        response = solr.get 'select', :params => {
+            :q=>"#{solr_query}",
+            :start=>0,
+            :rows=>100000
+        }
+        number_of_resources = response['response']['numFound']
+        if number_of_resources == 0
+            puts 'No resource found.'
+        else
+            puts "Total resources: #{number_of_resources}"
+            puts '------------------------------'
+
+            i = 1
+            response['response']['docs'].each do |doc|
+                puts "Analysing [#{i} / #{number_of_resources}]"
+                resource_id = doc['id']
+                fileset_ids = doc['file_set_ids_ssim']
+                unless fileset_ids.blank?
+                    fileset_ids.each do |fileset_id|
+                        fs = FileSet.find(fileset_id)
+                        results << "#{base_url}/download/#{fileset_id}, #{base_url}/concern/resources/#{resource_id}," + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+",#{fs.creator[0]}"
+                    end
+                end
+                i = i + 1
+            end
+            File.open(csv, "w") do |f|
+                results.each { |line| f.puts(line) }
+            end
+        end
+    end
+
 end
