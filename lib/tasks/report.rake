@@ -165,17 +165,20 @@ namespace :report do
             i = 1
             results << "<table>"
             results << "<tr>"
-            results << "<td width=\"25%\">File</td>"
-            results << "<td width=\"25%\">Resource</td>"
-            results << "<td width=\"10%\">Date</td>"
-            results << "<td width=\"15%\">Depositor</td>"
-            results << "<td width=\"25%\">Collection</td>"
+            results << "<td width=\"20%\">Collection</td>"
+            results << "<td width=\"10%\">Resource date</td>"
+            results << "<td width=\"20%\">Resource</td>"
+            results << "<td width=\"20%\">File</td>"
+            results << "<td width=\"10%\">File date</td>"
+            results << "<td width=\"20%\">Depositor</td>"
             results << "</tr>"
+
             response['response']['docs'].each do |doc|
                 puts "Analysing [#{i} / #{number_of_resources}]"
                 resource_id = doc['id']
                 resource_title = ''
                 resource_title = doc['title_tesim'][0] unless doc['title_tesim'].blank?
+                resource_create_date = Date.parse(doc['date_uploaded_dtsi'])
                 collection_id = doc['member_of_collection_ids_ssim'][0] unless doc['member_of_collection_ids_ssim'].blank?
                 fileset_ids = doc['file_set_ids_ssim']
                 unless fileset_ids.blank?
@@ -201,11 +204,12 @@ namespace :report do
                         resource_column = "<a href=\"#{base_url}/concern/resources/#{resource_id}\">#{resource_title}</a>"
 
                         results << "<tr>"
-                        results << "<td width=\"25%\">#{fs_column}</td>"
-                        results << "<td width=\"25%\">#{resource_column}</td>"
+                        results << "<td width=\"20%\">#{collection_column}</td>"
+                        results << "<td width=\"10%\">" + resource_create_date.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
+                        results << "<td width=\"20%\">#{resource_column}</td>"
+                        results << "<td width=\"20%\">#{fs_column}</td>"
                         results << "<td width=\"10%\">" + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
-                        results << "<td width=\"15%\">#{fs.creator[0]}</td>"
-                        results << "<td width=\"25%\">#{collection_column}</td>"
+                        results << "<td width=\"20%\">#{fs.creator[0]}</td>"
                         results << "</tr>"
                     end
                 end
