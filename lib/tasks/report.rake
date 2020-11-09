@@ -3,6 +3,7 @@
 
 namespace :report do
     require 'figaro'
+    require_relative 'file_desc'
 
     SOLR = Figaro.env.solr_url
 
@@ -146,7 +147,7 @@ namespace :report do
         csv = args[:csv_filename]
         base_url = args[:base_url]
         days = args[:days].to_i
-        results = []
+        filedesc_array = []
 
         solr_query = 'has_model_ssim:Resource'
         solr = RSolr.connect :url => SOLR
@@ -163,15 +164,6 @@ namespace :report do
             puts '------------------------------'
 
             i = 1
-            results << "<table>"
-            results << "<tr>"
-            results << "<td width=\"20%\">Collection</td>"
-            results << "<td width=\"10%\">Resource date</td>"
-            results << "<td width=\"20%\">Resource</td>"
-            results << "<td width=\"20%\">File</td>"
-            results << "<td width=\"10%\">File date</td>"
-            results << "<td width=\"20%\">Depositor</td>"
-            results << "</tr>"
 
             response['response']['docs'].each do |doc|
                 puts "Analysing [#{i} / #{number_of_resources}]"
@@ -191,29 +183,55 @@ namespace :report do
 
                         fileset_title = ''
                         fileset_title = fs.title[0] unless fs.title.blank?
-                        collection_url = ''
                         collection_title = ''
-                        collection_column = ''
                         unless collection_id.blank?
                             c = Collection.find(collection_id)
                             collection_title = c.title[0]
-                            collection_column = "<a href=\"#{base_url}/collections/#{collection_id}\">#{collection_title}</a>"
                         end
-
-                        fs_column = "<a href=\"#{base_url}/concern/parent/#{resource_id}/file_sets/#{fileset_id}\">#{fileset_title}</a>"
-                        resource_column = "<a href=\"#{base_url}/concern/resources/#{resource_id}\">#{resource_title}</a>"
-
-                        results << "<tr>"
-                        results << "<td width=\"20%\">#{collection_column}</td>"
-                        results << "<td width=\"10%\">" + resource_create_date.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
-                        results << "<td width=\"20%\">#{resource_column}</td>"
-                        results << "<td width=\"20%\">#{fs_column}</td>"
-                        results << "<td width=\"10%\">" + fs.date_uploaded.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
-                        results << "<td width=\"20%\">#{fs.creator[0]}</td>"
-                        results << "</tr>"
+                        fd = FileDesc.new(collection_id,
+                                          collection_title,
+                                          resource_id,
+                                          resource_title,
+                                          resource_create_date,
+                                          fileset_id,
+                                          fileset_title,
+                                          fs.date_uploaded,
+                                          fs.creator[0])
+                        filedesc_array << fd
                     end
                 end
                 i = i + 1
+            end
+
+            #filedesc_array.sort!.reverse
+            filedesc_array.sort!
+
+            results = []
+            results << "<table>"
+            results << "<tr>"
+            results << "<td width=\"20%\">Collection</td>"
+            results << "<td width=\"10%\">Resource date</td>"
+            results << "<td width=\"20%\">Resource</td>"
+            results << "<td width=\"20%\">File</td>"
+            results << "<td width=\"10%\">File date</td>"
+            results << "<td width=\"20%\">Depositor</td>"
+            results << "</tr>"
+            filedesc_array.each do |fd|
+                collection_column = ''
+                unless fd.collection_id.blank?
+                    collection_column = "<a href=\"#{base_url}/collections/#{fd.collection_id}\">#{fd.collection_title}</a>"
+                end
+                fs_column = "<a href=\"#{base_url}/concern/parent/#{fd.resource_id}/file_sets/#{fd.fileset_id}\">#{fd.fileset_title}</a>"
+                resource_column = "<a href=\"#{base_url}/concern/resources/#{fd.resource_id}\">#{fd.resource_title}</a>"
+
+                results << "<tr>"
+                results << "<td width=\"20%\">#{collection_column}</td>"
+                results << "<td width=\"10%\">" + fd.resource_date.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
+                results << "<td width=\"20%\">#{resource_column}</td>"
+                results << "<td width=\"20%\">#{fs_column}</td>"
+                results << "<td width=\"10%\">" + fd.fileset_date.strftime("%Y-%m-%d %H:%M:%S")+"</td>"
+                results << "<td width=\"20%\">#{fd.depositor}</td>"
+                results << "</tr>"
             end
             results << "</table>"
             File.open(csv, "w") do |f|
