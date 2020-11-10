@@ -3,6 +3,8 @@
 
 namespace :report do
     require 'figaro'
+    require 'date'
+    require 'mail'
     require_relative 'file_desc'
 
     SOLR = Figaro.env.solr_url
@@ -237,6 +239,38 @@ namespace :report do
             File.open(csv, "w") do |f|
                 results.each { |line| f.puts(line) }
             end
+        end
+    end
+
+    # RAILS_ENV=production RUBYOPT=-W0 bundle exec rake report:mailout[/tmp/ncelp_files.html]
+    # email
+    desc 'Send out NCELP weely digests'
+    task :mailout, [:html_filename]  => :environment do |t, args|
+        html_filename = args[:html_filename]
+
+        date_to = Date.today
+        date_from = (date_to - 7)
+
+        Figaro.env.mail_sender
+
+        options = { :address              => Figaro.env.mail_server,
+                    :port                 => Figaro.env.mail_port.to_i,
+                    :user_name            => Figaro.env.mail_sender,
+                    :password             => Figaro.env.mail_sender_password,
+                    :authentication       => 'plain',
+                    :enable_starttls_auto => true
+        }
+
+        Mail.defaults do
+            delivery_method :smtp, options
+        end
+
+        Mail.deliver do
+            from Figaro.env.mail_sender
+            to Figaro.env.mail_recipients
+            subject "#{Figaro.env.mail_weekly_digests_subject} #{date_from} / #{date_to}"
+            body "#{Figaro.env.mail_weekly_digests_subject} #{date_from} / #{date_to}"
+            add_file html_filename
         end
     end
 
