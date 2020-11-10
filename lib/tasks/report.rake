@@ -209,6 +209,7 @@ namespace :report do
             filedesc_array.sort!
 
             results = []
+            results << "<meta charset=\"UTF-8\">"
             results << "<table>"
             results << "<tr>"
             results << "<td width=\"20%\">Collection</td>"
@@ -236,7 +237,7 @@ namespace :report do
                 results << "</tr>"
             end
             results << "</table>"
-            File.open(csv, "w") do |f|
+            File.open(csv, "w:UTF-8") do |f|
                 results.each { |line| f.puts(line) }
             end
         end
