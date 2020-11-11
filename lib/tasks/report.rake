@@ -67,7 +67,7 @@ namespace :report do
         response = solr.get 'select', :params => {
             :q=>"#{solr_query}",
             :start=>0,
-            :rows=>10000
+            :rows=>2147483647
         }
         number_of_downloaders = response['response']['numFound']
         if number_of_downloaders == 0
@@ -115,7 +115,7 @@ namespace :report do
         response = solr.get 'select', :params => {
             :q=>"#{solr_query}",
             :start=>0,
-            :rows=>10000
+            :rows=>2147483647
         }
         number_of_downloaders = response['response']['numFound']
         if number_of_downloaders == 0
@@ -156,7 +156,7 @@ namespace :report do
         response = solr.get 'select', :params => {
             :q=>"#{solr_query}",
             :start=>0,
-            :rows=>100000
+            :rows=>2147483647
         }
         number_of_resources = response['response']['numFound']
         if number_of_resources == 0
