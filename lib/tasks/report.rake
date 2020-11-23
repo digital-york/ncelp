@@ -3,6 +3,7 @@
 
 namespace :report do
     require 'figaro'
+    require 'json'
     require 'date'
     require 'mail'
     require_relative 'file_desc'
@@ -272,6 +273,260 @@ namespace :report do
             subject "#{Figaro.env.mail_weekly_digests_subject} #{date_from} / #{date_to}"
             body "#{Figaro.env.mail_weekly_digests_subject} #{date_from} / #{date_to}"
             add_file html_filename
+        end
+    end
+
+    desc 'Generate download statistics and save to json'
+    # bundle exec report:download_stats_json[/tmp/]
+    task :download_stats_json, [:output_folder] => [:environment] do |t, args|
+        output_folder = args[:output_folder]
+
+        # general - total resources
+        downloads_total                = {}
+        downloads_total_file           = output_folder + 'downloads_total.json'
+
+        # general - total downloads & downloads over time
+        downloads_per_day                = {}
+        downloads_per_day_file           = output_folder + 'downloads_per_day.json'
+
+        # download by survey fields - status
+        downloads_per_status             = {}
+        downloads_per_status_file        = output_folder + 'downloads_per_status.json'
+
+        # download per material type
+        downloads_per_material_type      = {}
+        downloads_per_material_type_file = output_folder + 'downloads_per_material_type.json'
+
+        # download per age
+        downloads_per_age      = {}
+        downloads_per_age_file = output_folder + 'downloads_per_age.json'
+
+        # download per Pedagogical focus
+        downloads_per_pedagogical_focus      = {}
+        downloads_per_pedagogical_focus_file = output_folder + 'downloads_per_pedagogical_focus.json'
+
+        # download per language
+        downloads_per_language           = {}
+        downloads_per_language_file      = output_folder + 'downloads_per_language.json'
+
+        # download per materials for teacher(CPD, SOW etc)
+        downloads_per_material_for_teacher           = {}
+        downloads_per_material_for_teacher_file      = output_folder + 'downloads_per_material_for_teacher.json'
+
+        # download per resource
+        downloads_per_resource           = {}
+        downloads_per_resource_file      = output_folder + 'downloads_per_resource.json'
+        resource_titles                  = {}
+        resource_titles_file             = output_folder + 'resource_titles.json'
+
+        # general - total resources
+        record_downloads_total(downloads_total)
+
+        solr_docs = get_solr_doc('has_model_ssim:Downloader')
+        if solr_docs == '{}'
+            puts 'No download found.'
+        else
+            solr_docs.each do |doc|
+                # general - total downloads & downloads over time
+                record_downloads_per_day(doc, downloads_per_day)
+
+                # download by survey fields - status
+                record_downloads_per_status(doc, downloads_per_status)
+
+                resource_id  = doc['isPartOf_ssim'][0]
+                resource_doc = get_solr_doc("id:#{resource_id}")[0]
+
+                # download per material type
+                record_downloads_per_material_type(resource_doc, downloads_per_material_type)
+
+                # download per age
+                record_downloads_per_age(resource_doc, downloads_per_age)
+
+                # download per Pedagogical focus
+                record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
+
+                # download per language
+                record_downloads_per_language(resource_doc, downloads_per_language)
+
+                # download per materials for teacher(CPD, SOW etc)
+                record_downloads_per_material_for_teacher(resource_doc, downloads_per_material_for_teacher)
+
+                # download per resource
+                record_downloads_per_resource(resource_doc, downloads_per_resource, resource_titles)
+            end
+
+            # Save results to jsons
+            # general - total resources
+            save_to_json(downloads_total, downloads_total_file)
+
+            # general - total downloads & downloads over time
+            save_to_json(downloads_per_day, downloads_per_day_file)
+
+            # download by survey fields - status
+            save_to_json(downloads_per_status, downloads_per_status_file)
+
+            # download per material type
+            save_to_json(downloads_per_material_type, downloads_per_material_type_file)
+
+            # download per age
+            save_to_json(downloads_per_age, downloads_per_age_file)
+
+            # download per Pedagogical focus
+            save_to_json(downloads_per_pedagogical_focus, downloads_per_pedagogical_focus_file)
+
+            # download per language
+            save_to_json(downloads_per_language, downloads_per_language_file)
+
+            # download per materials for teacher(CPD, SOW etc)
+            save_to_json(downloads_per_material_for_teacher, downloads_per_material_for_teacher_file)
+
+            # download per resource
+            save_to_json(downloads_per_resource, downloads_per_resource_file)
+            save_to_json(resource_titles, resource_titles_file)
+        end
+    end
+
+    # record download_total
+    def record_downloads_total(downloads_total)
+        solr = RSolr.connect :url => SOLR
+        response = solr.get 'select', :params => {
+            :q=>'has_model_ssim:Downloader',
+            :start=>0,
+            :rows=>2147483647
+        }
+        downloads_total['total'] = response['response']['numFound'].to_i
+    end
+
+    # analysis Solr document and update download_per_day
+    def record_downloads_per_day(solr_doc, downloads_per_day)
+        download_time = Date.parse(solr_doc['system_create_dtsi']).strftime("%Y.%m")
+        if downloads_per_day[download_time].nil?
+            downloads_per_day[download_time] = 1 unless download_time.blank?
+        else
+            downloads_per_day[download_time] = downloads_per_day[download_time] + 1 unless download_time.blank?
+        end
+    end
+
+    # analysis Solr document and update downloads_per_status
+    def record_downloads_per_status(solr_doc, downloads_per_status)
+        unless solr_doc['downloader_status_tesim'].nil?
+            solr_doc['downloader_status_tesim'].each do |status|
+                # count current status
+                if downloads_per_status[status].nil?
+                    downloads_per_status[status] = 1
+                else
+                    downloads_per_status[status] = downloads_per_status[status] + 1
+                end
+
+                # also count current status' parent if it has a parent status
+                unless STATUS_PARENT_MAP[status].nil?
+                    if downloads_per_status[STATUS_PARENT_MAP[status]].nil?
+                        downloads_per_status[STATUS_PARENT_MAP[status]] = 1
+                    else
+                        downloads_per_status[STATUS_PARENT_MAP[status]] = downloads_per_status[STATUS_PARENT_MAP[status]] + 1
+                    end
+                end
+            end
+        end
+    end
+
+    # analysis Solr document and update download_per_age
+    def record_downloads_per_age(resource_doc, downloads_per_age)
+        unless resource_doc == '{}'
+            resource_doc['age_tesim'].each do |age|
+                if downloads_per_age[age].nil?
+                    downloads_per_age[age] = 1
+                else
+                    downloads_per_age[age] = downloads_per_age[age] + 1
+                end
+            end
+        end
+    end
+
+    # analysis Solr document and update download_per_pedagogical_focus
+    def record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
+        unless resource_doc == '{}'
+            resource_doc['area_of_research_tesim'].each do |ar|
+                if downloads_per_pedagogical_focus[ar].nil?
+                    downloads_per_pedagogical_focus[ar] = 1
+                else
+                    downloads_per_pedagogical_focus[ar] = downloads_per_pedagogical_focus[ar] + 1
+                end
+            end
+        end
+    end
+
+    # analysis Solr document and update download_per_material_for_teacher
+    def record_downloads_per_material_for_teacher(resource_doc, downloads_per_material_for_teacher)
+        unless resource_doc == '{}'
+            resource_doc['material_for_teachers_tesim'].each do |m|
+                if downloads_per_material_for_teacher[m].nil?
+                    downloads_per_material_for_teacher[m] = 1
+                else
+                    downloads_per_material_for_teacher[m] = downloads_per_material_for_teacher[m] + 1
+                end
+            end
+        end
+    end
+
+    # analysis Solr document and update download_per_resource
+    def record_downloads_per_resource(resource_doc, downloads_per_resource, resource_titles)
+        resource_id = resource_doc['id']
+        unless resource_doc == '{}'
+            resource_titles[resource_id] = resource_doc['title_tesim'][0] unless resource_doc['title_tesim'].blank?
+        end
+
+        if downloads_per_resource[resource_id].nil?
+            downloads_per_resource[resource_id] = 1
+        else
+            downloads_per_resource[resource_id] = downloads_per_resource[resource_id] + 1
+        end
+    end
+
+    # analysis Solr document and update download_per_language
+    def record_downloads_per_language(resource_doc, download_per_language)
+        unless resource_doc == '{}'
+            resource_doc['language_tesim'].each do |l|
+                if download_per_language[l].nil?
+                    download_per_language[l] = 1
+                else
+                    download_per_language[l] = download_per_language[l] + 1
+                end
+            end
+        end
+    end
+
+    # analysis Solr document and update downloads_per_material_type
+    def record_downloads_per_material_type(resource_doc, downloads_per_material_type)
+        unless resource_doc == '{}'
+            resource_doc['type_of_material_tesim'].each do |t|
+                if downloads_per_material_type[t].nil?
+                    downloads_per_material_type[t] = 1
+                else
+                    downloads_per_material_type[t] = downloads_per_material_type[t] + 1
+                end
+            end
+        end
+    end
+
+    # save_to_json
+    def save_to_json(json_string, file_name)
+        File.open(file_name, "w:UTF-8") do |f|
+            f.write json_string
+        end
+    end
+
+    def get_solr_doc(solr_query)
+        solr = RSolr.connect :url => SOLR
+        response = solr.get 'select', :params => {
+            :q=>solr_query,
+            :start=>0,
+            :rows=>2147483647
+        }
+        if response['response']['numFound']==0
+            JSON.parse('{}')
+        else
+            response['response']['docs']
         end
     end
 
