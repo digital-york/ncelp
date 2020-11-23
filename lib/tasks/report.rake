@@ -432,7 +432,7 @@ namespace :report do
 
     # analysis Solr document and update download_per_age
     def record_downloads_per_age(resource_doc, downloads_per_age)
-        unless resource_doc == '{}'
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['age_tesim'].blank?
             resource_doc['age_tesim'].each do |age|
                 if downloads_per_age[age].nil?
                     downloads_per_age[age] = 1
@@ -445,7 +445,7 @@ namespace :report do
 
     # analysis Solr document and update download_per_pedagogical_focus
     def record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
-        unless resource_doc == '{}'
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['area_of_research_tesim'].blank?
             resource_doc['area_of_research_tesim'].each do |ar|
                 if downloads_per_pedagogical_focus[ar].nil?
                     downloads_per_pedagogical_focus[ar] = 1
@@ -458,7 +458,7 @@ namespace :report do
 
     # analysis Solr document and update download_per_material_for_teacher
     def record_downloads_per_material_for_teacher(resource_doc, downloads_per_material_for_teacher)
-        unless resource_doc == '{}'
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['material_for_teachers_tesim'].blank?
             resource_doc['material_for_teachers_tesim'].each do |m|
                 if downloads_per_material_for_teacher[m].nil?
                     downloads_per_material_for_teacher[m] = 1
@@ -471,8 +471,11 @@ namespace :report do
 
     # analysis Solr document and update download_per_resource
     def record_downloads_per_resource(resource_doc, downloads_per_resource, resource_titles)
+        return if resource_doc.blank? or resource_doc['id'].blank?
+
         resource_id = resource_doc['id']
-        unless resource_doc == '{}'
+        # Store resource title
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['title_tesim'].blank?
             resource_titles[resource_id] = resource_doc['title_tesim'][0] unless resource_doc['title_tesim'].blank?
         end
 
@@ -485,9 +488,9 @@ namespace :report do
 
     # analysis Solr document and update download_per_language
     def record_downloads_per_language(resource_doc, download_per_language)
-        unless resource_doc == '{}'
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['language_tesim'].blank?
             resource_doc['language_tesim'].each do |l|
-                if download_per_language[l].nil?
+                if download_per_language[l].blank?
                     download_per_language[l] = 1
                 else
                     download_per_language[l] = download_per_language[l] + 1
@@ -498,7 +501,7 @@ namespace :report do
 
     # analysis Solr document and update downloads_per_material_type
     def record_downloads_per_material_type(resource_doc, downloads_per_material_type)
-        unless resource_doc == '{}'
+        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['type_of_material_tesim'].blank?
             resource_doc['type_of_material_tesim'].each do |t|
                 if downloads_per_material_type[t].nil?
                     downloads_per_material_type[t] = 1
