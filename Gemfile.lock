@@ -576,6 +576,8 @@ GEM
       rails (~> 5.0)
       rdf
     rack (2.2.3)
+    rack-proxy (0.6.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.4)
@@ -663,6 +665,12 @@ GEM
       rdf (~> 3.1)
     rdf-xsd (3.1.0)
       rdf (~> 3.1)
+    react-rails (2.6.1)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     redic (1.5.3)
       hiredis
     redis (4.2.2)
@@ -732,6 +740,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    semantic_range (2.3.0)
     shex (0.6.1)
       ebnf (~> 2.0)
       json-ld (~> 3.1)
@@ -818,6 +827,11 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webpacker (5.2.1)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -854,6 +868,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.2.0)
+  react-rails
   riiif (~> 1.1)
   rsolr (>= 1.0)
   rspec-rails
@@ -870,6 +885,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  webpacker
   xray-rails
 
 BUNDLED WITH
