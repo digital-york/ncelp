@@ -360,27 +360,35 @@ namespace :report do
             save_to_json(downloads_total, downloads_total_file)
 
             # general - total downloads & downloads over time
+            downloads_per_day = downloads_per_day.sort_by {|k,v| k}
             save_to_json(downloads_per_day, downloads_per_day_file)
 
             # download by survey fields - status
+            downloads_per_status = downloads_per_status.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_status, downloads_per_status_file)
 
             # download per material type
+            downloads_per_material_type = downloads_per_material_type.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_material_type, downloads_per_material_type_file)
 
             # download per age
+            downloads_per_age = downloads_per_age.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_age, downloads_per_age_file)
 
             # download per Pedagogical focus
+            downloads_per_pedagogical_focus = downloads_per_pedagogical_focus.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_pedagogical_focus, downloads_per_pedagogical_focus_file)
 
             # download per language
+            downloads_per_language = downloads_per_language.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_language, downloads_per_language_file)
 
             # download per materials for teacher(CPD, SOW etc)
+            downloads_per_material_for_teacher = downloads_per_material_for_teacher.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_material_for_teacher, downloads_per_material_for_teacher_file)
 
             # download per resource
+            downloads_per_resource = downloads_per_resource.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_resource, downloads_per_resource_file)
             save_to_json(resource_titles, resource_titles_file)
         end
@@ -475,8 +483,10 @@ namespace :report do
 
         resource_id = resource_doc['id']
         # Store resource title
-        unless resource_doc.blank? or resource_doc == '{}' or resource_doc['title_tesim'].blank?
-            resource_titles[resource_id] = resource_doc['title_tesim'][0] unless resource_doc['title_tesim'].blank?
+        if resource_doc == '{}' or resource_doc['title_tesim'].blank?
+            resource_titles[resource_id] = ''
+        else
+            resource_titles[resource_id] = resource_doc['title_tesim'][0].strip! unless resource_doc['title_tesim'].blank?
         end
 
         if downloads_per_resource[resource_id].nil?
