@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'report/index'
   get 'survey/new'
 
   get 'survey/new'
