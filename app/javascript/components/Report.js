@@ -4,6 +4,7 @@ class Report extends React.Component {
   render () {
     return (
       <React.Fragment>
+        Report component
       </React.Fragment>
     );
   }
