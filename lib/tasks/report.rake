@@ -486,7 +486,7 @@ namespace :report do
         if resource_doc == '{}' or resource_doc['title_tesim'].blank?
             resource_titles[resource_id] = ''
         else
-            resource_titles[resource_id] = resource_doc['title_tesim'][0].strip! unless resource_doc['title_tesim'].blank?
+            resource_titles[resource_id] = resource_doc['title_tesim'][0] unless resource_doc['title_tesim'].blank?
         end
 
         if downloads_per_resource[resource_id].nil?
@@ -522,10 +522,23 @@ namespace :report do
         end
     end
 
+    def hash_to_json_string(h)
+        result = '{'
+        h.each_with_index do |k, index|
+            result += '"' + k[0] + '":"' + k[1].to_s + '"'
+            if index < h.size - 1
+                result += ','
+            end
+        end
+        result += '}'
+
+        result
+    end
+
     # save_to_json
-    def save_to_json(json_string, file_name)
+    def save_to_json(h, file_name)
         File.open(file_name, "w:UTF-8") do |f|
-            f.write json_string
+            f.write hash_to_json_string(h)
         end
     end
 
