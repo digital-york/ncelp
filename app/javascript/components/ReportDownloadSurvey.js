@@ -1,4 +1,5 @@
 import React from "react"
+import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,12 +10,19 @@ import Paper from '@material-ui/core/Paper';
 
 import downloads_per_status from './json/downloads_per_status.json'
 
+const classes = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+});
+
 class ReportDownloadSurvey extends React.Component {
   render () {
+
     return (
       <React.Fragment>
         <TableContainer component={Paper}>
-          <Table aria-label="Download per status">
+          <Table className={classes.table}  aria-label="Download per status">
             <TableHead>
               <TableRow>
                 <TableCell>Status</TableCell>

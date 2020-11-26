@@ -1,4 +1,5 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from "prop-types";
 
 import Typography from '@material-ui/core/Typography';
@@ -13,18 +14,28 @@ import ReportDownloadSurvey from "./ReportDownloadSurvey";
 import ReportByCategory from "./ReportByCategory";
 import ReportPerResource from "./ReportPerResource";
 
+const classes = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightMedium,
+    },
+}));
+
 class Report extends React.Component {
   render () {
     return (
       <React.Fragment>
-
+        <div className={classes.root}>
           <Accordion>
               <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
               >
-                  <Typography>General information</Typography>
+                  <Typography className={classes.heading}>General information</Typography>
               </AccordionSummary>
               <AccordionDetails>
                   <ReportGeneral/>
@@ -36,7 +47,7 @@ class Report extends React.Component {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
               >
-                  <Typography>Download survey</Typography>
+                  <Typography className={classes.heading}>Download survey</Typography>
               </AccordionSummary>
               <AccordionDetails>
                   <ReportDownloadSurvey/>
@@ -48,7 +59,7 @@ class Report extends React.Component {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
               >
-                  <Typography>Download per category</Typography>
+                  <Typography className={classes.heading}>Download per category</Typography>
               </AccordionSummary>
               <AccordionDetails>
                   <ReportByCategory/>
@@ -60,12 +71,13 @@ class Report extends React.Component {
                   aria-controls="panel2a-content"
                   id="panel2a-header"
               >
-                  <Typography>Download per resource</Typography>
+                  <Typography className={classes.heading}>Download per resource</Typography>
               </AccordionSummary>
               <AccordionDetails>
                   <ReportPerResource/>
               </AccordionDetails>
           </Accordion>
+        </div>
         </React.Fragment>
     );
   }
