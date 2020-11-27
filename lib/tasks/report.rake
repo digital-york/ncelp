@@ -292,6 +292,9 @@ namespace :report do
         # download by survey fields - status
         downloads_per_status             = {}
         downloads_per_status_file        = output_folder + 'downloads_per_status.json'
+        status_list                      = []
+        download_per_status_daily        = {}  # key: date, value: a hash like: {'each_status', DOWNLOADDS_OF_EACH_STATUS_ON_THAT_DAY}
+        download_per_status_daily_file   = output_folder + 'downloads_per_status_daily.csv'
 
         # download per material type
         downloads_per_material_type      = {}
@@ -331,7 +334,7 @@ namespace :report do
                 record_downloads_per_day(doc, downloads_per_day)
 
                 # download by survey fields - status
-                record_downloads_per_status(doc, downloads_per_status)
+                record_downloads_per_status(doc, downloads_per_status, status_list, download_per_status_daily)
 
                 resource_id  = doc['isPartOf_ssim'][0]
                 resource_doc = get_solr_doc("id:#{resource_id}")[0]
@@ -366,6 +369,7 @@ namespace :report do
             # download by survey fields - status
             downloads_per_status = downloads_per_status.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_status, downloads_per_status_file)
+            save_to_csv(download_per_status_daily_file, status_list, download_per_status_daily)
 
             # download per material type
             downloads_per_material_type = downloads_per_material_type.sort_by {|k,v| v}.reverse
@@ -416,7 +420,7 @@ namespace :report do
     end
 
     # analysis Solr document and update downloads_per_status
-    def record_downloads_per_status(solr_doc, downloads_per_status)
+    def record_downloads_per_status(solr_doc, downloads_per_status, status_list, download_per_status_daily)
         unless solr_doc['downloader_status_tesim'].nil?
             solr_doc['downloader_status_tesim'].each do |status|
                 # count current status
@@ -432,6 +436,38 @@ namespace :report do
                         downloads_per_status[STATUS_PARENT_MAP[status]] = 1
                     else
                         downloads_per_status[STATUS_PARENT_MAP[status]] = downloads_per_status[STATUS_PARENT_MAP[status]] + 1
+                    end
+                end
+
+                # add status and its parent status to status_list
+                unless status_list.include? status
+                    status_list << status
+                end
+                # if the status doesn't have a parent status
+                # OR
+                # the parent status is not in the status list
+                unless STATUS_PARENT_MAP[status].nil? or status_list.include? STATUS_PARENT_MAP[status]
+                    status_list << STATUS_PARENT_MAP[status]
+                end
+
+                # record daily downloads per status
+                download_date = Date.parse(solr_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+                if download_per_status_daily[download_date].blank?
+                    download_per_status_daily[download_date] = {}
+                end
+
+                if download_per_status_daily[download_date][status].blank?
+                    download_per_status_daily[download_date][status] = 1
+                else
+                    download_per_status_daily[download_date][status] = download_per_status_daily[download_date][status] + 1
+                end
+                # unless current status doesn't have a parent status
+                # also count current status' parent if it has a parent status
+                unless STATUS_PARENT_MAP[status].blank?
+                    if download_per_status_daily[download_date][STATUS_PARENT_MAP[status]].nil?
+                        download_per_status_daily[download_date][STATUS_PARENT_MAP[status]] = 1
+                    else
+                        download_per_status_daily[download_date][STATUS_PARENT_MAP[status]] = download_per_status_daily[download_date][STATUS_PARENT_MAP[status]] + 1
                     end
                 end
             end
@@ -539,6 +575,34 @@ namespace :report do
     def save_to_json(h, file_name)
         File.open(file_name, "w:UTF-8") do |f|
             f.write hash_to_json_string(h)
+        end
+    end
+
+    # save to CSV
+    def save_to_csv(file_name, status_list, downloads_per_status_daily)
+        File.open(file_name, "w:UTF-8") do |f|
+            header = 'Date,'
+            status_list.each_with_index do |status, index|
+                header += status
+                if index < status_list.length()-1
+                    header += ','
+                end
+            end
+            f.write header + "\n"
+            downloads_per_status_daily.each do |date, download_per_status|
+                current_line = date + ','
+                status_list.each_with_index do |status, index|
+                    if download_per_status[status].blank?
+                        current_line += '0'
+                    else
+                        current_line += download_per_status[status].to_s
+                    end
+                    if index < status_list.length()-1
+                        current_line += ','
+                    end
+                end
+                f.write current_line + "\n"
+            end
         end
     end
 
