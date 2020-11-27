@@ -579,25 +579,25 @@ namespace :report do
     end
 
     # save to CSV
-    def save_to_csv(file_name, status_list, downloads_per_status_daily)
+    def save_to_csv(file_name, term_list, downloads_per_term_daily)
         File.open(file_name, "w:UTF-8") do |f|
             header = 'Date,'
-            status_list.each_with_index do |status, index|
-                header += status
-                if index < status_list.length()-1
+            term_list.each_with_index do |term, index|
+                header += term
+                if index < term_list.length()-1
                     header += ','
                 end
             end
             f.write header + "\n"
-            downloads_per_status_daily.each do |date, download_per_status|
+            downloads_per_term_daily.each do |date, download_per_term|
                 current_line = date + ','
-                status_list.each_with_index do |status, index|
-                    if download_per_status[status].blank?
+                term_list.each_with_index do |term, index|
+                    if download_per_term[term].blank?
                         current_line += '0'
                     else
-                        current_line += download_per_status[status].to_s
+                        current_line += download_per_term[term].to_s
                     end
-                    if index < status_list.length()-1
+                    if index < term_list.length()-1
                         current_line += ','
                     end
                 end
