@@ -355,7 +355,7 @@ namespace :report do
                 resource_doc = get_solr_doc("id:#{resource_id}")[0]
 
                 # download per material type
-                record_downloads_per_material_type(resource_doc, downloads_per_material_type)
+                record_downloads_per_material_type(doc, resource_doc, downloads_per_material_type, material_type_list, downloads_per_material_type_daily)
 
                 # download per age
                 record_downloads_per_age(resource_doc, downloads_per_age)
@@ -390,6 +390,7 @@ namespace :report do
             # download per material type
             downloads_per_material_type = downloads_per_material_type.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_material_type, downloads_per_material_type_file)
+            save_to_csv(downloads_per_material_type_daily_file, material_type_list, downloads_per_material_type_daily)
 
             # download per age
             downloads_per_age = downloads_per_age.sort_by {|k,v| v}.reverse
@@ -562,13 +563,28 @@ namespace :report do
     end
 
     # analysis Solr document and update downloads_per_material_type
-    def record_downloads_per_material_type(resource_doc, downloads_per_material_type)
+    def record_downloads_per_material_type(download_doc, resource_doc, downloads_per_material_type, material_type_list, downloads_per_material_type_daily)
+        download_date = Date.parse(download_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+
         unless resource_doc.blank? or resource_doc == '{}' or resource_doc['type_of_material_tesim'].blank?
             resource_doc['type_of_material_tesim'].each do |t|
                 if downloads_per_material_type[t].nil?
                     downloads_per_material_type[t] = 1
                 else
                     downloads_per_material_type[t] = downloads_per_material_type[t] + 1
+                end
+
+                # add material type to material_type_list
+                unless material_type_list.include? t
+                    material_type_list << t
+                end
+                if downloads_per_material_type_daily[download_date].blank?
+                    downloads_per_material_type_daily[download_date] = {}
+                end
+                if downloads_per_material_type_daily[download_date][t].blank?
+                    downloads_per_material_type_daily[download_date][t] = 1
+                else
+                    downloads_per_material_type_daily[download_date][t] = downloads_per_material_type_daily[download_date][t] + 1
                 end
             end
         end
