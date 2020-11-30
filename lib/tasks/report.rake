@@ -358,7 +358,7 @@ namespace :report do
                 record_downloads_per_material_type(doc, resource_doc, downloads_per_material_type, material_type_list, downloads_per_material_type_daily)
 
                 # download per age
-                record_downloads_per_age(resource_doc, downloads_per_age)
+                record_downloads_per_age(doc, resource_doc, downloads_per_age, age_list, downloads_per_age_daily)
 
                 # download per Pedagogical focus
                 record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
@@ -390,11 +390,14 @@ namespace :report do
             # download per material type
             downloads_per_material_type = downloads_per_material_type.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_material_type, downloads_per_material_type_file)
+            downloads_per_material_type_daily = downloads_per_material_type_daily.sort_by {|k, v| k}
             save_to_csv(downloads_per_material_type_daily_file, material_type_list, downloads_per_material_type_daily)
 
             # download per age
             downloads_per_age = downloads_per_age.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_age, downloads_per_age_file)
+            downloads_per_age_daily = downloads_per_age_daily.sort_by {|k, v| k}
+            save_to_csv(downloads_per_age_daily_file, age_list, downloads_per_age_daily)
 
             # download per Pedagogical focus
             downloads_per_pedagogical_focus = downloads_per_pedagogical_focus.sort_by {|k,v| v}.reverse
@@ -492,13 +495,28 @@ namespace :report do
     end
 
     # analysis Solr document and update download_per_age
-    def record_downloads_per_age(resource_doc, downloads_per_age)
+    def record_downloads_per_age(download_doc, resource_doc, downloads_per_age, age_list, downloads_per_age_daily)
+        download_date = Date.parse(download_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+
         unless resource_doc.blank? or resource_doc == '{}' or resource_doc['age_tesim'].blank?
             resource_doc['age_tesim'].each do |age|
                 if downloads_per_age[age].nil?
                     downloads_per_age[age] = 1
                 else
                     downloads_per_age[age] = downloads_per_age[age] + 1
+                end
+
+                # add age to age_list
+                unless age_list.include? age
+                    age_list << age
+                end
+                if downloads_per_age_daily[download_date].blank?
+                    downloads_per_age_daily[download_date] = {}
+                end
+                if downloads_per_age_daily[download_date][age].blank?
+                    downloads_per_age_daily[download_date][age] = 1
+                else
+                    downloads_per_age_daily[download_date][age] = downloads_per_age_daily[download_date][age] + 1
                 end
             end
         end
