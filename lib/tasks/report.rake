@@ -297,24 +297,39 @@ namespace :report do
         download_per_status_daily_file   = output_folder + 'downloads_per_status_daily.csv'
 
         # download per material type
-        downloads_per_material_type      = {}
-        downloads_per_material_type_file = output_folder + 'downloads_per_material_type.json'
+        downloads_per_material_type            = {}
+        downloads_per_material_type_file       = output_folder + 'downloads_per_material_type.json'
+        material_type_list                     = []
+        downloads_per_material_type_daily      = {}
+        downloads_per_material_type_daily_file = output_folder + 'downloads_per_material_type_daily.csv'
 
         # download per age
-        downloads_per_age      = {}
-        downloads_per_age_file = output_folder + 'downloads_per_age.json'
+        downloads_per_age            = {}
+        downloads_per_age_file       = output_folder + 'downloads_per_age.json'
+        age_list                     = []
+        downloads_per_age_daily      = {}
+        downloads_per_age_daily_file = output_folder + 'downloads_per_age_daily.csv'
 
         # download per Pedagogical focus
-        downloads_per_pedagogical_focus      = {}
-        downloads_per_pedagogical_focus_file = output_folder + 'downloads_per_pedagogical_focus.json'
+        downloads_per_pedagogical_focus             = {}
+        downloads_per_pedagogical_focus_file        = output_folder + 'downloads_per_pedagogical_focus.json'
+        pedagogical_focus_list                      = []
+        downloads_per_pedagogical_focus_daily       = {}
+        downloads_per_pedagogical_focus_daily_file  = output_folder + 'downloads_per_pedagogical_focus_daily.csv'
 
         # download per language
-        downloads_per_language           = {}
-        downloads_per_language_file      = output_folder + 'downloads_per_language.json'
+        downloads_per_language            = {}
+        downloads_per_language_file       = output_folder + 'downloads_per_language.json'
+        language_list                     = []
+        downloads_per_language_daily      = {}
+        downloads_per_language_daily_file = output_folder + 'downloads_per_language_daily.csv'
 
         # download per materials for teacher(CPD, SOW etc)
-        downloads_per_material_for_teacher           = {}
-        downloads_per_material_for_teacher_file      = output_folder + 'downloads_per_material_for_teacher.json'
+        downloads_per_material_for_teacher            = {}
+        downloads_per_material_for_teacher_file       = output_folder + 'downloads_per_material_for_teacher.json'
+        material_for_teacher_list                     = []
+        downloads_per_material_for_teacher_daily      = {}
+        downloads_per_material_for_teacher_daily_file = output_folder + 'downloads_per_material_for_teacher_daily.csv'
 
         # download per resource
         downloads_per_resource           = {}
