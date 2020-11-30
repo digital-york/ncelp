@@ -384,6 +384,7 @@ namespace :report do
             # download by survey fields - status
             downloads_per_status = downloads_per_status.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_status, downloads_per_status_file)
+            download_per_status_daily = download_per_status_daily.sort_by {|k, v| k}
             save_to_csv(download_per_status_daily_file, status_list, download_per_status_daily)
 
             # download per material type
