@@ -23,18 +23,24 @@ class FileDesc
     end
 
     def <=>(other)
-        if @collection_title != other.collection_title
-            return @collection_title <=> other.collection_title
-        elsif @resource_date != other.resource_date
-            return -(@resource_date <=> other.resource_date)
-        elsif @resource_title != other.resource_title
-            return @resource_title <=> other.resource_title
-        elsif @fileset_date != other.fileset_date
+        if @fileset_date != other.fileset_date
             return -(@fileset_date <=> other.fileset_date)
-        elsif @fileset_title != other.fileset_title
-            return @fileset_title <=> other.fileset_title
         else
-            return @depositor <=> other.depositor
+            return @fileset_title <=> other.fileset_title
         end
+
+        # if @collection_title != other.collection_title
+        #     return @collection_title <=> other.collection_title
+        # elsif @resource_date != other.resource_date
+        #     return -(@resource_date <=> other.resource_date)
+        # elsif @resource_title != other.resource_title
+        #     return @resource_title <=> other.resource_title
+        # elsif @fileset_date != other.fileset_date
+        #     return -(@fileset_date <=> other.fileset_date)
+        # elsif @fileset_title != other.fileset_title
+        #     return @fileset_title <=> other.fileset_title
+        # else
+        #     return @depositor <=> other.depositor
+        # end
     end
 end
