@@ -361,13 +361,13 @@ namespace :report do
                 record_downloads_per_age(doc, resource_doc, downloads_per_age, age_list, downloads_per_age_daily)
 
                 # download per Pedagogical focus
-                record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
+                record_downloads_per_pedagogical_focus(doc, resource_doc, downloads_per_pedagogical_focus, pedagogical_focus_list, downloads_per_pedagogical_focus_daily)
 
                 # download per language
-                record_downloads_per_language(resource_doc, downloads_per_language)
+                record_downloads_per_language(doc, resource_doc, downloads_per_language, language_list, downloads_per_language_daily)
 
                 # download per materials for teacher(CPD, SOW etc)
-                record_downloads_per_material_for_teacher(resource_doc, downloads_per_material_for_teacher)
+                record_downloads_per_material_for_teacher(doc, resource_doc, downloads_per_material_for_teacher, material_for_teacher_list, downloads_per_material_for_teacher_daily)
 
                 # download per resource
                 record_downloads_per_resource(resource_doc, downloads_per_resource, resource_titles)
@@ -402,14 +402,20 @@ namespace :report do
             # download per Pedagogical focus
             downloads_per_pedagogical_focus = downloads_per_pedagogical_focus.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_pedagogical_focus, downloads_per_pedagogical_focus_file)
+            downloads_per_pedagogical_focus_daily = downloads_per_pedagogical_focus_daily.sort_by {|k, v| k}
+            save_to_csv(downloads_per_pedagogical_focus_daily_file, pedagogical_focus_list, downloads_per_pedagogical_focus_daily)
 
             # download per language
             downloads_per_language = downloads_per_language.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_language, downloads_per_language_file)
+            downloads_per_language_daily = downloads_per_language_daily.sort_by {|k, v| k}
+            save_to_csv(downloads_per_language_daily_file, language_list, downloads_per_language_daily)
 
             # download per materials for teacher(CPD, SOW etc)
             downloads_per_material_for_teacher = downloads_per_material_for_teacher.sort_by {|k,v| v}.reverse
             save_to_json(downloads_per_material_for_teacher, downloads_per_material_for_teacher_file)
+            downloads_per_material_for_teacher_daily = downloads_per_material_for_teacher_daily.sort_by {|k, v| k}
+            save_to_csv(downloads_per_material_for_teacher_daily_file, material_for_teacher_list, downloads_per_material_for_teacher_daily)
 
             # download per resource
             downloads_per_resource = downloads_per_resource.sort_by {|k,v| v}.reverse
@@ -523,7 +529,9 @@ namespace :report do
     end
 
     # analysis Solr document and update download_per_pedagogical_focus
-    def record_downloads_per_pedagogical_focus(resource_doc, downloads_per_pedagogical_focus)
+    def record_downloads_per_pedagogical_focus(download_doc, resource_doc, downloads_per_pedagogical_focus, pedagogical_focus_list, downloads_per_pedagogical_focus_daily)
+        download_date = Date.parse(download_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+
         unless resource_doc.blank? or resource_doc == '{}' or resource_doc['area_of_research_tesim'].blank?
             resource_doc['area_of_research_tesim'].each do |ar|
                 if downloads_per_pedagogical_focus[ar].nil?
@@ -531,18 +539,46 @@ namespace :report do
                 else
                     downloads_per_pedagogical_focus[ar] = downloads_per_pedagogical_focus[ar] + 1
                 end
+
+                # add pedagogical_focus to pedagogical_focus_list
+                unless pedagogical_focus_list.include? ar
+                    pedagogical_focus_list << ar
+                end
+                if downloads_per_pedagogical_focus_daily[download_date].blank?
+                    downloads_per_pedagogical_focus_daily[download_date] = {}
+                end
+                if downloads_per_pedagogical_focus_daily[download_date][ar].blank?
+                    downloads_per_pedagogical_focus_daily[download_date][ar] = 1
+                else
+                    downloads_per_pedagogical_focus_daily[download_date][ar] = downloads_per_pedagogical_focus_daily[download_date][ar] + 1
+                end
             end
         end
     end
 
     # analysis Solr document and update download_per_material_for_teacher
-    def record_downloads_per_material_for_teacher(resource_doc, downloads_per_material_for_teacher)
+    def record_downloads_per_material_for_teacher(download_doc, resource_doc, downloads_per_material_for_teacher, material_for_teacher_list, downloads_per_material_for_teacher_daily)
+        download_date = Date.parse(download_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+
         unless resource_doc.blank? or resource_doc == '{}' or resource_doc['material_for_teachers_tesim'].blank?
             resource_doc['material_for_teachers_tesim'].each do |m|
                 if downloads_per_material_for_teacher[m].nil?
                     downloads_per_material_for_teacher[m] = 1
                 else
                     downloads_per_material_for_teacher[m] = downloads_per_material_for_teacher[m] + 1
+                end
+
+                # add material for teacher to material_for_teacher_list
+                unless material_for_teacher_list.include? m
+                    material_for_teacher_list << m
+                end
+                if downloads_per_material_for_teacher_daily[download_date].blank?
+                    downloads_per_material_for_teacher_daily[download_date] = {}
+                end
+                if downloads_per_material_for_teacher_daily[download_date][m].blank?
+                    downloads_per_material_for_teacher_daily[download_date][m] = 1
+                else
+                    downloads_per_material_for_teacher_daily[download_date][m] = downloads_per_material_for_teacher_daily[download_date][m] + 1
                 end
             end
         end
@@ -568,13 +604,28 @@ namespace :report do
     end
 
     # analysis Solr document and update download_per_language
-    def record_downloads_per_language(resource_doc, download_per_language)
+    def record_downloads_per_language(download_doc, resource_doc, download_per_language, language_list, download_per_language_daily)
+        download_date = Date.parse(download_doc['system_modified_dtsi']).strftime("%Y-%m-%d")
+
         unless resource_doc.blank? or resource_doc == '{}' or resource_doc['language_tesim'].blank?
             resource_doc['language_tesim'].each do |l|
                 if download_per_language[l].blank?
                     download_per_language[l] = 1
                 else
                     download_per_language[l] = download_per_language[l] + 1
+                end
+
+                # add language to language_list
+                unless language_list.include? l
+                    language_list << l
+                end
+                if download_per_language_daily[download_date].blank?
+                    download_per_language_daily[download_date] = {}
+                end
+                if download_per_language_daily[download_date][l].blank?
+                    download_per_language_daily[download_date][l] = 1
+                else
+                    download_per_language_daily[download_date][l] = download_per_language_daily[download_date][l] + 1
                 end
             end
         end
