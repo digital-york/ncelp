@@ -12,7 +12,26 @@ module Hyrax
     def show
       case file
       when ActiveFedora::File
-        # For original files that are stored in fedora
+        # Save downloader info
+        fileset_id = params[:id]
+        response = SolrHelper.query('has_model_ssim:"Resource" AND member_ids_ssim:"'+fileset_id+'"')
+        resource_id = response['response']['docs'][0]['id']
+        d = Resource.find(resource_id).downloaders.new
+        d.ncelp_resource_id      = resource_id
+        unless session['survey_status'].nil?
+          d.downloader_status      = session['survey_status']
+        end
+        unless session['participants_country'].nil?
+          d.participants_country   = session['participants_country']
+        end
+        unless session['survey_email'].nil?
+          d.downloader_email       = session['survey_email']
+        end
+        d.save!
+        puts '=========================='
+        puts 'saved downloader: ' + d.id
+        puts '++++++++++++++++++++++++++'
+
         super
       when String
         # For derivatives stored on the local file system
