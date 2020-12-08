@@ -1,9 +1,18 @@
+require 'user_agent'
+
 class SurveyController < ApplicationController
   protect_from_forgery
 
   with_themed_layout 'survey'
 
-  def new; end
+  def new
+    user_agent = UserAgent.parse(request.user_agent)
+    puts '================'
+    puts user_agent.inspect
+    puts user_agent.browser
+    puts user_agent.platform
+    puts '++++++++++++++++'
+  end
 
   def submit
     from                = params['from']

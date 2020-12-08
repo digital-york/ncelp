@@ -81,3 +81,4 @@ gem 'figaro'          # env managment
 gem 'pg', '~> 1.1.4'  # Postgres DB
 gem 'rubyzip', '>= 1.3.0'
 gem 'sidekiq'
+gem 'useragent'
