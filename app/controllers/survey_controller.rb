@@ -13,18 +13,38 @@ class SurveyController < ApplicationController
 
     if from == 'collection'
       d = Collection.find(collection_id).downloaders.new
-      d.downloader_status      = params['survey']['status'] unless params['survey']['status'].nil?
-      d.participants_country   = params['survey']['participants_country'] unless params['survey']['participants_country'].nil?
-      d.downloader_email       = params['survey']['email'] unless params['survey']['email'].nil?
+      unless params['survey']['status'].nil?
+        d.downloader_status      = params['survey']['status']
+        session['survey_status'] = params['survey']['status']
+      end
+      unless params['survey']['participants_country'].nil?
+        d.participants_country   = params['survey']['participants_country']
+        session['participants_country'] = params['survey']['participants_country']
+      end
+      unless params['survey']['email'].nil?
+        d.downloader_email       = params['survey']['email']
+        session['survey_email']  = params['survey']['email']
+      end
       d.collection_id          = collection_id
       d.save!
 
       redirect_to '/survey/saved?from='+from+'&survey_done=yes&collection_id=' + collection_id.to_s + '&downloader_id=' + d.id.to_s
     else
       d = Resource.find(resource_id).downloaders.new
-      d.downloader_status      = params['survey']['status'] unless params['survey']['status'].nil?
-      d.participants_country   = params['survey']['participants_country'] unless params['survey']['participants_country'].nil?
-      d.downloader_email       = params['survey']['email'] unless params['survey']['email'].nil?
+
+      unless params['survey']['status'].nil?
+        d.downloader_status      = params['survey']['status']
+        session['survey_status'] = params['survey']['status']
+      end
+      unless params['survey']['participants_country'].nil?
+        d.participants_country   = params['survey']['participants_country']
+        session['participants_country'] = params['survey']['participants_country']
+      end
+      unless params['survey']['email'].nil?
+        d.downloader_email       = params['survey']['email']
+        session['survey_email']  = params['survey']['email']
+      end
+
       d.ncelp_resource_id      = resource_id
       d.save!
 
