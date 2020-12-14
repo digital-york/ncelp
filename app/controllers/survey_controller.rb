@@ -40,24 +40,29 @@ class SurveyController < ApplicationController
       redirect_to '/survey/saved?from='+from+'&survey_done=yes&collection_id=' + collection_id.to_s + '&downloader_id=' + d.id.to_s
     else
       d = Resource.find(resource_id).downloaders.new
+      redirect_url = '/survey/saved?from='+from+'&survey_done=yes&resource_id=' + resource_id.to_s + '&downloader_id=' + d.id.to_s + '&fileset_id=' + resource_fileset_id.to_s
 
-      unless params['survey']['status'].nil?
+      unless params['survey']['status'].blank?
         d.downloader_status      = params['survey']['status']
-        session['survey_status'] = params['survey']['status']
+        params['survey']['status'].each do |status|
+          redirect_url = redirect_url + '&survey_status[]=' + status
+        end
       end
-      unless params['survey']['participants_country'].nil?
+      unless params['survey']['participants_country'].blank?
         d.participants_country   = params['survey']['participants_country']
-        session['participants_country'] = params['survey']['participants_country']
+        params['survey']['participants_country'].each do |c|
+          redirect_url = redirect_url + '&participants_country=' + c
+        end
       end
-      unless params['survey']['email'].nil?
+      unless params['survey']['email'].blank?
         d.downloader_email       = params['survey']['email']
-        session['survey_email']  = params['survey']['email']
+        redirect_url = redirect_url + '&survey_email=' + params['survey']['email']
       end
 
       d.ncelp_resource_id      = resource_id
       d.save!
 
-      redirect_to '/survey/saved?from='+from+'&survey_done=yes&resource_id=' + resource_id.to_s + '&downloader_id=' + d.id.to_s + '&fileset_id=' + resource_fileset_id.to_s
+      redirect_to redirect_url
     end
 
   rescue StandardError => e
