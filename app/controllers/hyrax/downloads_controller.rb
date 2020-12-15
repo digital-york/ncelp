@@ -19,7 +19,9 @@ module Hyrax
       when ActiveFedora::File
         ## Detect if the requests come from a bot
         user_agent = UserAgent.parse(request.user_agent)
-        is_bot = user_agent.browser.downcase.include? 'bot'
+        is_bot = user_agent.browser.downcase.include? 'bot' or
+                 user_agent.browser.downcase.include? 'spider' or
+                 user_agent.browser.downcase.include? 'crawler'
 
         # Save downloader info
         if is_bot
