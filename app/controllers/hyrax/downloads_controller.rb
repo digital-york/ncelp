@@ -1,4 +1,5 @@
 require 'user_agent'
+require 'logger'
 
 module Hyrax
   class DownloadsController < ApplicationController
@@ -12,6 +13,8 @@ module Hyrax
     # Render the 404 page if the file doesn't exist.
     # Otherwise renders the file.
     def show
+      log = Logger.new "log/download_controller.log"
+
       case file
       when ActiveFedora::File
         ## Detect if the requests come from a bot
@@ -20,7 +23,7 @@ module Hyrax
 
         # Save downloader info
         if is_bot
-          puts 'Bot detected: ' + user_agent.browser
+          log.info 'Bot detected: ' + user_agent.browser
         else
           fileset_id = params[:id]
           response = SolrHelper.query('has_model_ssim:"Resource" AND member_ids_ssim:"'+fileset_id+'"')
@@ -45,9 +48,7 @@ module Hyrax
             d.downloader_email       = session['survey_email']
           end
           d.save!
-          puts '=========================='
-          puts 'saved downloader: ' + d.id
-          puts '++++++++++++++++++++++++++'
+          log.info 'saved downloader: ' + d.id
         end
 
         super
