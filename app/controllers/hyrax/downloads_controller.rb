@@ -1,4 +1,3 @@
-require 'user_agent'
 require 'logger'
 
 module Hyrax
@@ -17,28 +16,22 @@ module Hyrax
 
       case file
       when ActiveFedora::File
-        ## Detect if the requests come from a bot
-        user_agent = UserAgent.parse(request.user_agent)
-        is_bot = user_agent.browser.downcase.include? 'bot' or
-                 user_agent.browser.downcase.include? 'spider' or
-                 user_agent.browser.downcase.include? 'crawler'
-
-        # Save downloader info
-        if is_bot
-          log.info 'Bot detected: ' + user_agent.browser
-        else
+        # As status field in the survey form is mandatory,
+        # all human downloader should have this session variable set
+        # we only store human downloader info
+        unless session['survey_status'].blank?
           fileset_id = params[:id]
           response = SolrHelper.query('has_model_ssim:"Resource" AND member_ids_ssim:"'+fileset_id+'"')
           resource_id = response['response']['docs'][0]['id']
           d = Resource.find(resource_id).downloaders.new
           d.ncelp_resource_id      = resource_id
-          unless session['survey_status'].blank?
-            if session['survey_status'].is_a? String
-              d.downloader_status      = [session['survey_status']]
-            else
-              d.downloader_status      = session['survey_status']
-            end
+
+          if session['survey_status'].is_a? String
+            d.downloader_status      = [session['survey_status']]
+          else
+            d.downloader_status      = session['survey_status']
           end
+
           unless session['participants_country'].blank?
             if session['participants_country'].is_a? String
               d.participants_country   = [session['participants_country']]
