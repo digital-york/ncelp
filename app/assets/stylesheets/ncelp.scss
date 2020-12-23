@@ -486,19 +486,24 @@ form#new_resource {
 }
 
 #coronavirus {
-  border-color: #074e76;
-  background-color: #074e76;
+  border-color: #e7e7e7;
+  background-color: #e7e7e7;
+
+  .container-fluid {
+    display: flex-fluid;
+    align-items: baseline;
+  }
 
   h2 {
-    color: #fff;
+    color: #000;
     text-transform: none;
-    border-bottom: 2px solid #b75f00;
     display: inline-block;
-    margin-bottom: 20px;
+    font-size: 1.2em;
   }
 
   .buttons {
     .btn {
+      font-size: 1.2em;
       background-color: #fd871f;
       color: #000;
       &:hover {
