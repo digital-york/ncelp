@@ -50,16 +50,22 @@
         ['Pedagogical focus', '/catalog/facet/area_of_research_sim'],
         ['Language being learnt', '/catalog/facet/language_sim'],
         ['Target age range', '/catalog/facet/age_sim'],
-        ['Type/purpose of resource', '/catalog/facet/type_of_material_sim'],
-        ['Modality/mode (skill)', '/catalog/facet/modality_sim'],
-        ['Topic', '/catalog/facet/topic_sim'],
-        ['Thematic/semantic field', '/catalog/facet/thematic_sim']
+        ['All collections', '/catalog?f%5Bhuman_readable_type_sim%5D%5B%5D=Collection&locale=en&per_page=100&view=gallery'],
+        ['Rationales and research', '/collections/2227mp79s?utf8=✓&sort=score+desc%2C+system_create_dtsi+desc&per_page=100&locale=en'],
+        ['Professional development', '/collections/0c483j43w?utf8=✓&sort=score+desc%2C+system_create_dtsi+desc&per_page=100&locale=en'],
+        ['Presentation screencasts', '/collections/4x51hj27z?utf8=✓&sort=score+desc%2C+system_create_dtsi+desc&per_page=100&locale=en']
       ]
       %>
 
-      <% browse_by_links.each do |browse_by_link| %>
+      <% browse_by_links[0..3].each do |browse_by_link| %>
         <div class="col-md-3 col-xs-12 col-sm-12 ncelp-homepage-browse-button-div">
           <%=link_to browse_by_link[0], browse_by_link[1], target: :_blank, title: 'Browse by ' + browse_by_link[0].downcase, class: "ncelp-homepage-browse-button-link" %>
+        </div>
+      <% end %>
+
+      <% browse_by_links[4..7].each do |browse_by_link| %>
+        <div class="col-md-3 col-xs-12 col-sm-12 ncelp-homepage-browse-button-div">
+          <%=link_to browse_by_link[0], browse_by_link[1], target: :_blank, title: 'Browse by ' + browse_by_link[0].downcase, class: "ncelp-homepage-browse-button-link2" %>
         </div>
       <% end %>
 
