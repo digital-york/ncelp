@@ -1,5 +1,5 @@
 <!-- top boxes -->
-<div class="containerX">
+<div class="container">
 
   <div class="hidden">
       <h1>NCELP Resource Portal - National Centre for Excellence for Language Pedagogy</h1>
@@ -73,8 +73,42 @@
   </div>
 </div>
 
+<!-- middle boxes -->
+<div class="container">
+  <div class="row">    
+  
+    <div class="col-xs-12 col-sm-12 col-md-10">
+      <div class="ncelp-homepage-teacher-box">
+        <div class="container">
+          <div class="col-xs-11 col-sm-11 col-md-6">
+            <h2>NCELP Teaching materials and schemes of work</h2>
+            <p>NCELP provides schemes of work (SOW, details and sequenced curriculum) as associated classroom resources. NCELP SWOs are proposed as examples and re-visited systematically to support progression in the early stages of language development within a low exposure foreign language setting.</p>
+            <%=link_to "Read more", "https://ncelp.org/ncelp-schemes-of-work/", target: :_blank, title: 'Read more about NCELP Teaching materials and schemes of work', class: "ncelp-homepage-small-button-link" %>
+          </div>
+          <div class="col-xs-11 col-sm-11 col-md-3">
+          <%=link_to "French: Teaching material + Scheme of work", "https://resources.ncelp.org/collections/t148fh31r?locale=en", target: :_blank, title: "Browse by " + "French Teaching material + Scheme of work", class: "ncelp-homepage-browse-button-link2" %>
+          <%=link_to "German: Teaching material + Scheme of work", "https://resources.ncelp.org/collections/k3569444k?locale=en", target: :_blank, title: "Browse by " + "German Teaching material + Scheme of work", class: "ncelp-homepage-browse-button-link" %>
+          <%=link_to "Spanish: Teaching material + Scheme of work", "https://resources.ncelp.org/collections/f1881m10k?locale=en", target: :_blank, title: "Browse by " + "Spanish Teaching material + Scheme of work", class: "ncelp-homepage-browse-button-link3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-2">
+      <div class="ncelp-homepage-mail-box">
+        <h2>Mailing list</h2>
+        <p>To receive a regular bulletin of new and updated resources and NCELP news and activities, sign up to our mailing list.</p>
+        <%=link_to "Subscribe", "https://docs.google.com/forms/d/e/1FAIpQLSeJy-sMKW_1qQQMJWxatdS_FBS2a8IMIBT_XOSoNf9nvsCb_w/viewform", target: :_blank, title: 'Subscribe to our mailing list', class: "ncelp-homepage-small-button-link" %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- bottom boxes -->
-<div class="containerX ncelp-homepage-featured-and-recent-box">
+<div class="container"> 
+<div class="row">
+<%# ncelp-homepage-featured-and-recent-box"> %>
 
   <div class="col-xs-12 col-sm-12 col-md-6 ncelp-homepage-bottom-box">
 
@@ -111,12 +145,14 @@
     </div>
 
   </div>
+ 
+ </div>  
 
 </div>
 
 
 
-<div class="containerX extra-space-bottom ncelp_footer_container">
+<div class="container extra-space-bottom ncelp_footer_container">
   <div class="col-sm-10" style="padding-top: 20px;">
     <%= link_to image_tag(t('ncelp.footer.education_dept_logo'), :class=>'ncelp_footer_image', alt: "Department for Education"), "https://www.york.ac.uk/education/", target: :_blank %>
   </div>

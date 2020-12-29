@@ -196,6 +196,28 @@ footer.navbar-inverse {
   }
 }
 
+.ncelp-homepage-browse-button-link3 {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  margin-top: 10px;
+
+  background-color: #bb5c00;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #bb5c00;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #bb5c00;
+    color: white;
+  }
+}
+
 .ncelp-homepage-bottom-box-left {
   // margin-top: 10px;
   // margin-bottom: 10px;
@@ -534,4 +556,60 @@ form#new_resource {
       }
     }
   }
+}
+
+.ncelp-homepage-small-button-link {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  margin-top: 10px;
+
+  background-color: #e87d1e;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #e87d1e;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #fd871f;
+    color: black;
+  }
+}
+
+.ncelp-homepage-teacher-box {
+  background-color: #e7e7e7;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 10px;
+
+  padding: 15px;
+  // margin-right: 15px;
+  margin-bottom: 15px;
+  
+  .ncelp-homepage-small-button-link {
+      width: 40%;
+  }
+}
+
+.ncelp-homepage-mail-box {
+  background-color: #0d4f74;
+  color: white;
+  border: 2px solid #0d4f74;
+  border-radius: 10px;
+
+  padding: 15px;
+  // margin-left: 1%;
+  margin-bottom: 15px;
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .ncelp-homepage-small-button-link {
+    width: 75%;
+  } 
 }
