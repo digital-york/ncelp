@@ -113,13 +113,14 @@ services:
 
   web:
     <<: *app
+    tty: true
+    stdin_open: true
     entrypoint:
         - /bin/docker-entrypoint-web.sh
     expose:
       - ${RAILS_PORT}
     ports:
       - ${EXTERNAL_PORT}:${RAILS_PORT}
-
   # workers:
   #   <<: *app
   #   entrypoint:
