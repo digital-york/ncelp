@@ -11,7 +11,8 @@ class ContentBlock < ActiveRecord::Base
     about: :about_page,
     help: :help_page,
     terms: :terms_page,
-    agreement: :agreement_page
+    agreement: :agreement_page,
+    cite: :cite_page
   }.freeze
 
   # NOTE: method defined outside the metaclass wrapper below because
@@ -86,6 +87,15 @@ class ContentBlock < ActiveRecord::Base
       terms_page.update(value: value)
     end
 
+    def cite_page
+      find_by(name: 'cite_page') ||
+        create(name: 'cite_page', value: default_cite_text)
+    end
+
+    def cite_page=(value)
+      cite_page.update(value: value)
+    end
+
     def default_agreement_text
       ERB.new(
         IO.read(
@@ -106,6 +116,14 @@ class ContentBlock < ActiveRecord::Base
       ERB.new(
         IO.read(
             Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'help.html.erb')
+        )
+      ).result
+    end
+
+    def default_cite_text
+      ERB.new(
+        IO.read(
+            Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'cite.html.erb')
         )
       ).result
     end

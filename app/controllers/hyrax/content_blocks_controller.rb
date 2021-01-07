@@ -26,7 +26,8 @@ module Hyrax
         params.require(:content_block).permit(:marketing,
                                               :announcement,
                                               :researcher,
-                                              :help)
+                                              :help,
+                                              :cite)
       end
 
       # When a request comes to the controller, it will be for one and
