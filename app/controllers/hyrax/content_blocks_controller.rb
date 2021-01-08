@@ -27,7 +27,8 @@ module Hyrax
                                               :announcement,
                                               :researcher,
                                               :help,
-                                              :cite)
+                                              :cite,
+                                              :schemes_of_work)
       end
 
       # When a request comes to the controller, it will be for one and

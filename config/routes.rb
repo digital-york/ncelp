@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   get '/cite' => 'hyrax/pages#show', key: 'cite'
+  get '/schemes-of-work' => 'hyrax/pages#show', key: 'schemes_of_work'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
