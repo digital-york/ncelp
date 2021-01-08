@@ -12,6 +12,12 @@
     <li>
       <a href="#terms" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.terms_page') %></a>
     </li>
+    <li>
+      <a href="#schemes_of_work" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.schemes_of_work_page') %></a>
+    </li>
+    <li>
+      <a href="#cite" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.cite_page') %></a>
+    </li>
   </ul>
   <div class="tab-content">
     <div id="about" class="tab-pane active">
@@ -69,6 +75,38 @@
             <div class="field form-group">
                 <%= f.label :terms %><br />
                 <%= f.text_area :terms, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <%= link_to t(:'hyrax.pages.cancel'), hyrax.admin_admin_sets_path, class: 'btn btn-default pull-right' %>
+            <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div id="schemes_of_work" class="tab-pane">
+      <div class="panel panel-default labels">
+        <%= simple_form_for ContentBlock.for(:schemes_of_work), url: hyrax.page_path(ContentBlock.for(:schemes_of_work)) do |f| %>
+          <div class="panel-body">
+            <div class="field form-group">
+                <%= f.label :schemes_of_work %><br />
+                <%= f.text_area :schemes_of_work, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <%= link_to t(:'hyrax.pages.cancel'), hyrax.admin_admin_sets_path, class: 'btn btn-default pull-right' %>
+            <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div id="cite" class="tab-pane">
+      <div class="panel panel-default labels">
+        <%= simple_form_for ContentBlock.for(:cite), url: hyrax.page_path(ContentBlock.for(:cite)) do |f| %>
+          <div class="panel-body">
+            <div class="field form-group">
+                <%= f.label :cite %><br />
+                <%= f.text_area :cite, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
             </div>
           </div>
           <div class="panel-footer">
