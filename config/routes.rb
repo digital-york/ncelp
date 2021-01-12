@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'download/collection'
   get 'survey/new'
 
   get 'survey/new'
