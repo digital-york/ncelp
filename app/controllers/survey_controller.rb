@@ -1,5 +1,3 @@
-require 'user_agent'
-
 class SurveyController < ApplicationController
   protect_from_forgery
 
