@@ -34,7 +34,9 @@ module Hyrax
         params.require(:content_block).permit(:about,
                                               :agreement,
                                               :help,
-                                              :terms)
+                                              :terms,
+                                              :cite,
+                                              :schemes_of_work)
       end
 
       # When a request comes to the controller, it will be for one and

@@ -4,7 +4,6 @@ module Hyrax
     with_themed_layout 'dashboard'
 
     def show
-      @content_block = ContentBlock.for(params[:key])
     end
 
     def edit
@@ -30,9 +29,7 @@ module Hyrax
         params.require(:content_block).permit(:marketing,
                                               :announcement,
                                               :researcher,
-                                              :help,
-                                              :cite,
-                                              :schemes_of_work)
+                                              :help)
       end
 
       # When a request comes to the controller, it will be for one and
