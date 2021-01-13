@@ -111,9 +111,6 @@ footer.navbar-inverse {
   // padding-left: 20px;
   // padding-right: 20px;
   padding-bottom: 15px;
-
-
-
 }
 .ncelp-searchbox-image-header {
   padding-top: 5px;
@@ -196,24 +193,68 @@ footer.navbar-inverse {
   }
 }
 
-.ncelp-homepage-browse-button-link3 {
+.ncelp-homepage-spanish-button-link {
   display: inline-block;
   width: 100%;
   padding: 10px;
 
   margin-top: 10px;
 
-  background-color: #bb5c00;
+  background-color: #e87d1e;
   font-size: 16px;
   text-align: center;
-  border: 2px solid #bb5c00;
+  border: 2px solid #e87d1e;
   border-radius: 4px;
   color: black;
 
   &,
   &:hover,
   &:focus {
-    background-color: #bb5c00;
+    background-color: #e87d1e;
+    color: black;
+  }
+}
+
+.ncelp-homepage-french-button-link {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  margin-top: 10px;
+
+  background-color: #104f75;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #104f75;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #104f75;
+    color: white;
+  }
+}
+
+.ncelp-homepage-german-button-link {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  margin-top: 10px;
+
+  background-color: #9d6d00;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #9d6d00;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #9d6d00;
     color: white;
   }
 }
@@ -529,9 +570,17 @@ form#new_resource {
   }
 }
 
-#coronavirus {
+// #coronavirus
+.ncelp-homepage-coronavirus-box {
   border-color: #e7e7e7;
   background-color: #e7e7e7;
+
+  text-align: left;
+  vertical-align: middle;
+  // border: 2px solid #eeeeee;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-top: 5px;
 
   .container-fluid {
     display: flex-fluid;
@@ -543,16 +592,21 @@ form#new_resource {
     text-transform: none;
     display: inline-block;
     font-size: 1.2em;
+    margin-right: 15px;
+    margin-top: 0px;
   }
 
   .buttons {
     .btn {
+      margin-right: 20px;
+      margin-bottom: 5px;
       font-size: 1.2em;
       background-color: #fd871f;
+      // border-color: #fd871f;
+      border: 2px solid #e87d1e;
       color: #000;
       &:hover {
         text-decoration: underline;
-
       }
     }
   }
