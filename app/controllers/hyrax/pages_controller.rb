@@ -36,7 +36,8 @@ module Hyrax
                                               :help,
                                               :terms,
                                               :cite,
-                                              :schemes_of_work)
+                                              :schemes_of_work,
+                                              :all_collections)
       end
 
       # When a request comes to the controller, it will be for one and

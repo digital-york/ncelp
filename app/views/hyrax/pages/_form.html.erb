@@ -16,6 +16,9 @@
       <a href="#schemes_of_work" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.schemes_of_work_page') %></a>
     </li>
     <li>
+      <a href="#all_collections" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.all_collections_page') %></a>
+    </li>    
+    <li>
       <a href="#cite" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.cite_page') %></a>
     </li>
   </ul>
@@ -91,6 +94,22 @@
             <div class="field form-group">
                 <%= f.label :schemes_of_work %><br />
                 <%= f.text_area :schemes_of_work, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <%= link_to t(:'hyrax.pages.cancel'), hyrax.admin_admin_sets_path, class: 'btn btn-default pull-right' %>
+            <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div id="all_collections" class="tab-pane">
+      <div class="panel panel-default labels">
+        <%= simple_form_for ContentBlock.for(:all_collections), url: hyrax.page_path(ContentBlock.for(:all_collections)) do |f| %>
+          <div class="panel-body">
+            <div class="field form-group">
+                <%= f.label :all_collections %><br />
+                <%= f.text_area :all_collections, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
             </div>
           </div>
           <div class="panel-footer">

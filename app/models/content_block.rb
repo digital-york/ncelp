@@ -13,7 +13,8 @@ class ContentBlock < ActiveRecord::Base
     terms: :terms_page,
     agreement: :agreement_page,
     cite: :cite_page,
-    schemes_of_work: :schemes_of_work_page
+    schemes_of_work: :schemes_of_work_page,
+    all_collections: :all_collections_page
   }.freeze
 
   # NOTE: method defined outside the metaclass wrapper below because
@@ -106,6 +107,15 @@ class ContentBlock < ActiveRecord::Base
       shemes_of_work_page.update(value: value)
     end
 
+    def all_collections_page
+      find_by(name: 'all_collections_page') ||
+        create(name: 'all_collections_page', value: default_all_collections_text)
+    end
+
+    def all_collections_page=(value)
+      all_collections_page.update(value: value)
+    end
+
     def default_agreement_text
       ERB.new(
         IO.read(
@@ -142,6 +152,14 @@ class ContentBlock < ActiveRecord::Base
       ERB.new(
         IO.read(
           Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'schemes_of_work.html.erb')
+        )
+      ).result
+    end
+
+    def default_all_collections_text
+      ERB.new(
+        IO.read(
+          Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'all_collections.html.erb')
         )
       ).result
     end
