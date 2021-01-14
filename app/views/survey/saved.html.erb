@@ -19,7 +19,7 @@
             <%
             download_url = ''
             if params['from']=='collection'
-                download_url = "/zipfiles/#{params['collection_id']}.zip"
+                download_url = "/download/collection?id=#{params['collection_id']}"
             else
                 download_url = "/downloads/#{params['fileset_id']}"
             end

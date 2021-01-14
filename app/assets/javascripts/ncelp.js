@@ -121,6 +121,7 @@ $(document).on('turbolinks:load', function() {
         var u = window.location.href.split('?')[0];
         var collectionid = u.substr(u.lastIndexOf('/')+1);
         var zipfileurl = window.location.origin + "/zipfiles/" + collectionid + ".zip";
+        var downloadurl = window.location.origin + "/download/collection?id=" + collectionid;
 
         $.ajax({
             type: 'HEAD',
@@ -133,7 +134,9 @@ $(document).on('turbolinks:load', function() {
             success: function () {
                 $('#collection_download_all').css("display", "block");
                 $('#collection_download_all').click(function(){
-                    window.open(zipfileurl,'_blank');
+                    if($('#has_done_survey').val() == 'yes') {
+                        window.open(downloadurl,'_blank');
+                    }
                 });
             },
             error: function () {
