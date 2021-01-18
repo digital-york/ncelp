@@ -13,6 +13,7 @@ class DownloadController < ApplicationController
       unless session['survey_status'].blank?
         d = Collection.find(collection_id).downloaders.new
         d.collection_id      = collection_id
+        d.parent_type        = 'collection'
 
         if session['survey_status'].is_a? String
           d.downloader_status      = [session['survey_status']]

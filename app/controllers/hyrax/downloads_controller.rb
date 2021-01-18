@@ -24,6 +24,7 @@ module Hyrax
           response = SolrHelper.query('has_model_ssim:"Resource" AND member_ids_ssim:"'+fileset_id+'"')
           resource_id = response['response']['docs'][0]['id']
           d = Resource.find(resource_id).downloaders.new
+          d.parent_type = 'resource'
           d.ncelp_resource_id      = resource_id
 
           if session['survey_status'].is_a? String
