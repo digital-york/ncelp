@@ -707,6 +707,27 @@ namespace :report do
         end
     end
 
+    # Get all child resources of a collection and store the results in a Hash
+    def get_collection_children_dict()
+        collection_children_dict = {}
+        collection_docs = get_solr_doc('has_model_ssim:Collection')
+        collection_docs.each do |collection_doc|
+            collection_id = collection_doc['id']
+            q = "has_model_ssim:\"Resource\" AND member_of_collection_ids_ssim:\"#{collection_id}\""
+            child_resources_docs = get_solr_doc(q)
+            unless child_resources_docs.blank?
+                child_resources_docs.each do |child_resources_doc|
+                    if collection_children_dict[collection_id].blank?
+                        collection_children_dict[collection_id] = [child_resources_doc['id']]
+                    else
+                        collection_children_dict[collection_id] << child_resources_doc['id']
+                    end
+                end
+            end
+        end
+        collection_children_dict
+    end
+
     def get_solr_doc(solr_query)
         solr = RSolr.connect :url => SOLR
         response = solr.get 'select', :params => {
@@ -719,6 +740,11 @@ namespace :report do
         else
             response['response']['docs']
         end
+    end
+
+    desc 'Get collection - child resources Hash'
+    task :collection_resources_hash => :environment do
+        puts get_collection_children_dict()
     end
 
 end
