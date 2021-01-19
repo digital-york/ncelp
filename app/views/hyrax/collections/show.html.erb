@@ -118,7 +118,10 @@
             Download All
           </a>
         <% else %>
-          <button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
+          <button id="collection_download_all" class="btn btn-primary" style="display:none"
+            data-label="<%= collectionid %>" data-value="<%= collection_fileresource_count %>">
+            Download All
+          </button>
         <% end %>
       </div>
       <br/>

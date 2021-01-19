@@ -16,16 +16,21 @@
             download_url = ''
             if params['from']=='collection'
                 download_url = "/zipfiles/#{params['collection_id']}.zip"
-                fileset_id = "#{params['collection_id']}.zip"
+                collection_id = "#{params['collection_id']}"
+                collecton_fileset_count = "#{params['collection_fileset_count']}"
             else
                 download_url = "/downloads/#{params['fileset_id']}"
                 fileset_id = "#{params['fileset_id']}"
             end
             %>
-
+            
             <button type="button" class="btn btn-info"
-                    id="file_download" data-label="<%= fileset_id %>" 
-                    onclick="window.open('<%= download_url%>','_blank');parent.location.reload(true);">Download resource
+            <% if params['from'] != 'collection' %> 
+                id="file_download" data-label="<%= fileset_id %>"
+            <% else %>
+                id="collection_download_all" data-label="<%= collection_id %>" data-value="<%= collecton_fileset_count%>"
+            <% end %>
+                onclick="window.open('<%= download_url%>','_blank');parent.location.reload(true);">Download resource
             </button>
 
             <button type="button" class="btn btn-info" onclick="parent.location.reload(true);">Close</button>
