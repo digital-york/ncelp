@@ -11,7 +11,7 @@ We work in partnership with university researchers, teacher educators and expert
 Our substantial package of support includes professional development tools, teaching resources, and workshops, and takes forward the recommendations made in the Teaching Schools Council’s Modern Foreign Languages Pedagogy Review led by headteacher and linguist Ian Bauckham, and ensures they are achievable and effective in schools.
 
 ## Quick start
-0. Assume that Docker is avaiable
+0. Assume that Docker is available
 ```
 ❯ docker-compose --version                                                                 ═
 docker-compose version 1.24.1, build 4667896b
@@ -41,8 +41,8 @@ development:
   fedora_base_path: /ncelp-development
   # fedora_url: http://127.0.0.1:8080/fcrepo/rest
   fedora_url: http://fcrepo:8080/fcrepo/rest
-  # fits_path: /Users/sp1487/fits-1.4.1/fits.sh
-  fits_path: /fits/fits.sh
+  # fits_path: /fits/${FITS_VERSION}/fits.sh
+  fits_path: /fits/fits-1.0.5/fits.sh
   log_level: error
   redis_namespace: ncelp-public
   realtime_notifications: 'false'
@@ -58,7 +58,7 @@ development:
 ```
 ❯ docker-compose build 
 
-# Check images builded
+# Check if images exists
 ❯ docker-compose images                                                                  ═ ✹
       Container                  Repository              Tag        Image Id      Size  
 ----------------------------------------------------------------------------------------
@@ -87,6 +87,50 @@ ncelp-mac_redis_1        docker-entrypoint.sh redis ...   Up (healthy)     0.0.0
 ncelp-mac_solr_1         solr-precreate hyrax_produ ...   Up (healthy)     0.0.0.0:8983->8983/tcp
 ncelp-mac_web_1          /bin/docker-entrypoint-web.sh    Up               0.0.0.0:3000->3000/tcp
 ```
-The local source code is shared with Docker ${APP_DIR} volume. Any changes to .erb files, while running rails servers  in development mode, will be seen instantly. Changes to gems and new *.rb will require rebuild image. This should be faster as the process is staged.   
 
-The build process will create qazwsx:ncelp-admin@york.ac.uk admin user. Use this link to sign in http://127.0.0.1:3000/users/sign_in
+5. How to modify application code
+
+The local source code is shared with Docker ${APP_DIR} volume. Refresh browser to see any changes to .erb files (Note, this is only while RAILS_ENV=development). Restart web service to reload all changes to .rb files ```docker-compose restart web```.
+
+If you make changes to Gemfile or the Compose file to try out some different configurations, you need to rebuild. Some changes require only ```docker-compose up --build```, but a full rebuild requires a re-run of ```docker-compose run web bundle install``` to sync changes in the ```Gemfile.lock``` to the host, followed by ```docker-compose up --build```.
+
+If you need update some gems run ```bundle lock --update``` following re-build 
+```
+# Example: Bump up rack and nokogiri gems
+docker-compose run web bundle lock --update rack nokogiri 
+docker-compose build
+```
+
+6. Clean start
+Hyrax data are stored in various location. Occassionally Fedora, Solr and Hyrax DB are not synchronised. In this case a full refresh of stored data is required. Follow those commands:
+```
+# remove images
+docker-compose rm
+# prune all data volumes
+docker volume prune
+```
+
+7. Avaiable web services
+NCELP app http://127.0.0.1:3000. Sign in as admin user with qazwsx:ncelp-admin@york.ac.uk at http://127.0.0.1:3000/users/sign_in
+
+Access Fedora store http://127.0.0.1:8080/fcrepo
+
+Access Solr admin interface http://127.0.0.1:8983/solr/#/
+
+8. Direct acces to stored data
+If you need access to a data volume, one approach will be mounting a volume to ad hoc busybox container. For example, to remove a flag that indicates that application was installed during the first build _$APP_WORKDIR/shared/state/.initialized_, use this command
+``` 
+docker run --rm -i -v=ncelp-mac_state:/tmp/ncelp-mac_state busybox rm /tmp/ncelp-mac_state/.initialized
+```
+The container will be removed (--rm) after completing this opperation.
+
+9. Know issus
+
+Solr data re not store at external volume. Remove Solr container to start fresh.
+
+Upgrading hyrax application requires to rung DB migration, run ```docker-compose web run bundle exec rails db:migrate RAILS_ENV=development```. The command will be executed on stoping web service with ```Control+C``` as web container starts rails server. 
+
+Hyrax app creates application PID at /var/run/hyrax/hyrax.pid. Occasionally, restarting docker will not clean the file. On this occassion web service fails to start. Simply stop docker and start it again. Ultimetly, this can be also solved by removing web container with volumes and rebuild it.
+
+In order to use Pry for debuging, add Pry bindig and restart docker. Visit relevant application section. Application will stop, however, access to terminal is not allowed. Connect to web service with attach command ````docker attach #Container ID``` and press enter to see Pry CMD prompt.
+

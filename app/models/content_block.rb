@@ -11,7 +11,10 @@ class ContentBlock < ActiveRecord::Base
     about: :about_page,
     help: :help_page,
     terms: :terms_page,
-    agreement: :agreement_page
+    agreement: :agreement_page,
+    cite: :cite_page,
+    schemes_of_work: :schemes_of_work_page,
+    all_collections: :all_collections_page
   }.freeze
 
   # NOTE: method defined outside the metaclass wrapper below because
@@ -86,6 +89,33 @@ class ContentBlock < ActiveRecord::Base
       terms_page.update(value: value)
     end
 
+    def cite_page
+      find_by(name: 'cite_page') ||
+        create(name: 'cite_page', value: default_cite_text)
+    end
+
+    def cite_page=(value)
+      cite_page.update(value: value)
+    end
+
+    def schemes_of_work_page
+      find_by(name: 'schemes_of_work_page') ||
+        create(name: 'schemes_of_work_page', value: default_schemes_of_work_text)
+    end
+
+    def schemes_of_work_page=(value)
+      shemes_of_work_page.update(value: value)
+    end
+
+    def all_collections_page
+      find_by(name: 'all_collections_page') ||
+        create(name: 'all_collections_page', value: default_all_collections_text)
+    end
+
+    def all_collections_page=(value)
+      all_collections_page.update(value: value)
+    end
+
     def default_agreement_text
       ERB.new(
         IO.read(
@@ -105,7 +135,31 @@ class ContentBlock < ActiveRecord::Base
     def default_help_text
       ERB.new(
         IO.read(
-            Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'help.html.erb')
+          Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'help.html.erb')
+        )
+      ).result
+    end
+
+    def default_cite_text
+      ERB.new(
+        IO.read(
+          Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'cite.html.erb')
+        )
+      ).result
+    end
+
+    def default_schemes_of_work_text
+      ERB.new(
+        IO.read(
+          Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'schemes_of_work.html.erb')
+        )
+      ).result
+    end
+
+    def default_all_collections_text
+      ERB.new(
+        IO.read(
+          Rails.root.join('app', 'views', 'hyrax', 'content_blocks', 'templates', 'all_collections.html.erb')
         )
       ).result
     end

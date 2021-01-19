@@ -1,4 +1,6 @@
 terms:
+  - id: GBR
+    term: "United Kingdom"
   - id: AFG
     term: "Afghanistan"
   - id: ALB
@@ -455,8 +457,6 @@ terms:
     term: "Ukraine"
   - id: ARE
     term: "United Arab Emirates"
-  - id: GBR
-    term: "United Kingdom"
   - id: USA
     term: "United States"
   - id: UMI

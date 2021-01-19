@@ -3,6 +3,9 @@ module Hyrax
     load_and_authorize_resource
     with_themed_layout 'dashboard'
 
+    def show
+    end
+
     def edit
       add_breadcrumb t(:'hyrax.controls.home'), root_path
       add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
