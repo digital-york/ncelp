@@ -119,7 +119,7 @@
           </a>
         <% else %>
           <button id="collection_download_all" class="btn btn-primary" style="display:none"
-            data-label="<%= collectionid %>" data-value="<%= collection_fileresource_count %>">
+            data-label="<%= collectionid %>" data-value="<%= CollectionHelper.get_collection_file_number(collectionid) %>">
             Download All
           </button>
         <% end %>

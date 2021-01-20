@@ -17,7 +17,7 @@
             if params['from']=='collection'
                 download_url = "/zipfiles/#{params['collection_id']}.zip"
                 collection_id = "#{params['collection_id']}"
-                collecton_fileset_count = "#{params['collection_fileset_count']}"
+                collecton_fileset_count = CollectionHelper.get_collection_file_number(collection_id)
             else
                 download_url = "/downloads/#{params['fileset_id']}"
                 fileset_id = "#{params['fileset_id']}"
