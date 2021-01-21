@@ -2,8 +2,6 @@ require 'figaro'
 
 module CollectionHelper
 
-    SOLR = Figaro.env.solr_url
-
     # return all files in the contained resources of a collection
     def self.get_collection_file_number(collection_id)
         number_of_files = 0
