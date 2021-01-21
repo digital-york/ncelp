@@ -1,5 +1,3 @@
-require 'figaro'
-
 module CollectionHelper
 
     # return all files in the contained resources of a collection
