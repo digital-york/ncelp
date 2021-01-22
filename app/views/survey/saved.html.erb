@@ -21,9 +21,17 @@
             else
                 download_url = "/downloads/#{params['fileset_id']}"
                 fileset_id = "#{params['fileset_id']}"
+                resource_doc = FileSetHelper.get_parent_resource_docs(fileset_id)
+            %>
+              <input type="hidden" id="resource_languages" value="<%= ResourceHelper.get_languages(resource_doc).join('|')%>"/>
+              <input type="hidden" id="resource_type_of_materials" value="<%= ResourceHelper.get_type_of_materials(resource_doc).join('|')%>"/>
+              <input type="hidden" id="resource_ages" value="<%= ResourceHelper.get_ages(resource_doc).join('|')%>"/>
+              <input type="hidden" id="resource_pedagogical_focus" value="<%= ResourceHelper.get_pedagogical_focus(resource_doc).join('|')%>"/>
+              <input type="hidden" id="resource_material_for_teacher" value="<%= ResourceHelper.get_material_for_teacher(resource_doc).join('|')%>"/>
+            <%
             end
             %>
-            
+
             <button type="button" class="btn btn-info"
             <% if params['from'] != 'collection' %> 
                 id="file_download" data-label="<%= fileset_id %>"
