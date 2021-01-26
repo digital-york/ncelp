@@ -46,7 +46,11 @@ RUN apt-get update -qq \
     bzip2 unzip xz-utils \
     git \
     vim \
-    default-jre-headless
+    default-jre-headless \
+    clamav \
+    libclamav9 \
+    libclamav-dev  
+
 
 # Install fits
 RUN mkdir -p /fits/ \
@@ -82,6 +86,7 @@ RUN chmod +x /bin/docker-entrypoint-worker.sh
 WORKDIR $APP_WORKDIR
 COPY Gemfile /${APP_WORKDIR}/Gemfile
 COPY Gemfile.lock /${APP_WORKDIR}/Gemfile.lock
+RUN gem update --system; gem install bundler
 RUN if [ "$RAILS_ENV" = "production" ]; then bundle install --without development test; else bundle install; fi
 # Install app for production deployment 
 # Do not rebuild for local development as docker-compose use local mount to $APP_WORDKIR
