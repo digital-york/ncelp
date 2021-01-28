@@ -4,15 +4,13 @@
 // sent to Google Analytics.
 
 $(document).on('click', '#file_download', function(e) {
-  _gaq.push(['_trackEvent', 'Files', 'Downloaded', $(this).data('label')]);
-  //console.log(`Hey onclick Files _trackEvent() push ${$(this).data('label')}`)
+  _gaq.push(['_trackEvent', 'Files', 'Downloaded', $(this).data('label'), 1, true]);
 
   // send languages info to GA
   let languages = $('#resource_languages').val();
   if(languages) {
     languages.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Languages', 'Downloaded', item]);
-      console.log("Languages -> " + item);
+      _gaq.push(['_trackEvent', 'Languages', 'Metadata', item, ,true]);
     });
   }
 
@@ -20,8 +18,7 @@ $(document).on('click', '#file_download', function(e) {
   let type_of_materials = $('#resource_type_of_materials').val();
   if(type_of_materials) {
     type_of_materials.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Type_of_materials', 'Downloaded', item]);
-      console.log("Type_of_materials -> " + item);
+      _gaq.push(['_trackEvent', 'Type_of_materials', 'Metadata', item, , true]);
     });
   }
 
@@ -29,8 +26,7 @@ $(document).on('click', '#file_download', function(e) {
   let resource_ages = $('#resource_ages').val();
   if(resource_ages) {
     resource_ages.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Ages', 'Downloaded', item]);
-      console.log("Ages -> " + item);
+      _gaq.push(['_trackEvent', 'Ages', 'Metadata', item, ,true]);
     });
   }
 
@@ -38,8 +34,7 @@ $(document).on('click', '#file_download', function(e) {
   let pedagogical_focus = $('#resource_pedagogical_focus').val();
   if(pedagogical_focus) {
     pedagogical_focus.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Pedagogical_focus', 'Downloaded', item]);
-      console.log("Pedagogical_focus -> " + item);
+      _gaq.push(['_trackEvent', 'Pedagogical_focus', 'Metadata', item, ,true]);
     });
   }
 
@@ -47,8 +42,7 @@ $(document).on('click', '#file_download', function(e) {
   let material_for_teacher = $('#resource_material_for_teacher').val();
   if(material_for_teacher) {
     material_for_teacher.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Material_for_teacher', 'Downloaded', item]);
-      console.log("Material_for_teacher -> " + item);
+      _gaq.push(['_trackEvent', 'Material_for_teacher', 'Metadata', item, ,true]);
     });
   }
 
@@ -57,7 +51,5 @@ $(document).on('click', '#file_download', function(e) {
 $(document).on('click', '#collection_download_all', function(e) {
   //data-label - collection resource id
   //data-value - number of file resources zipped in the collection bundle
-  _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value')]);
-  //console.log(`Hey onclick Collections _trackEvent() push ${$(this).data('label')} including ${$(this).data('int')}`)
-    
+  _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value'), true]);
 });
