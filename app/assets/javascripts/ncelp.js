@@ -133,7 +133,9 @@ $(document).on('turbolinks:load', function() {
             success: function () {
                 $('#collection_download_all').css("display", "block");
                 $('#collection_download_all').click(function(){
-                    window.open(zipfileurl,'_blank');
+                    if($('#has_done_survey').val() == 'yes') {
+                        window.open(zipfileurl, '_blank');
+                    }
                 });
             },
             error: function () {

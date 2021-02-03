@@ -100,6 +100,7 @@
       <div class="hyc-blacklight">
         <% collectionid= @presenter.solr_document.id %>
         <% unless (session['has_done_survey'] == 'yes' or collectionid.nil?) %>
+          <input type="hidden" id="has_done_survey" value="no"/>
           <a data-fancybox
              class="btn btn-primary"
              id="collection_download_all"
@@ -118,7 +119,11 @@
             Download All
           </a>
         <% else %>
-          <button id="collection_download_all" class="btn btn-primary" style="display:none">Download All</button>
+          <input type="hidden" id="has_done_survey" value="yes"/>
+          <button id="collection_download_all" class="btn btn-primary" style="display:none"
+            data-label="<%= collectionid %>" data-value="<%= CollectionHelper.get_collection_file_number(collectionid) %>">
+            Download All
+          </button>
         <% end %>
       </div>
       <br/>
