@@ -4,7 +4,7 @@
 // sent to Google Analytics.
 
 $(document).on('click', '#file_download', function(e) {
-  _gaq.push(['_trackEvent', 'Files', 'Downloaded', $(this).data('label'), 1, true]);
+  _gaq.push(['_trackEvent', 'Files', 'Downloaded', $(this).data('label'), 1]);
 
   // send languages info to GA
   let languages = $('#resource_languages').val();
@@ -51,5 +51,5 @@ $(document).on('click', '#file_download', function(e) {
 $(document).on('click', '#collection_download_all', function(e) {
   //data-label - collection resource id
   //data-value - number of file resources zipped in the collection bundle
-  _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value'), true]);
+  _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value')]);
 });
