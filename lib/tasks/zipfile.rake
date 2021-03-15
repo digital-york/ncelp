@@ -121,9 +121,11 @@ namespace :zipfile do
 
         def create_zip(download_folder, collection_id)
             zipfile_name = "#{download_folder}/#{collection_id}.zip"
-            files = Dir["#{download_folder}/#{collection_id}/*"]
+            files = Dir.entries("#{download_folder}/#{collection_id}", encoding: "utf-8")
             Zip::File.open(zipfile_name, Zip::File::CREATE) do |zipfile|
                 files.each do |filename|
+                    next if filename == '.' or filename =='..'
+                    filename = "#{download_folder}/#{collection_id}/#{filename}"
                     zipfile.add(File.basename(filename), filename)
                 end
             end
