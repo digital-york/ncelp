@@ -542,7 +542,7 @@ GEM
       racc (~> 1.4)
     nokogumbo (2.0.2)
       nokogiri (~> 1.8, >= 1.8.4)
-    oauth (0.5.4)
+    oauth (0.5.6)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -852,6 +852,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick (>= 4.9.4)
   nokogiri (>= 1.10.4)
+  oauth (>= 0.5.5)
   passenger (~> 5.2.0)
   pg (~> 1.1.4)
   pry-byebug
@@ -877,4 +878,4 @@ DEPENDENCIES
   xray-rails
 
 BUNDLED WITH
-   2.1.6
+   2.2.7
