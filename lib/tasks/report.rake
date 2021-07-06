@@ -251,29 +251,33 @@ namespace :report do
                 fileset_ids = doc['file_set_ids_ssim']
                 unless fileset_ids.blank?
                     fileset_ids.each do |fileset_id|
-                        fs = FileSet.find(fileset_id)
-                        # ignore files created before days from now
-                        if Date.today - days > fs.date_modified
-                            next
-                        end
+                        begin
+                            fs = FileSet.find(fileset_id)
+                            # ignore files created before days from now
+                            if Date.today - days > fs.date_modified
+                                next
+                            end
 
-                        fileset_title = ''
-                        fileset_title = fs.title[0] unless fs.title.blank?
-                        collection_title = ''
-                        unless collection_id.blank?
-                            c = Collection.find(collection_id)
-                            collection_title = c.title[0]
+                            fileset_title = ''
+                            fileset_title = fs.title[0] unless fs.title.blank?
+                            collection_title = ''
+                            unless collection_id.blank?
+                                c = Collection.find(collection_id)
+                                collection_title = c.title[0]
+                            end
+                            fd = FileDesc.new(collection_id,
+                                              collection_title,
+                                              resource_id,
+                                              resource_title,
+                                              resource_create_date,
+                                              fileset_id,
+                                              fileset_title,
+                                              fs.date_uploaded,
+                                              fs.creator[0])
+                            filedesc_array << fd
+                        rescue
+                            puts '  ERROR'
                         end
-                        fd = FileDesc.new(collection_id,
-                                          collection_title,
-                                          resource_id,
-                                          resource_title,
-                                          resource_create_date,
-                                          fileset_id,
-                                          fileset_title,
-                                          fs.date_uploaded,
-                                          fs.creator[0])
-                        filedesc_array << fd
                     end
                 end
                 i = i + 1
