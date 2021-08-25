@@ -26,7 +26,7 @@ module Hyrax
 
     def show
       # As agreed with user, use fixed number of records per page
-      params[:per_page] = 200
+      params[:per_page] = 500
 
       @curation_concern ||= ActiveFedora::Base.find(params[:id])
       presenter
