@@ -25,6 +25,9 @@ module Hyrax
     end
 
     def show
+      # As agreed with user, use fixed number of records per page
+      params[:per_page] = 200
+
       @curation_concern ||= ActiveFedora::Base.find(params[:id])
       presenter
       query_collection_members
