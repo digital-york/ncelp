@@ -17,6 +17,8 @@
         <%= link_to t(:'hyrax.controls.home'), hyrax.root_path, aria: current_page?(hyrax.root_path) ? {current: 'page'} : nil %></li>
         <li <%= 'class=active' if current_page?(hyrax.about_path) %>>
         <%= link_to t(:'hyrax.controls.about'), hyrax.about_path, aria: current_page?(hyrax.about_path) ? {current: 'page'} : nil %></li>
+        <li <%= 'class=active' if current_page?('/schemes-of-work') %>>
+        <%= link_to t(:'hyrax.pages.tabs.schemes_of_work_page'), '/schemes-of-work', aria: current_page?('/schemes-of-work') ? {current: 'page'} : nil %></li> 
         <% if user_signed_in? %>
         <li <%= 'class=active' if current_page?('/concern/resources/new') %>>
         <%= link_to t(:'ncelp.menubar.upload'), '/concern/resources/new', aria: current_page?('/concern/resources/new') ? {current: 'page'} : nil %></li>
@@ -30,7 +32,7 @@
         <%= link_to 'Dashboard', '/dashboard', aria: current_page?('/dashboard') ? {current: 'page'} : nil %></li>
         <% end %>
         <li>
-        <%= link_to 'NCELP.org', 'https://ncelp.org/', target: :_blank %></li>
+        <%= link_to 'TO NCELP.ORG', 'https://ncelp.org/', target: :_blank %></li>
       </ul><!-- /.nav -->
 
       <% if current_page?('/catalog') %>

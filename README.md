@@ -89,9 +89,10 @@ ncelp-mac_web_1          /bin/docker-entrypoint-web.sh    Up               0.0.0
 ```
 
 5. How to modify application code
-The local source code is shared with Docker ${APP_DIR} volume. Refresh browser to see any changes to .erb files (Note, this is only while RAILS_ENV=development)
 
-If you make changes to the *.rb, Gemfile or the Compose file to try out some different configurations, you need to rebuild. Some changes require only ```docker-compose up --build```, but a full rebuild requires a re-run of ```docker-compose run web bundle install``` to sync changes in the ```Gemfile.lock``` to the host, followed by ```docker-compose up --build```.
+The local source code is shared with Docker ${APP_DIR} volume. Refresh browser to see any changes to .erb files (Note, this is only while RAILS_ENV=development). Restart web service to reload all changes to .rb files ```docker-compose restart web```.
+
+If you make changes to Gemfile or the Compose file to try out some different configurations, you need to rebuild. Some changes require only ```docker-compose up --build```, but a full rebuild requires a re-run of ```docker-compose run web bundle install``` to sync changes in the ```Gemfile.lock``` to the host, followed by ```docker-compose up --build```.
 
 If you need update some gems run ```bundle lock --update``` following re-build 
 ```
@@ -122,3 +123,14 @@ If you need access to a data volume, one approach will be mounting a volume to a
 docker run --rm -i -v=ncelp-mac_state:/tmp/ncelp-mac_state busybox rm /tmp/ncelp-mac_state/.initialized
 ```
 The container will be removed (--rm) after completing this opperation.
+
+9. Know issus
+
+Solr data re not store at external volume. Remove Solr container to start fresh.
+
+Upgrading hyrax application requires to rung DB migration, run ```docker-compose web run bundle exec rails db:migrate RAILS_ENV=development```. The command will be executed on stoping web service with ```Control+C``` as web container starts rails server. 
+
+Hyrax app creates application PID at /var/run/hyrax/hyrax.pid. Occasionally, restarting docker will not clean the file. On this occassion web service fails to start. Simply stop docker and start it again. Ultimetly, this can be also solved by removing web container with volumes and rebuild it.
+
+In order to use Pry for debuging, add Pry bindig and restart docker. Visit relevant application section. Application will stop, however, access to terminal is not allowed. Connect to web service with attach command ````docker attach #Container ID``` and press enter to see Pry CMD prompt.
+

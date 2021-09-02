@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.7'
+gem 'rails', ">= 5.2.4.5"
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
-gem 'puma', '~> 3.12.4'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -68,9 +68,8 @@ gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 
-gem 'hyrax', '~> 2.7.1'
+gem 'hyrax', '>= 2.9.0'
 
-gem 'blacklight-access_controls'
 gem 'browse-everything', '< 1.0.0'
 gem 'hydra-role-management'
 gem 'nokogiri', '>= 1.10.4'
@@ -82,3 +81,4 @@ gem 'figaro'          # env managment
 gem 'pg', '~> 1.1.4'  # Postgres DB
 gem 'rubyzip', '>= 1.3.0'
 gem 'sidekiq'
+gem 'oauth', '>= 0.5.5'
