@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', ">= 5.2.4.5"
+gem 'rails', "~> 5.2.6"
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.13'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '>= 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -61,14 +61,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-#gem 'actionview', '>= 5.2.4.2'
+# gem 'actionview', '>= 5.1.6.2'
 gem 'bootstrap-sass', '>= 3.4.1'
 gem 'devise', '>= 4.7.1'
 gem 'devise-guests', '~> 0.6'
 gem 'jquery-rails'
 gem 'mini_magick', '>= 4.9.4'
 
-gem 'hyrax', '>= 2.9.0'
+gem 'hyrax', '~> 2.9.5'
 
 gem 'browse-everything', '< 1.0.0'
 gem 'hydra-role-management'
@@ -78,7 +78,7 @@ gem 'rsolr', '>= 1.0'
 gem 'simple_form', '>= 5.0.0'
 
 gem 'figaro'          # env managment
-gem 'pg', '~> 1.1.4'  # Postgres DB
+gem 'pg', '~> 1.2.3'  # Postgres DB
 gem 'rubyzip', '>= 1.3.0'
 gem 'sidekiq'
 gem 'oauth', '>= 0.5.5'
