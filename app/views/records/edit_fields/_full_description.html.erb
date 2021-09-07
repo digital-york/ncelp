@@ -1,1 +1,17 @@
-<%= f.input :full_description, as: :text, input_html: { rows: '5', type: 'textarea' } %>
+<%= f.input :full_description, as: :text, input_html: { class: 'tinymce', rows: '5', type: 'textarea' } %>
+
+<script>
+    try{
+        tinymce.remove();
+        tinyMCE.init({
+            selector: 'textarea.tinymce',
+            height: 100,
+            plugins: 'media link image lists table',
+            menubar: false,
+            toolbar: 'styleselect | formats | undo redo | ' +
+                'bold italic underline strikethrough | ' +
+                'numlist bullist | alignleft aligncenter alignright alignjustify  | ' +
+                'image media link'
+        })
+    }catch(error){}
+</script>
