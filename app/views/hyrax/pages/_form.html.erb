@@ -21,8 +21,12 @@
     <li>
       <a href="#cite" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.cite_page') %></a>
     </li>
+    <li>
+      <a href="#cookie_statements" role="tab" data-toggle="tab"><%= t(:'hyrax.pages.tabs.cookie_statements_page') %></a>
+    </li>
   </ul>
   <div class="tab-content">
+
     <div id="about" class="tab-pane active">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:about), url: hyrax.page_path(ContentBlock.for(:about)) do |f| %>
@@ -39,6 +43,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="help" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:help), url: hyrax.page_path(ContentBlock.for(:help)) do |f| %>
@@ -55,6 +60,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="agreement" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:agreement), url: hyrax.page_path(ContentBlock.for(:agreement)) do |f| %>
@@ -71,6 +77,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="terms" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:terms), url: hyrax.page_path(ContentBlock.for(:terms)) do |f| %>
@@ -87,6 +94,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="schemes_of_work" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:schemes_of_work), url: hyrax.page_path(ContentBlock.for(:schemes_of_work)) do |f| %>
@@ -103,6 +111,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="all_collections" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:all_collections), url: hyrax.page_path(ContentBlock.for(:all_collections)) do |f| %>
@@ -119,6 +128,7 @@
         <% end %>
       </div>
     </div>
+
     <div id="cite" class="tab-pane">
       <div class="panel panel-default labels">
         <%= simple_form_for ContentBlock.for(:cite), url: hyrax.page_path(ContentBlock.for(:cite)) do |f| %>
@@ -135,5 +145,23 @@
         <% end %>
       </div>
     </div>
+
+    <div id="cookie_statements" class="tab-pane">
+      <div class="panel panel-default labels">
+        <%= simple_form_for ContentBlock.for(:cookie_statements), url: hyrax.page_path(ContentBlock.for(:cookie_statements)) do |f| %>
+          <div class="panel-body">
+            <div class="field form-group">
+              <%= f.label :cookie_statements %><br>
+              <%= f.text_area :cookie_statements, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <%= link_to t(:'hyrax.pages.cancel'), hyrax.admin_admin_sets_path, class: 'btn btn-default pull-right' %>
+            <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
