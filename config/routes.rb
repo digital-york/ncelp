@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/cite' => 'hyrax/pages#show', key: 'cite'
   get '/schemes-of-work' => 'hyrax/pages#show', key: 'schemes_of_work'
   get '/all-collections' => 'hyrax/pages#show', key: 'all_collections'
+  get '/cookies' => 'hyrax/pages#show', key: 'cookie_statements'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

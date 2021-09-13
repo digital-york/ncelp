@@ -37,7 +37,8 @@ module Hyrax
                                               :terms,
                                               :cite,
                                               :schemes_of_work,
-                                              :all_collections)
+                                              :all_collections,
+                                              :cookie_statements)
       end
 
       # When a request comes to the controller, it will be for one and
