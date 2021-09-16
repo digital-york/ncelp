@@ -11,7 +11,8 @@
     </div>
     <% if document.full_description != '' %>
       <div class="panel-body">
-        <%= simple_format(document.full_description).html_safe %>
+        <%#= simple_format(document.full_description).html_safe %>
+        <%= document.full_description.html_safe %>
       </div>
     <% end %>
   </div>
