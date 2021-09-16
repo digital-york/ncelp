@@ -1,1 +1,6 @@
-<%= f.input :full_description, as: :text, input_html: { class: 'tinymce', rows: '5', type: 'textarea' } %>
+<%#= f.input :full_description, as: :text, input_html: { class: 'tinymce', rows: '5', type: 'textarea' } %>
+
+<label class="control-label text required" for="resource_full_description">Complete description <span class="label label-info required-tag">required</span></label>
+<p class="help-block">Please describe your resource in more detail.</p>
+<%= f.text_area :full_description, as: :text, :class => "tinymce", :rows => 5, :cols => 120 %>
+<br/>
