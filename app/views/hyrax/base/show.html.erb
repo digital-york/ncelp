@@ -20,6 +20,16 @@
 <div class="row">
 
   <div id="accordion">
+    
+    <h3>Credits</h3>
+    <div class="ncelp-resource-details-box">
+      <% if document.creator.length > 0 %>
+          <%= render :partial => 'credits', :locals => {:field_name => 'Name of creator / institution', :field_value => document.creator} %><br/>
+      <% end %>
+      <% if document.reference.length > 0 %>
+          <%= render :partial => 'credits', :locals => {:field_name => 'Contributors', :field_value => document.reference} %><br/>
+      <% end %>
+    </div>
 
     <h3>More details</h3>
 
@@ -78,10 +88,6 @@
 
 <% if document.link_to_iris.length > 0 %>
   <div class="row ncelp-resource-details-box">
-    <%= render :partial => 'generic_field', :locals => {:field_name => 'creator', :field_value => document.creator} %><br/>
-    <% if document.reference.length > 0 %>
-      <%= render :partial => 'generic_field', :locals => {:field_name => 'reference', :field_value => document.reference, :icon => 'fa-info-circle', :hover_text => 'This resource uses material(s) created by:'} %><br/>
-    <% end %>
     <%= render :partial => 'iris_link_field', :locals => {:field_value => document.link_to_iris} %><br/>
   </div>
   <br/>

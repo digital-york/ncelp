@@ -6,12 +6,6 @@
       <% else %>
       <h1 class="modal-title">Resource details</h1>
       <% end %>
-      <% presenter.creator.each do |creator| %>
-        <span itemprop="creator" itemscope itemtype="http://schema.org/Person">
-          <span itemprop="name"><%= link_to_facet(creator, "creator_sim") %></span>
-        </span>
-        <br />
-      <% end %>
     </div>
   </div>
 <% end %>

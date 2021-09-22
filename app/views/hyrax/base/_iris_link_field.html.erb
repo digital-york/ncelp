@@ -1,7 +1,10 @@
 <%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
     <div class="row iris-oasis-links-row">
         <div class="col-xs-12 col-sm-12 ncelp-resource-details-content">
+          <h5 class="ncelp-resource-details-label">IRIS instruments</h5>
+          <div class="ncelp-resource-details-content">
           This resource uses materials available from the IRIS database:
+          </div>
         </div>
     </div>
     <% field_value.each do |w| %>
