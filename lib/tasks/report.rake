@@ -353,4 +353,14 @@ namespace :report do
         end
     end
 
+    # RAILS_ENV=production RUBYOPT=-W0 bundle exec rake report:list_collection
+    desc 'list all collections'
+    task :list_collection => :environment do
+
+        i=1
+        Collection.all.each { |c|
+            puts i.to_s + ":" + c.id + ":" + c.title[0]
+            i = i+1
+        }
+    end
 end
