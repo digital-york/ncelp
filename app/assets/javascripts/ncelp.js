@@ -114,7 +114,8 @@ $(document).on('turbolinks:load', function() {
      */
     $("#accordion").accordion({
         active: false,
-        collapsible: true
+        collapsible: true,
+        heightStyle: "content"
     });
 
     function checkPageExist()    {

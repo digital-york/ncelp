@@ -1,0 +1,20 @@
+<%# List Creators %>
+<%unless (field_value.nil?) or (field_value=='') or (field_value.kind_of?(Array) and field_value[0]=='')%>
+  <%# <span itemprop="creator" itemscope itemtype="http://schema.org/Person"> %>
+    <%# <span itemprop="name"><%= link_to_facet(creator, "creator_sim")</span>  %>
+    <%# %>
+  <%# </span> %>
+  <div class="row iris-oasis-links-row">
+    <div class="col-xs-12 col-sm-12 ncelp-resource-details-content">
+      <b><%= field_name %></b>
+    </div>
+  </div>
+  <% field_value.each do |w| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <span class="ui-accordion-header-icon ui-icon ui-icon-caret-1-e"></span>
+        <%= w %>
+      </div>
+    </div>
+  <% end %>
+<%end%>
