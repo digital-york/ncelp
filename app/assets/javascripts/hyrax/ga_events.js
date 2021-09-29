@@ -52,7 +52,7 @@ $(document).on('click', '#collection_download_all', function(e) {
   //data-label - collection resource id
   //data-value - number of file resources zipped in the collection bundle
   let data_label = $(this).data('label');
-  if(typeof date_lable !== 'undefined') {
+  if(typeof data_label !== 'undefined') {
     _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value')]);
   }
 });
