@@ -571,7 +571,7 @@ form#new_resource {
 }
 
 // #coronavirus
-.ncelp-homepage-coronavirus-box {
+.ncelp-homepage-feature-box {
   border-color: #e7e7e7;
   background-color: #e7e7e7;
 
@@ -594,6 +594,17 @@ form#new_resource {
     font-size: 1.2em;
     margin-right: 15px;
     margin-top: 0px;
+  }
+
+  a {
+    color: #086cad;
+    font-size: 1.1em;
+  }
+
+  em {
+    color: #a25200;
+    font-size: 1.1em;
+    font-style: normal;
   }
 
   .buttons {
