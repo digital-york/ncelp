@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :production do
   # Standalone passenger
-  gem 'passenger', '~> 5.2.0'
+  gem 'passenger', '~> 5.3.2'
 end
 
 group :development, :test do
