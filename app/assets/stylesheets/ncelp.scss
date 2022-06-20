@@ -67,6 +67,29 @@ body {
   }
 }
 
+// TO NCELP.ORG button
+.btn-primary-nav {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+
+  // margin-top: 10px;
+
+  background-color: #d7a53e;
+  font-size: 16px;
+  text-align: center;
+  border: 2px solid #d7a53e;
+  border-radius: 4px;
+  color: black;
+
+  &,
+  &:hover,
+  &:focus {
+    background-color: #d7a53e;
+    color: black;
+  }
+}
+
 /* footer customizations */
 .ncelp-footer-border {
   border-top: 2px solid #ed7d31;
