@@ -92,9 +92,10 @@ ncelp-mac_web_1          /bin/docker-entrypoint-web.sh    Up               0.0.0
 
 The local source code is shared with Docker ${APP_DIR} volume. Refresh browser to see any changes to .erb files (Note, this is only while RAILS_ENV=development). Restart web service to reload all changes to .rb files ```docker-compose restart web```.
 
-If you make changes to Gemfile or the Compose file to try out some different configurations, you need to rebuild. Some changes require only ```docker-compose up --build```, but a full rebuild requires a re-run of ```docker-compose run web bundle install``` to sync changes in the ```Gemfile.lock``` to the host, followed by ```docker-compose up --build```.
+If you make changes Compose file to try out some different configurations, you need to rebuild. Run ```docker-compose up --build```.
 
-If you need update some gems run ```bundle lock --update``` following re-build 
+If you need update rails patches or other gems. Change version in Genfile than run ```bundle lock --update``` to update Gemfile.lock. Follow with ```docker-compose build```. A full rebuild requires a re-run of ```docker-compose run web bundle install``` to sync changes in the ```Gemfile.lock``` to the host.
+
 ```
 # Example: Bump up rack and nokogiri gems
 docker-compose run web bundle lock --update rack nokogiri 
