@@ -1,5 +1,7 @@
 # To run this task, type:
 # RAILS_ENV=production bundle exec rake zipfile:collections[server_url, download_folder hosted by Apache/Nginx]
+# To create zip file for a specyfic collection id
+# RAILS_ENV=production bundle exec rake zipfile:collection_id[collection_id, server_url, download_folder hosted by Apache/Nginx]
 # e.g. for local VM
 # RAILS_ENV=production bundle exec rake zipfile:collections[http://localhost:3000/, /tmp]
 
@@ -30,20 +32,30 @@ namespace :zipfile do
         }
         number_of_collections = response['response']['numFound']
         if number_of_collections == 0
-            Rails.logger.info 'INFO @ rake zipfile: No collection found.'
+            puts 'INFO @ rake zipfile: No collection found.'
         else
-            Rails.logger.info "INFO @ rake zipfile: Total number of collections: #{number_of_collections}"
+            puts "INFO @ rake zipfile: Total number of collections: #{number_of_collections}"
 
             response['response']['docs'].each do |doc|
                 id    = doc['id']
                 title = doc['title_tesim'][0]
-                Rails.logger.info "  processing collection: #{title}"
+                puts "  processing collection: #{title}"
                 process_collection(solr, id, download_url, download_folder)
             end
 
         end
     end
 
+
+    desc 'Generate zip files containing all resources for one collection_id'
+    task :collection_id, [:collection_id,:server_url,:download_folder] => [:environment] do |task, args|
+        server_url      = args[:server_url]
+        download_url    = "#{server_url}downloads/"
+        download_folder = args[:download_folder]
+        id = args[:collection_id]
+        process_collection(solr, id, download_url, download_folder)
+    end
+    
     private
         # process a collection
         def process_collection(solr, collection_id, download_url, download_folder)
@@ -55,7 +67,7 @@ namespace :zipfile do
             }
             number_of_resources = resources_response['response']['numFound']
             if number_of_resources == 0
-                Rails.logger.info 'INFO @ rake zipfile: No resource found.'
+                puts 'INFO @ rake zipfile: No resource found.'
             else
                 # process child resources and create zip file only when
                 # The child resources have been updated
@@ -63,13 +75,17 @@ namespace :zipfile do
                 # The expected previous created zip file does not exist
                 if updated_within?(resources_response, RESOURCE_UPDATE_CHECK_FREQUENCY) or !File.exist?("#{download_folder}/#{collection_id}.zip")
                     FileUtils.mkdir_p "/#{download_folder}/#{collection_id}"
-                    Rails.logger.info "INFO @ rake zipfile: total number of resources: #{number_of_resources}"
+                    puts "INFO @ rake zipfile: total number of resources: #{number_of_resources}"
                     resources_response['response']['docs'].each do |doc|
                         id         = doc['id']
                         title      = doc['title_tesim'][0]
                         member_ids = doc['member_ids_ssim']
-                        Rails.logger.info "INFO @ rake zipfile: processing resource: #{title}"
-                        process_resource(solr, collection_id, id, member_ids, download_url, download_folder)
+                        puts "INFO @ rake zipfile: processing resource: #{title}" 
+			unless member_ids.nil?
+				process_resource(solr, collection_id, id, member_ids, download_url, download_folder)
+			else 
+				puts "INFO @ rake zipfile: mebers_ids nil for id:#{id}"
+			end
                     end
                     unless Dir.empty?("#{download_folder}/#{collection_id}")
                         File.delete("#{download_folder}/#{collection_id}.zip") if File.exist?("#{download_folder}/#{collection_id}.zip")
@@ -79,7 +95,7 @@ namespace :zipfile do
                         FileUtils.rm_rf("#{download_folder}/#{collection_id}")
                     end
                 else
-                    Rails.logger.info "INFO @ rake zipfile: no update for collection: #{collection_id}, can use previously generated zip file."
+                    puts "INFO @ rake zipfile: no update for collection: #{collection_id}, can use previously generated zip file."
                 end
             end
         end
@@ -102,12 +118,14 @@ namespace :zipfile do
                 begin
                     fs = FileSet.find(id)
                     filename = id
-                    filename = fs.label unless fs.label.nil?
+                    #filename = "#{id}-#{fs.label}" unless fs.label.nil?
+                    filename = "fs.label" unless fs.label.nil?
                     file_url = download_url + id
                     File.open("#{download_folder}/#{collection_id}/#{filename}", "wb") do |saved_file|
                         URI.open(file_url, "rb") do |read_file|
                             saved_file.write(read_file.read)
-                            Rails.logger.info "INFO @ rake zipfile: saved #{filename} in #{download_folder}/#{collection_id}/"
+			    puts "INFO @ rake zipfile: file_url #{filename} - #{file_url}"
+                            puts "INFO @ rake zipfile: saved #{filename} in #{download_folder}/#{collection_id}/"
                         end
                     end
                 rescue StandardError => e
@@ -128,7 +146,7 @@ namespace :zipfile do
                     zipfile.add(File.basename(filename), filename)
                 end
             end
-            Rails.logger.info "INFO @ rake zipfile: created #{zipfile_name}"
+            puts "INFO @ rake zipfile: created #{zipfile_name}"
         end
 
 end
