@@ -119,7 +119,7 @@ namespace :zipfile do
                     fs = FileSet.find(id)
                     filename = id
                     #filename = "#{id}-#{fs.label}" unless fs.label.nil?
-                    filename = "fs.label" unless fs.label.nil?
+                    filename = fs.label unless fs.label.nil?
                     file_url = download_url + id
                     File.open("#{download_folder}/#{collection_id}/#{filename}", "wb") do |saved_file|
                         URI.open(file_url, "rb") do |read_file|
