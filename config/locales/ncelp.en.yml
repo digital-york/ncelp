@@ -4,6 +4,8 @@ en:
     version: 0.1
     banner_image: logo1776x258.png
     strapline_image: strapline.png
+    banner:
+      download_counter: download-counter.png 
     footer:
       ncelp_logo: ncelp-logo.png
       uoy_logo:   uoy.gif
