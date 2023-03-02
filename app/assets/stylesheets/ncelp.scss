@@ -646,6 +646,58 @@ form#new_resource {
   }
 }
 
+.ncelp-homepage-prominent-box {
+  border-color: #e7e7e7;
+  background-color: #ee6a6a;
+
+  text-align: left;
+  vertical-align: middle;
+  // border: 2px solid #eeeeee;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding-top: 5px;
+
+  .container-fluid {
+    display: flex-fluid;
+    align-items: baseline;
+  }
+
+  h2 {
+    color: #000;
+    text-transform: none;
+    display: inline-block;
+    font-size: 1.6em;
+    margin-right: 15px;
+    margin-top: 0px;
+  }
+
+  a {
+    color: #086cad;
+    font-size: 1.1em;
+  }
+
+  em {
+    color: #a25200;
+    font-size: 1.1em;
+    font-style: normal;
+  }
+
+  .buttons {
+    .btn {
+      margin-right: 20px;
+      margin-bottom: 5px;
+      font-size: 1.4em;
+      background-color: #f4b986;
+      // border-color: #fd871f;
+      border: 2px solid #e87d1e;
+      color: #000;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .ncelp-homepage-small-button-link {
   display: inline-block;
   width: 100%;
