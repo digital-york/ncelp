@@ -648,9 +648,9 @@ form#new_resource {
 
 .ncelp-homepage-prominent-box {
   border-color: #e7e7e7;
-  background-color: #ee6a6a;
+  background-color: #f1a599;
 
-  text-align: justify;
+  text-align: center;
   vertical-align: middle;
   // border: 2px solid #eeeeee;
   border-radius: 10px;
@@ -672,12 +672,12 @@ form#new_resource {
 
   .buttons {
     .btn {
-      margin-right: 20px;
+      margin-top: 10px;
       margin-bottom: 5px;
       font-size: 1.8em;
-      background-color: #f4b986;
+      background-color: #f7a24e;
       // border-color: #fd871f;
-      border: 2px solid #e87d1e;
+      border: 2px solid #fcdfe3;
       border-radius: 10px;
       color: #000;
       &:hover {
