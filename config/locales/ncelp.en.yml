@@ -2,7 +2,7 @@
 en:
   ncelp:
     version: 0.1
-    banner_image: logo1776x258.png
+    banner_image: ldp-logo.png
     strapline_image: strapline.png
     banner:
       download_counter: download-counter.png 

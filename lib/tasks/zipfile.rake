@@ -34,7 +34,7 @@ namespace :zipfile do
         if number_of_collections == 0
             puts 'INFO @ rake zipfile: No collection found.'
         else
-            puts "INFO @ rake zipfile: Total number of collections: #{number_of_collections}"
+            puts "INFO zipfile task: Total number of collections: #{number_of_collections}"
 
             response['response']['docs'].each do |doc|
                 id    = doc['id']
@@ -75,12 +75,12 @@ namespace :zipfile do
                 # The expected previous created zip file does not exist
                 if updated_within?(resources_response, RESOURCE_UPDATE_CHECK_FREQUENCY) or !File.exist?("#{download_folder}/#{collection_id}.zip")
                     FileUtils.mkdir_p "/#{download_folder}/#{collection_id}"
-                    puts "INFO @ rake zipfile: total number of resources: #{number_of_resources}"
+                    puts "INFO process_collection: Collection #{collection_id} contains #{number_of_resources} resources"
                     resources_response['response']['docs'].each do |doc|
                         id         = doc['id']
                         title      = doc['title_tesim'][0]
                         member_ids = doc['member_ids_ssim']
-                        puts "INFO @ rake zipfile: processing resource: #{title}" 
+                        puts "INFO process_collection: resource_id:#{id}, title:#{title}, file_ids:#{member_ids}" 
 			unless member_ids.nil?
 				process_resource(solr, collection_id, id, member_ids, download_url, download_folder)
 			else 
@@ -113,7 +113,7 @@ namespace :zipfile do
 
         # process a Resource (work)
         def process_resource(solr, collection_id, resource_id, member_ids, download_url, download_folder)
-            # Download URL: https://resources.ncelp.org/downloads/r207tp471
+            # Download URL: https://resources.ldpedagogy.org/downloads/r207tp471
             member_ids.each do |id|
                 begin
                     fs = FileSet.find(id)
@@ -124,8 +124,8 @@ namespace :zipfile do
                     File.open("#{download_folder}/#{collection_id}/#{filename}", "wb") do |saved_file|
                         URI.open(file_url, "rb") do |read_file|
                             saved_file.write(read_file.read)
-			    puts "INFO @ rake zipfile: file_url #{filename} - #{file_url}"
-                            puts "INFO @ rake zipfile: saved #{filename} in #{download_folder}/#{collection_id}/"
+			                puts "DEBUG process_resource: saved - file:#{filename}, file_id:#{id}, file_url:#{file_url}, collection_id:#{collection_id}"
+                            puts "INFO process_resource: added #{filename} in #{collection_id} zip folder"
                         end
                     end
                 rescue StandardError => e
@@ -146,7 +146,7 @@ namespace :zipfile do
                     zipfile.add(File.basename(filename), filename)
                 end
             end
-            puts "INFO @ rake zipfile: created #{zipfile_name}"
+            puts "INFO create_zip: #{zipfile_name}"
         end
 
 end

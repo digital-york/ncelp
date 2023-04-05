@@ -213,7 +213,7 @@ namespace :report do
         end
     end
 
-    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.html,https://resources.ncelp.org,7]
+    # RAILS_ENV=production bundle exec rake report:files[/tmp/ncelp_files.html,https://resources.ldpedagogy.org,7]
     # The rake task takes 3 parameters:
     # The first one is the output file name
     # The second one is the base URL
@@ -362,5 +362,3 @@ namespace :report do
             puts i.to_s + ":" + c.id + ":" + c.title[0]
             i = i+1
         }
-    end
-end

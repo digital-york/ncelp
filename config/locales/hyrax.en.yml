@@ -50,17 +50,17 @@ en:
     contact_form:
       notice: Please use the contact form to submit inquiries about this system; to report a problem you are experiencing with the system; to request assistance using the system; or to provide general feedback.
     directory:
-      suffix: "@ncelp.org"
+      suffix: "@ldpedagogy.org"
     footer:
       copyright_html: All resources are licensed as <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="navbar-link" target="_blank" title="All resources are licensed as CC BY-NC-SA 4.0"><strong>CC BY-NC-SA 4.0</strong></a>
       disclaimer_html: <a href="https://www.york.ac.uk/about/legal-statements/" class="navbar-link" target="_blank" title="Legal statements">Legal statements</a> @ University of York
-      accessibility_html: <a href="https://ncelp.org/accessibility/" class="navbar-link" target="_blank" title="Accessibility">Accessibility</a>
+      accessibility_html: <a href="https://ldpedagogy.org/accessibility/" class="navbar-link" target="_blank" title="Accessibility">Accessibility</a>
       cite_html: <a href="/cite" class="navbar-link" target="_blank" title="How to cite material">How to cite material</a>
-      service_html: Powered by <a href="https://dlib.york.ac.uk/" class="navbar-link" target="_blank" title="Powered by York Digital Library">York Digital Library</a>.
-    institution_name: NCELP
-    institution_name_full: "National Centre for Excellence for Language Pedagogy"
-    product_name: NCELP
-    product_twitter_handle: "@ncelp"
+      service_html: Powered by <a href="https://discover.york.ac.uk/" class="navbar-link" target="_blank" title="Powered by Discover York Digital Library">Discover York Digital Library</a>.
+    institution_name: LDP
+    institution_name_full: "Language Driven Pedagogy - Resources Portal"
+    product_name: LDP
+    product_twitter_handle: "@ldp"
     content_blocks:
       help: Help
     pages:
