@@ -362,3 +362,5 @@ namespace :report do
             puts i.to_s + ":" + c.id + ":" + c.title[0]
             i = i+1
         }
+    end
+end
