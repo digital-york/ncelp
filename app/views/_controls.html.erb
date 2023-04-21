@@ -25,8 +25,8 @@
         <% end %>
         <li <%= 'class=active' if current_page?(hyrax.contact_path) %>>
         <%= link_to t(:'hyrax.controls.contact'), hyrax.contact_path, aria: current_page?(hyrax.contact_path) ? {current: 'page'} : nil %></li>
-        <li <%= 'class=active' if current_page?(hyrax.help_path) %>>
-        <%= link_to t(:'hyrax.controls.help'), hyrax.help_path, aria: current_page?(hyrax.help_path) ? {current: 'page'} : nil %></li>
+        <%# <li <%= 'class=active' if current_page?(hyrax.help_path) %>
+        <%# <%= link_to t(:'hyrax.controls.help'), hyrax.help_path, aria: current_page?(hyrax.help_path) ? {current: 'page'} : nil %><%#</li> %>
         <% if user_signed_in? %>
         <li <%= 'class=active' if current_page?('/dashboard') %>>
         <%= link_to 'Dashboard', '/dashboard', aria: current_page?('/dashboard') ? {current: 'page'} : nil %></li>
