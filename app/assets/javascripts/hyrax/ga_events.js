@@ -4,13 +4,32 @@
 // sent to Google Analytics.
 
 $(document).on('click', '#file_download', function(e) {
-  _gaq.push(['_trackEvent', 'Files', 'Downloaded', $(this).data('label'), 1]);
-
+  let ga4PropertyId = $("#ga4_property_id").val();
+  gtag("event", "Downloaded", {
+    send_to: ga4PropertyId,
+    event_category: "Files",
+    event_label: $(this).data("label")
+  }); 
+    
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Journals",
+        event_label: item,
+        non_interaction: true
+      });
+    
+  
+//
   // send languages info to GA
   let languages = $('#resource_languages').val();
   if(languages) {
-    languages.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Languages', 'Metadata', item, ,true]);
+    languages.split("|").forEach(function (item, index) {      
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Languages",
+        event_label: item,
+        non_interaction: true
+      });
     });
   }
 
@@ -18,7 +37,12 @@ $(document).on('click', '#file_download', function(e) {
   let type_of_materials = $('#resource_type_of_materials').val();
   if(type_of_materials) {
     type_of_materials.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Type_of_materials', 'Metadata', item, , true]);
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Type_of_materials",
+        event_label: item,
+        non_interaction: true
+      });
     });
   }
 
@@ -26,7 +50,12 @@ $(document).on('click', '#file_download', function(e) {
   let resource_ages = $('#resource_ages').val();
   if(resource_ages) {
     resource_ages.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Ages', 'Metadata', item, ,true]);
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Ages",
+        event_label: item,
+        non_interaction: true
+      });
     });
   }
 
@@ -34,7 +63,12 @@ $(document).on('click', '#file_download', function(e) {
   let pedagogical_focus = $('#resource_pedagogical_focus').val();
   if(pedagogical_focus) {
     pedagogical_focus.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Pedagogical_focus', 'Metadata', item, ,true]);
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Pedagogical_focus",
+        event_label: item,
+        non_interaction: true
+      });
     });
   }
 
@@ -42,7 +76,12 @@ $(document).on('click', '#file_download', function(e) {
   let material_for_teacher = $('#resource_material_for_teacher').val();
   if(material_for_teacher) {
     material_for_teacher.split("|").forEach(function (item, index) {
-      _gaq.push(['_trackEvent', 'Material_for_teacher', 'Metadata', item, ,true]);
+      gtag("event", "Metadata", {
+        send_to: ga4PropertyId,
+        event_category: "Material_for_teacher",
+        event_label: item,
+        non_interaction: true
+      });
     });
   }
 
@@ -53,6 +92,12 @@ $(document).on('click', '#collection_download_all', function(e) {
   //data-value - number of file resources zipped in the collection bundle
   let data_label = $(this).data('label');
   if(typeof data_label !== 'undefined') {
-    _gaq.push(['_trackEvent', 'Collections', 'Downloaded', $(this).data('label'), $(this).data('value')]);
+    gtag("event", "Downloaded", {
+      send_to: ga4PropertyId,
+      event_category: "Collections",
+      event_label: $(this).data('label'),
+      value: $(this).data('value'),
+      non_interaction: true
+    });
   }
 });
