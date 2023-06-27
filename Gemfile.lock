@@ -388,7 +388,7 @@ GEM
       jquery-ui-rails (~> 6.0)
       json-schema
       kaminari_route_prefix (~> 0.1.1)
-      
+      legato (~> 0.3)
       linkeddata (~> 3.1)
       mailboxer (~> 0.12)
       nest (~> 3.1)
@@ -481,7 +481,7 @@ GEM
       nokogiri (~> 1.8)
       parslet
       rdf (~> 3.0)
-   
+    legato (0.7.0)
       multi_json
     link_header (0.0.8)
     linkeddata (3.1.1)
