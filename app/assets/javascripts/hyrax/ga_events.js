@@ -10,14 +10,6 @@ $(document).on('click', '#file_download', function(e) {
     event_category: "Files",
     event_label: $(this).data("label")
   }); 
-    
-      gtag("event", "Metadata", {
-        send_to: ga4PropertyId,
-        event_category: "Journals",
-        event_label: item,
-        non_interaction: true
-      });
-    
   
 //
   // send languages info to GA
@@ -91,6 +83,7 @@ $(document).on('click', '#collection_download_all', function(e) {
   //data-label - collection resource id
   //data-value - number of file resources zipped in the collection bundle
   let data_label = $(this).data('label');
+  let ga4PropertyId = $("#ga4_property_id").val();
   if(typeof data_label !== 'undefined') {
     gtag("event", "Downloaded", {
       send_to: ga4PropertyId,

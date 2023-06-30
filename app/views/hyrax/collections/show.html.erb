@@ -134,6 +134,7 @@
           </a>
         <% else %>
           <input type="hidden" id="has_done_survey" value="yes"/>
+          <input type="hidden" id="ga4_property_id" value="<%= Hyrax.config.google_analytics_id %>"/>
           <button id="collection_download_all" class="btn btn-primary" style="display:none"
             data-label="<%= collectionid %>" data-value="<%= CollectionHelper.get_collection_file_number(collectionid) %>">
             Download All
