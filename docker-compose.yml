@@ -9,8 +9,10 @@ volumes:
   derivatives:
   state:
 
+
 networks:
   internal:
+
 
 services:
   fcrepo:
@@ -24,9 +26,10 @@ services:
     env_file:
       - .env
     depends_on:
-       - postgresdb
+      - postgresdb
     networks:
       internal:
+
 
   solr:
     image: solr:7-alpine
@@ -72,8 +75,6 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
-    volumes:
-      - postgresdb:/var/lib/postgresql/data
     networks:
       internal:
     expose:
@@ -81,8 +82,9 @@ services:
     ports:
       - 5432:5432
 
-  app: &app
-    build: 
+  app:
+    &app
+    build:
       context: .
       args:
         RAILS_ENV: ${RAILS_ENV}
@@ -116,7 +118,7 @@ services:
     tty: true
     stdin_open: true
     entrypoint:
-        - /bin/docker-entrypoint-web.sh
+      - /bin/docker-entrypoint-web.sh
     expose:
       - ${RAILS_PORT}
     ports:
@@ -134,7 +136,7 @@ services:
     expose:
       - 6379
     ports:
-      - 6379:6379 
+      - 6379:6379
     networks:
       internal:
     healthcheck:

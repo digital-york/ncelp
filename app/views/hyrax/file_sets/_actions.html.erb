@@ -40,6 +40,7 @@
       <input type="hidden" id="resource_ages" value="<%= ResourceHelper.get_ages(resource_doc).join('|')%>"/>
       <input type="hidden" id="resource_pedagogical_focus" value="<%= ResourceHelper.get_pedagogical_focus(resource_doc).join('|')%>"/>
       <input type="hidden" id="resource_material_for_teacher" value="<%= ResourceHelper.get_material_for_teacher(resource_doc).join('|')%>"/>
+      <input type="hidden" id="ga4_property_id" value="<%= Hyrax.config.google_analytics_id %>"/>
 
       <%= link_to t('.download'),
                   hyrax.download_path(file_set),
