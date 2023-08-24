@@ -166,7 +166,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)    
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.0)
     crass (1.0.6)
@@ -599,7 +599,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.6)
     pul_uv_rails (2.0.1)
-    puma (4.3.12)
+    puma (6.3.1)
       nio4r (~> 2.0)
     qa (5.8.1)
       activerecord-import
@@ -907,8 +907,8 @@ DEPENDENCIES
   pg (~> 1.2.3)
   pry-byebug
   pry-rails
-  puma (~> 4.3)
-  rails (~> 5.2)
+  puma (~> 6.3.1)
+  rails (~> 5.2.8.1)
   riiif (~> 1.1)
   rsolr (>= 1.0)
   rspec-rails
