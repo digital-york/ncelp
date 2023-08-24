@@ -21,6 +21,7 @@ class Hyrax::HomepageController < ApplicationController
     @marketing_text = ContentBlock.for(:marketing)
     @featured_work_list = FeaturedWorkList.new
     @announcement_text = ContentBlock.for(:announcement)
+    @total_downloads = DownloadStatsHelper.total_downloads
     recent
   end
 

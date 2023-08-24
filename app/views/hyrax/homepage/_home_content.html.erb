@@ -7,10 +7,10 @@
 
   <div class="col-md-12 ncelp-homepage-feature-box" aria-label="Courses banner" role="banner">
     <div class="buttons container-fluid">
-    <h2>Find out more about our free CPD for MFL teachers: </h2>
+    <h2>Find out more about our CPD for MFL teachers: </h2>
       <a class="btn btn-primary"
           role="button" 
-          href="https://ldpedagogy.org/professional-development/"
+          href="https://www.york.ac.uk/education/research/language-driven-pedagogy/professional-development/"
           target="_blank"
           title="Learn more about the pedagogy with our professional development materials (opens in a new window)">Our Courses</a>
     </div>
@@ -42,8 +42,8 @@
     </div>
   </div>
   <div class="col-md-4 ncelp-homepage-feature-box" aria-label="Number of files download banner" role="banner">
-    <div class="buttons container-fluid" style="padding-top: 8px; padding-bottom: 12px; padding-left: 22px;">
-      <%= image_tag(t('ncelp.banner.download_counter'), :class=>'ncelp_footer_image', alt: "Download Counter: 613,460 files downloads as of 2nd March 2023") %>
+    <div class="buttons container-fluid" style="padding-top: 24px; padding-bottom: 24px; padding-left: 22px;">
+      <%= render 'download_stats' %>
     </div>
   </div>
   <div class="col-md-12 ncelp-homepage-middle-box">
